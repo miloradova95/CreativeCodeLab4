@@ -370,7 +370,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 0.7
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &185132276
@@ -387,11 +387,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   chaseSpeed: 4
-  visionRadius: 50
+  visionRadius: 30
   personalSpaceRadius: 20
   turnSpeed: 120
   idleActionInterval: 3
   chaseTimeout: 60
+  playerAttractionStrength: 0.3
+  avoidanceStrength: 1
+  proactiveMovementRange: 8
+  chaseAvoidanceRadius: 5
+  chaseAvoidanceStrength: 0.1
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -410,7 +415,7 @@ Transform:
   m_GameObject: {fileID: 185132274}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.69, y: 46.17, z: -3.2458558}
+  m_LocalPosition: {x: 65.4556, y: 47.97, z: 3.199997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -610,7 +615,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 0.7
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &764194465
@@ -627,11 +632,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   chaseSpeed: 4
-  visionRadius: 50
+  visionRadius: 30
   personalSpaceRadius: 20
   turnSpeed: 120
   idleActionInterval: 3
   chaseTimeout: 60
+  playerAttractionStrength: 0.3
+  avoidanceStrength: 1
+  proactiveMovementRange: 8
+  chaseAvoidanceRadius: 5
+  chaseAvoidanceStrength: 0.1
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -650,7 +660,7 @@ Transform:
   m_GameObject: {fileID: 764194463}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.19, y: 45.53, z: -10.01}
+  m_LocalPosition: {x: 77.9556, y: 49.09, z: -3.564148}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -694,7 +704,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 0.7
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &800510522
@@ -711,11 +721,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   chaseSpeed: 4
-  visionRadius: 50
+  visionRadius: 30
   personalSpaceRadius: 20
   turnSpeed: 120
   idleActionInterval: 3
   chaseTimeout: 60
+  playerAttractionStrength: 0.3
+  avoidanceStrength: 1
+  proactiveMovementRange: 8
+  chaseAvoidanceRadius: 5
+  chaseAvoidanceStrength: 0.1
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -734,7 +749,7 @@ Transform:
   m_GameObject: {fileID: 800510520}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.37, y: 45.4, z: -3.2458558}
+  m_LocalPosition: {x: 78.1356, y: 49.55, z: 3.199997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1125,6 +1140,50 @@ Transform:
   m_Children:
   - {fileID: 1877400493}
   - {fileID: 102938129}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1325338020
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1325338022}
+  - component: {fileID: 1325338021}
+  m_Layer: 0
+  m_Name: ZombieSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1325338021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325338020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b81c69794355764a88be960d951e991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1325338022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325338020}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 103.477745, y: -13.221665, z: 122.74888}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1325899835
@@ -2491,11 +2550,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   chaseSpeed: 4
-  visionRadius: 50
+  visionRadius: 30
   personalSpaceRadius: 20
   turnSpeed: 120
   idleActionInterval: 3
   chaseTimeout: 60
+  playerAttractionStrength: 0.3
+  avoidanceStrength: 1
+  proactiveMovementRange: 8
+  chaseAvoidanceRadius: 5
+  chaseAvoidanceStrength: 0.1
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -2514,7 +2578,7 @@ Transform:
   m_GameObject: {fileID: 2128063360}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.9343996, y: 45.53, z: -3.2458558}
+  m_LocalPosition: {x: 72.7, y: 49.13, z: 3.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2540,7 +2604,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 0.7
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1660057539 &9223372036854775807
@@ -2558,3 +2622,4 @@ SceneRoots:
   - {fileID: 800510523}
   - {fileID: 185132277}
   - {fileID: 764194466}
+  - {fileID: 1325338022}
