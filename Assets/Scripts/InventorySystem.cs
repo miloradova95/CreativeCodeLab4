@@ -57,6 +57,8 @@ public class InventorySystem : MonoBehaviour
         if (inventory.Count == 0) return;
         
         float scroll = Input.GetAxis("Mouse ScrollWheel");
+        Debug.Log("Scroll value: " + scroll); // Add this line
+
         
         if (Mathf.Abs(scroll) > 0.1f) // Add deadzone to prevent accidental scrolling
         {
