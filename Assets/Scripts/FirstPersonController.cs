@@ -75,14 +75,24 @@ public class FirstPersonController : MonoBehaviour
         }
     }
     
-    void HandleInventoryControls()
+void HandleInventoryControls()
+{
+    // Drop current item with Q
+    if (Input.GetKeyDown(KeyCode.Q) && inventorySystem != null)
     {
-        // Drop current item with Q
-        if (Input.GetKeyDown(KeyCode.Q) && inventorySystem != null)
+        inventorySystem.DropCurrentItem();
+    }
+    
+    // Toggle inventory visibility with Tab (optional)
+    if (Input.GetKeyDown(KeyCode.Tab) && inventorySystem != null)
+    {
+        if (inventorySystem.inventoryPanel != null)
         {
-            inventorySystem.DropCurrentItem();
+            bool isActive = inventorySystem.inventoryPanel.activeSelf;
+            inventorySystem.inventoryPanel.SetActive(!isActive);
         }
     }
+}
     
     void HandleMouseLook()
     {

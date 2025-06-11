@@ -154,12 +154,15 @@ MonoBehaviour:
   itemName: Key1
   itemDescription: A generic item
   itemIcon: {fileID: 0}
+  itemColor: {r: 1, g: 1, b: 1, a: 1}
   interactionRange: 3
   playerLayer:
     serializedVersion: 2
     m_Bits: 1
   highlightEffect: {fileID: 0}
   highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  inventorySprite: {fileID: 21300000, guid: 2b3e047b043c9164d9f562c160584a5d, type: 3}
+  inventoryColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &6010566229982347828
 MonoBehaviour:
   m_ObjectHideFlags: 0
