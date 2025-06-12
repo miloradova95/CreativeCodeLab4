@@ -1,14 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class SymbolPairManager : MonoBehaviour
+public class KeyDoorManager : MonoBehaviour
 {
-    [Header("Symbol + Key Setup")]
+    [Header("Symbol Library + Key Prefab")]
     public SymbolLibrary symbolLibrary;
     public GameObject keyPrefab;
 
-    [Header("Per-Door Key Spawns")]
-    public List<KeySpawns> keySpawnsList;
+    [Header("Door List + Key Spawn Points List")]
+    public List<KeySpawns> list;
 
     private List<SymbolPair> symbolPairs = new List<SymbolPair>();
 
@@ -19,7 +19,7 @@ public class SymbolPairManager : MonoBehaviour
 
     void GenerateSymbolPairs()
     {
-        if (symbolLibrary == null || keyPrefab == null || keySpawnsList.Count == 0)
+        if (symbolLibrary == null || keyPrefab == null || list.Count == 0)
         {
             Debug.LogWarning("Missing required references.");
             return;
@@ -28,11 +28,11 @@ public class SymbolPairManager : MonoBehaviour
         List<SymbolData> shuffledSymbols = new List<SymbolData>(symbolLibrary.availableSymbols);
         ShuffleList(shuffledSymbols);
 
-        int pairCount = Mathf.Min(keySpawnsList.Count, shuffledSymbols.Count);
+        int pairCount = Mathf.Min(list.Count, shuffledSymbols.Count);
 
         for (int i = 0; i < pairCount; i++)
         {
-            KeySpawns pair = keySpawnsList[i];
+            KeySpawns pair = list[i];
             UnlockableItem door = pair.door;
             Transform[] spawnOptions = pair.keySpawnPoints;
 
