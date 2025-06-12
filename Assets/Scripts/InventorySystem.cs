@@ -16,10 +16,9 @@ public class InventorySystem : MonoBehaviour
     public Vector3 itemHoldOffset = new Vector3(0.5f, -0.3f, 0f); // Offset for positioning
 
     [Header("Key Prefab")]
-    public GameObject keyPrefab; // Reference to the original key prefab
 
     // Store both the item and its symbol data
-    private List<Item> items = new List<Item>();
+    private List<CollectibleItem> items = new List<CollectibleItem>();
     private List<SymbolData> itemSymbols = new List<SymbolData>(); // Store symbol data separately
     
     private int maxSlots = 5;
@@ -130,7 +129,7 @@ public class InventorySystem : MonoBehaviour
         if (currentSelectedIndex >= 0 && currentSelectedIndex < items.Count && itemHoldPosition != null)
         {
             SymbolData symbolData = itemSymbols[currentSelectedIndex];
-            Item selectedItem = items[currentSelectedIndex];
+            CollectibleItem selectedItem = items[currentSelectedIndex];
             Debug.Log($"Creating held item display for: {selectedItem.itemName} with symbol: {(symbolData != null ? symbolData.name : "None")}");
             CreateHeldItemDisplay(selectedItem, symbolData);
         }
@@ -140,17 +139,18 @@ public class InventorySystem : MonoBehaviour
         }
     }
 
-    void CreateHeldItemDisplay(Item item, SymbolData symbolData)
+    void CreateHeldItemDisplay(CollectibleItem item, SymbolData symbolData)
     {
-        if (itemHoldPosition == null || keyPrefab == null)
+        if (itemHoldPosition == null)
         {
             Debug.LogWarning("Cannot create held item display - missing itemHoldPosition or keyPrefab");
             return;
         }
 
-        // Instantiate the key prefab at the hold position
-        heldItemDisplay = Instantiate(keyPrefab, itemHoldPosition.position, itemHoldPosition.rotation, itemHoldPosition);
-        
+        // Instantiate the held item display
+        heldItemDisplay = Instantiate(item.gameObject, itemHoldPosition.position, itemHoldPosition.rotation, itemHoldPosition);
+        heldItemDisplay.SetActive(true);
+
         // Scale it down for held display
         heldItemDisplay.transform.localScale = Vector3.one * 0.3f;
         
@@ -190,7 +190,7 @@ public class InventorySystem : MonoBehaviour
         Debug.Log($"Created held item display for: {item.itemName}");
     }
 
-    public bool AddItem(Item item)
+    public void AddItem(CollectibleItem item)
     {
         if (item != null && items.Count < maxSlots)
         {
@@ -229,9 +229,7 @@ public class InventorySystem : MonoBehaviour
             }
             
             Debug.Log($"Added item: {item.itemName} with symbol: {(symbolData != null ? symbolData.name : "None")}");
-            return true;
         }
-        return false;
     }
 
     public void DropCurrentItem()
@@ -287,7 +285,7 @@ public class InventorySystem : MonoBehaviour
         }
     }
 
-    public List<Item> GetAllItems()
+    public List<CollectibleItem> GetAllItems()
     {
         return items;
     }
@@ -297,7 +295,7 @@ public class InventorySystem : MonoBehaviour
         return items.Count >= maxSlots;
     }
 
-    public Item GetCurrentlyHeldItem()
+    public CollectibleItem GetCurrentlyHeldItem()
     {
         if (currentSelectedIndex >= 0 && currentSelectedIndex < items.Count)
         {

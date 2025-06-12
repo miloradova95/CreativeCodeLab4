@@ -3,8 +3,8 @@ using UnityEngine;
 public class CollectibleItem : Item
 {
     [Header("Inventory Display")]
-    public Sprite inventorySprite; // Direct sprite assignment
-    public Color inventoryColor = Color.white; // Fallback color
+    public Sprite inventorySprite;
+    public Color inventoryColor = Color.white;
     
     protected override void Start()
     {
@@ -20,16 +20,7 @@ public class CollectibleItem : Item
         InventorySystem inventory = FindObjectOfType<InventorySystem>();
         if (inventory != null)
         {
-            if (inventory.IsFull())
-            {
-                Debug.Log("Inventory is full!");
-                return;
-            }
-            
-            if (inventory.AddItem(this))
-            {
-                Debug.Log($"Collected: {itemName}");
-            }
+            inventory.AddItem(this);
         }
     }
     
