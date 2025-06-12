@@ -545,13 +545,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23b9bce878519fc498a66c89b1c462e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
-  runSpeed: 8
-  jumpHeight: 2
+  walkSpeed: 1.8
+  runSpeed: 5
+  forwardSpeedMultiplier: 2
+  jumpHeight: 1.4
   gravity: -9.81
+  debuffSpeedMultiplier: 0.5
   mouseSensitivity: 2
   invertY: 0
   maxLookAngle: 80
+  maxHealth: 100
+  healthRegenRate: 2
+  healthDebuffThreshold: 30
+  healthRegenCooldown: 15
+  maxStamina: 100
+  staminaRegenRate: 15
+  staminaDebuffThreshold: 20
+  staminaRegenCooldown: 5
+  sprintStaminaDrain: 15
+  jumpStaminaCost: 10
+  walkSwayAmount: 0.05
+  walkSwaySpeed: 5
+  walkSwayRotation: 3
+  forwardSwaySpeedMultiplier: 1.3
+  sprintSwayMultiplier: 1.6
+  debuffSwayMultiplier: 1.5
+  shakeIntensity: 0.3
+  shakeDuration: 0.5
+  sprintAcceleration: 3
+  sprintDeceleration: 5
   playerCamera: {fileID: 1877400490}
   shooter: {fileID: 102938128}
 --- !u!143 &1272524636
