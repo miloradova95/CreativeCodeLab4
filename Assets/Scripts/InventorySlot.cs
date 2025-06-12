@@ -13,8 +13,16 @@ public class InventorySlot : MonoBehaviour
     [Header("Colors")]
     public Color emptySlotColor = Color.gray;
     public Color filledSlotColor = Color.white;
+    public Color highlightedSlotColor = Color.yellow; // New highlight color
+    
+    [Header("Highlight Settings")]
+    public float highlightPulseSpeed = 2f; // Speed of pulsing effect
+    public float highlightPulseMin = 0.7f; // Minimum alpha for pulse
+    public float highlightPulseMax = 1f; // Maximum alpha for pulse
     
     private Item currentItem;
+    private bool isHighlighted = false;
+    private Color originalSlotColor;
     
     void Start()
     {
@@ -28,6 +36,20 @@ public class InventorySlot : MonoBehaviour
         SetEmpty();
     }
     
+    void Update()
+    {
+        // Handle highlight pulsing effect
+        if (isHighlighted && backgroundImage != null)
+        {
+            float pulse = Mathf.Lerp(highlightPulseMin, highlightPulseMax, 
+                (Mathf.Sin(Time.time * highlightPulseSpeed) + 1f) / 2f);
+            
+            Color currentColor = backgroundImage.color;
+            currentColor.a = pulse;
+            backgroundImage.color = currentColor;
+        }
+    }
+    
     public void SetItem(Item item)
     {
         currentItem = item;
@@ -38,8 +60,11 @@ public class InventorySlot : MonoBehaviour
             Debug.Log($"Item icon: {(item.itemIcon != null ? item.itemIcon.name : "NULL")}");
             Debug.Log($"Item color: {item.itemColor}");
             
-            // Set background to filled color
-            if (backgroundImage != null)
+            // Store original color
+            originalSlotColor = filledSlotColor;
+            
+            // Set background to filled color (will be overridden if highlighted)
+            if (backgroundImage != null && !isHighlighted)
                 backgroundImage.color = filledSlotColor;
             
             // Show item icon or color
@@ -79,6 +104,8 @@ public class InventorySlot : MonoBehaviour
     public void SetEmpty()
     {
         currentItem = null;
+        isHighlighted = false;
+        originalSlotColor = emptySlotColor;
         
         if (backgroundImage != null)
             backgroundImage.color = emptySlotColor;
@@ -90,6 +117,31 @@ public class InventorySlot : MonoBehaviour
         }
     }
     
+    public void SetHighlighted(bool highlighted)
+    {
+        isHighlighted = highlighted;
+        
+        if (backgroundImage != null)
+        {
+            if (highlighted)
+            {
+                backgroundImage.color = highlightedSlotColor;
+            }
+            else
+            {
+                // Return to original color
+                if (currentItem != null)
+                {
+                    backgroundImage.color = filledSlotColor;
+                }
+                else
+                {
+                    backgroundImage.color = emptySlotColor;
+                }
+            }
+        }
+    }
+    
     public Item GetItem()
     {
         return currentItem;
@@ -98,5 +150,10 @@ public class InventorySlot : MonoBehaviour
     public bool IsEmpty()
     {
         return currentItem == null;
+    }
+    
+    public bool IsHighlighted()
+    {
+        return isHighlighted;
     }
 }

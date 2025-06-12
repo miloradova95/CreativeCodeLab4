@@ -92,6 +92,15 @@ void HandleInventoryControls()
             inventorySystem.inventoryPanel.SetActive(!isActive);
         }
     }
+    
+    // Number keys for direct item selection (1-5)
+    for (int i = 1; i <= 5; i++)
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha0 + i) && inventorySystem != null)
+        {
+            inventorySystem.SelectItemByIndex(i - 1); // 0-based indexing
+        }
+    }
 }
     
     void HandleMouseLook()

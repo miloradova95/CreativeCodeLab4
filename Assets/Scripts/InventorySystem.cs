@@ -10,13 +10,127 @@ public class InventorySystem : MonoBehaviour
     public GameObject inventoryPanel;
     public InventorySlot[] inventorySlots = new InventorySlot[5]; // Array for 5 slots
 
+    [Header("Item Holding")]
+    public Transform itemHoldPosition; // Where the held item appears (assign in inspector)
+    public float itemHoldDistance = 1.5f; // Distance from camera
+    public Vector3 itemHoldOffset = new Vector3(0.5f, -0.3f, 0f); // Offset for positioning
+
     private List<Item> items = new List<Item>();
     private int maxSlots = 5;
+    private int currentSelectedIndex = -1; // -1 means no selection
+    private GameObject heldItemDisplay; // The 3D representation of the held item
 
     void Start()
     {
+        // Create item hold position if not assigned
+        if (itemHoldPosition == null && playerCamera != null)
+        {
+            GameObject holdPos = new GameObject("ItemHoldPosition");
+            holdPos.transform.SetParent(playerCamera.transform);
+            holdPos.transform.localPosition = itemHoldOffset;
+            itemHoldPosition = holdPos.transform;
+        }
+
         // Initialize all slots as empty
         UpdateInventoryUI();
+    }
+
+    void Update()
+    {
+        HandleScrollInput();
+    }
+
+    void HandleScrollInput()
+    {
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+        
+        if (scroll > 0f) // Scroll up
+        {
+            SelectNextItem();
+        }
+        else if (scroll < 0f) // Scroll down
+        {
+            SelectPreviousItem();
+        }
+    }
+
+    void SelectNextItem()
+    {
+        if (items.Count == 0) return;
+
+        currentSelectedIndex++;
+        if (currentSelectedIndex >= items.Count)
+        {
+            currentSelectedIndex = -1; // Go back to no selection
+        }
+        
+        UpdateSelection();
+    }
+
+    void SelectPreviousItem()
+    {
+        if (items.Count == 0) return;
+
+        currentSelectedIndex--;
+        if (currentSelectedIndex < -1)
+        {
+            currentSelectedIndex = items.Count - 1; // Go to last item
+        }
+        
+        UpdateSelection();
+    }
+
+    void UpdateSelection()
+    {
+        // Update UI highlighting
+        UpdateInventoryUI();
+        
+        // Update held item display
+        UpdateHeldItemDisplay();
+    }
+
+    void UpdateHeldItemDisplay()
+    {
+        // Destroy current held item display
+        if (heldItemDisplay != null)
+        {
+            Destroy(heldItemDisplay);
+            heldItemDisplay = null;
+        }
+
+        // Create new held item display if something is selected
+        if (currentSelectedIndex >= 0 && currentSelectedIndex < items.Count)
+        {
+            Item selectedItem = items[currentSelectedIndex];
+            CreateHeldItemDisplay(selectedItem);
+        }
+    }
+
+    void CreateHeldItemDisplay(Item item)
+    {
+        if (itemHoldPosition == null) return;
+
+        // Get the SymbolHandler to access the symbol data
+        SymbolHandler symbolHandler = item.GetComponent<SymbolHandler>();
+        if (symbolHandler != null && symbolHandler.currentSymbol != null)
+        {
+            // Create the held item object
+            heldItemDisplay = new GameObject("HeldItem_" + item.itemName);
+            heldItemDisplay.transform.SetParent(itemHoldPosition);
+            heldItemDisplay.transform.localPosition = Vector3.zero;
+            heldItemDisplay.transform.localRotation = Quaternion.identity;
+            heldItemDisplay.transform.localScale = Vector3.one * 0.3f; // Make it smaller
+
+            // Add mesh components
+            MeshFilter meshFilter = heldItemDisplay.AddComponent<MeshFilter>();
+            meshFilter.mesh = symbolHandler.currentSymbol.symbolMesh;
+
+            MeshRenderer meshRenderer = heldItemDisplay.AddComponent<MeshRenderer>();
+            meshRenderer.material = symbolHandler.currentSymbol.symbolMaterial;
+
+            // Optional: Add slight rotation animation
+            HeldItemAnimator animator = heldItemDisplay.AddComponent<HeldItemAnimator>();
+        }
     }
 
     public bool AddItem(Item item)
@@ -25,7 +139,17 @@ public class InventorySystem : MonoBehaviour
         {
             items.Add(item);
             item.gameObject.SetActive(false); // Hide the item in the scene
-            UpdateInventoryUI();
+            
+            // If this is the first item and nothing is selected, auto-select it
+            if (items.Count == 1 && currentSelectedIndex == -1)
+            {
+                currentSelectedIndex = 0;
+                UpdateSelection();
+            }
+            else
+            {
+                UpdateInventoryUI();
+            }
             return true;
         }
         return false;
@@ -35,19 +159,30 @@ public class InventorySystem : MonoBehaviour
     {
         if (items.Count > 0)
         {
-            Item currentItem = items[items.Count - 1]; // Last item is current
-            items.RemoveAt(items.Count - 1);
+            // If we're dropping the currently selected item, adjust selection
+            int dropIndex = items.Count - 1; // Last item is dropped
+            if (currentSelectedIndex == dropIndex)
+            {
+                currentSelectedIndex = -1; // Deselect
+            }
+            else if (currentSelectedIndex > dropIndex)
+            {
+                currentSelectedIndex--; // Adjust index
+            }
+
+            Item currentItem = items[dropIndex];
+            items.RemoveAt(dropIndex);
             
             // Position the dropped item in front of player
             if (playerCamera != null)
             {
                 Vector3 dropPosition = playerCamera.transform.position + playerCamera.transform.forward * 2f;
-                dropPosition.y = playerCamera.transform.position.y - 0.5f; // Slightly below camera level
+                dropPosition.y = playerCamera.transform.position.y - 0.5f;
                 currentItem.transform.position = dropPosition;
             }
             
-            currentItem.gameObject.SetActive(true); // Show the item in the scene
-            UpdateInventoryUI();
+            currentItem.gameObject.SetActive(true);
+            UpdateSelection(); // This will update both UI and held item display
         }
     }
 
@@ -60,10 +195,13 @@ public class InventorySystem : MonoBehaviour
                 if (i < items.Count)
                 {
                     inventorySlots[i].SetItem(items[i]);
+                    // Highlight if this is the selected item
+                    inventorySlots[i].SetHighlighted(i == currentSelectedIndex);
                 }
                 else
                 {
                     inventorySlots[i].SetEmpty();
+                    inventorySlots[i].SetHighlighted(false);
                 }
             }
         }
@@ -77,5 +215,33 @@ public class InventorySystem : MonoBehaviour
     public bool IsFull()
     {
         return items.Count >= maxSlots;
+    }
+
+    public Item GetCurrentlyHeldItem()
+    {
+        if (currentSelectedIndex >= 0 && currentSelectedIndex < items.Count)
+        {
+            return items[currentSelectedIndex];
+        }
+        return null;
+    }
+
+    public int GetCurrentSelectedIndex()
+    {
+        return currentSelectedIndex;
+    }
+
+    public void SelectItemByIndex(int index)
+    {
+        if (index >= 0 && index < items.Count)
+        {
+            currentSelectedIndex = index;
+        }
+        else if (index >= items.Count || index < 0)
+        {
+            currentSelectedIndex = -1; // Deselect if invalid index
+        }
+        
+        UpdateSelection();
     }
 }
