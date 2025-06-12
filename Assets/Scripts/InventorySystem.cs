@@ -12,36 +12,61 @@ public class InventorySystem : MonoBehaviour
 
     [Header("Item Holding")]
     public Transform itemHoldPosition; // Where the held item appears (assign in inspector)
-    public float itemHoldDistance = 1.5f; // Distance from camera
+    public float itemHoldDistance = 3f; // Distance from camera
     public Vector3 itemHoldOffset = new Vector3(0.5f, -0.3f, 0f); // Offset for positioning
 
+    [Header("Key Prefab")]
+    public GameObject keyPrefab; // Reference to the original key prefab
+
+    // Store both the item and its symbol data
     private List<Item> items = new List<Item>();
+    private List<SymbolData> itemSymbols = new List<SymbolData>(); // Store symbol data separately
+    
     private int maxSlots = 5;
     private int currentSelectedIndex = -1; // -1 means no selection
     private GameObject heldItemDisplay; // The 3D representation of the held item
+    private bool isInitialized = false;
 
     void Start()
     {
-        // Create item hold position if not assigned
-        if (itemHoldPosition == null && playerCamera != null)
-        {
-            GameObject holdPos = new GameObject("ItemHoldPosition");
-            holdPos.transform.SetParent(playerCamera.transform);
-            holdPos.transform.localPosition = itemHoldOffset;
-            itemHoldPosition = holdPos.transform;
-        }
-
         // Initialize all slots as empty
         UpdateInventoryUI();
     }
 
     void Update()
     {
+        // Ensure hold position is created before handling input
+        if (!isInitialized)
+        {
+            InitializeHoldPosition();
+        }
+        
         HandleScrollInput();
+    }
+
+    void InitializeHoldPosition()
+    {
+        // Create item hold position if not assigned and camera is available
+        if (itemHoldPosition == null && playerCamera != null)
+        {
+            GameObject holdPos = new GameObject("ItemHoldPosition");
+            holdPos.transform.SetParent(playerCamera.transform);
+            
+            // Use itemHoldDistance to position the hold point
+            Vector3 forwardOffset = playerCamera.transform.forward * (itemHoldDistance * 0.01f); // Convert to reasonable scale
+            holdPos.transform.localPosition = itemHoldOffset + forwardOffset;
+            
+            itemHoldPosition = holdPos.transform;
+            Debug.Log("Created ItemHoldPosition at: " + itemHoldPosition.position);
+        }
+        
+        isInitialized = (itemHoldPosition != null);
     }
 
     void HandleScrollInput()
     {
+        if (!isInitialized) return; // Don't handle input until initialized
+        
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         
         if (scroll > 0f) // Scroll up
@@ -91,58 +116,110 @@ public class InventorySystem : MonoBehaviour
 
     void UpdateHeldItemDisplay()
     {
+        Debug.Log($"UpdateHeldItemDisplay called. CurrentSelectedIndex: {currentSelectedIndex}, Items count: {items.Count}");
+        
         // Destroy current held item display
         if (heldItemDisplay != null)
         {
             Destroy(heldItemDisplay);
             heldItemDisplay = null;
+            Debug.Log("Destroyed previous held item display");
         }
 
         // Create new held item display if something is selected
-        if (currentSelectedIndex >= 0 && currentSelectedIndex < items.Count)
+        if (currentSelectedIndex >= 0 && currentSelectedIndex < items.Count && itemHoldPosition != null)
         {
+            SymbolData symbolData = itemSymbols[currentSelectedIndex];
             Item selectedItem = items[currentSelectedIndex];
-            CreateHeldItemDisplay(selectedItem);
+            Debug.Log($"Creating held item display for: {selectedItem.itemName} with symbol: {(symbolData != null ? symbolData.name : "None")}");
+            CreateHeldItemDisplay(selectedItem, symbolData);
+        }
+        else
+        {
+            Debug.Log("No item selected or invalid index - not creating held display");
         }
     }
 
-    void CreateHeldItemDisplay(Item item)
+    void CreateHeldItemDisplay(Item item, SymbolData symbolData)
     {
-        if (itemHoldPosition == null) return;
-
-        // Get the SymbolHandler to access the symbol data
-        SymbolHandler symbolHandler = item.GetComponent<SymbolHandler>();
-        if (symbolHandler != null && symbolHandler.currentSymbol != null)
+        if (itemHoldPosition == null || keyPrefab == null)
         {
-            // Create the held item object
-            heldItemDisplay = new GameObject("HeldItem_" + item.itemName);
-            heldItemDisplay.transform.SetParent(itemHoldPosition);
-            heldItemDisplay.transform.localPosition = Vector3.zero;
-            heldItemDisplay.transform.localRotation = Quaternion.identity;
-            heldItemDisplay.transform.localScale = Vector3.one * 0.3f; // Make it smaller
-
-            // Add mesh components
-            MeshFilter meshFilter = heldItemDisplay.AddComponent<MeshFilter>();
-            meshFilter.mesh = symbolHandler.currentSymbol.symbolMesh;
-
-            MeshRenderer meshRenderer = heldItemDisplay.AddComponent<MeshRenderer>();
-            meshRenderer.material = symbolHandler.currentSymbol.symbolMaterial;
-
-            // Optional: Add slight rotation animation
-            HeldItemAnimator animator = heldItemDisplay.AddComponent<HeldItemAnimator>();
+            Debug.LogWarning("Cannot create held item display - missing itemHoldPosition or keyPrefab");
+            return;
         }
+
+        // Instantiate the key prefab at the hold position
+        heldItemDisplay = Instantiate(keyPrefab, itemHoldPosition.position, itemHoldPosition.rotation, itemHoldPosition);
+        
+        // Scale it down for held display
+        heldItemDisplay.transform.localScale = Vector3.one * 0.3f;
+        
+        // Remove any colliders since this is just for display
+        Collider[] colliders = heldItemDisplay.GetComponentsInChildren<Collider>();
+        foreach (Collider col in colliders)
+        {
+            Destroy(col);
+        }
+        
+        // Remove the CollectibleItem script since this is just for display
+        CollectibleItem collectible = heldItemDisplay.GetComponent<CollectibleItem>();
+        if (collectible != null)
+        {
+            Destroy(collectible);
+        }
+
+        // Get the SymbolHandler and apply the symbol
+        SymbolHandler symbolHandler = heldItemDisplay.GetComponent<SymbolHandler>();
+        if (symbolHandler != null && symbolData != null)
+        {
+            symbolHandler.ApplySymbol(symbolData);
+            Debug.Log($"Applied symbol {symbolData.name} to held item display");
+        }
+        else
+        {
+            Debug.LogWarning("SymbolHandler not found or symbolData is null");
+        }
+
+        // Add animation to make it look nice
+        HeldItemAnimator animator = heldItemDisplay.GetComponent<HeldItemAnimator>();
+        if (animator == null)
+        {
+            animator = heldItemDisplay.AddComponent<HeldItemAnimator>();
+        }
+        
+        Debug.Log($"Created held item display for: {item.itemName}");
     }
 
     public bool AddItem(Item item)
     {
         if (item != null && items.Count < maxSlots)
         {
+            // Get the symbol data BEFORE deactivating the item
+            SymbolData symbolData = null;
+            SymbolHandler symbolHandler = item.GetComponent<SymbolHandler>();
+            if (symbolHandler != null)
+            {
+                symbolData = symbolHandler.currentSymbol;
+                Debug.Log($"Found SymbolHandler with symbol: {(symbolData != null ? symbolData.name : "NULL")}");
+            }
+            else
+            {
+                Debug.LogWarning($"No SymbolHandler found on item: {item.itemName}");
+            }
+
+            // Check if this will be the first item BEFORE adding it
+            bool isFirstItem = (items.Count == 0 && currentSelectedIndex == -1);
+
+            // Add item and its symbol data to our lists
             items.Add(item);
+            itemSymbols.Add(symbolData);
+            
             item.gameObject.SetActive(false); // Hide the item in the scene
             
             // If this is the first item and nothing is selected, auto-select it
-            if (items.Count == 1 && currentSelectedIndex == -1)
+            if (isFirstItem && isInitialized) // Only auto-select if initialized
             {
+                Debug.Log("Auto-selecting first item");
                 currentSelectedIndex = 0;
                 UpdateSelection();
             }
@@ -150,6 +227,8 @@ public class InventorySystem : MonoBehaviour
             {
                 UpdateInventoryUI();
             }
+            
+            Debug.Log($"Added item: {item.itemName} with symbol: {(symbolData != null ? symbolData.name : "None")}");
             return true;
         }
         return false;
@@ -172,6 +251,7 @@ public class InventorySystem : MonoBehaviour
 
             Item currentItem = items[dropIndex];
             items.RemoveAt(dropIndex);
+            itemSymbols.RemoveAt(dropIndex); // Also remove the symbol data
             
             // Position the dropped item in front of player
             if (playerCamera != null)
@@ -222,6 +302,15 @@ public class InventorySystem : MonoBehaviour
         if (currentSelectedIndex >= 0 && currentSelectedIndex < items.Count)
         {
             return items[currentSelectedIndex];
+        }
+        return null;
+    }
+
+    public SymbolData GetCurrentlyHeldSymbol()
+    {
+        if (currentSelectedIndex >= 0 && currentSelectedIndex < itemSymbols.Count)
+        {
+            return itemSymbols[currentSelectedIndex];
         }
         return null;
     }

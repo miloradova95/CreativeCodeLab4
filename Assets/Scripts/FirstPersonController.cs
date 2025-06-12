@@ -45,16 +45,20 @@ public class FirstPersonController : MonoBehaviour
         if (inventorySystem == null)
         {
             inventorySystem = gameObject.AddComponent<InventorySystem>();
-            inventorySystem.playerCamera = playerCamera;
         }
+        
+        // Set camera reference AFTER creating the component
+        inventorySystem.playerCamera = playerCamera;
         
         // Add interaction system if not present
         interactionSystem = GetComponent<InteractionSystem>();
         if (interactionSystem == null)
         {
             interactionSystem = gameObject.AddComponent<InteractionSystem>();
-            interactionSystem.playerCamera = playerCamera;
         }
+        
+        // Set camera reference AFTER creating the component
+        interactionSystem.playerCamera = playerCamera;
         
         // Lock cursor to center of screen
         Cursor.lockState = CursorLockMode.Locked;
