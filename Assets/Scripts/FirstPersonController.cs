@@ -264,15 +264,33 @@ public class FirstPersonController : MonoBehaviour
         playerCamera.transform.localRotation = Quaternion.Slerp(playerCamera.transform.localRotation, targetCameraRot, Time.deltaTime * 8f);
     }
     
-    void HandleInventoryControls()
+void HandleInventoryControls()
+{
+    // Drop current item with Q
+    if (Input.GetKeyDown(KeyCode.Q) && inventorySystem != null)
     {
-        // Drop current item with Q
-        if (Input.GetKeyDown(KeyCode.Q) && inventorySystem != null)
+        inventorySystem.DropCurrentItem();
+    }
+    
+    // Toggle inventory visibility with Tab (optional)
+    if (Input.GetKeyDown(KeyCode.Tab) && inventorySystem != null)
+    {
+        if (inventorySystem.inventoryPanel != null)
         {
-            inventorySystem.DropCurrentItem();
+            bool isActive = inventorySystem.inventoryPanel.activeSelf;
+            inventorySystem.inventoryPanel.SetActive(!isActive);
         }
     }
     
+    // Number keys for direct item selection (1-5)
+    for (int i = 1; i <= 5; i++)
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha0 + i) && inventorySystem != null)
+        {
+            inventorySystem.SelectItemByIndex(i - 1); // 0-based indexing
+        }
+    }
+}
     void HandleMouseLook()
     {
         if (Cursor.lockState != CursorLockMode.Locked) return;

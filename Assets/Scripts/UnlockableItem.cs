@@ -3,7 +3,7 @@ using UnityEngine;
 public class UnlockableItem : Item
 {
     [Header("Unlock Settings")]
-    public string requiredItemName = "Key";
+    public string requiredItemName;
     public bool isUnlocked = false;
 
     public override void Interact()
@@ -17,14 +17,24 @@ public class UnlockableItem : Item
         InventorySystem inventory = FindObjectOfType<InventorySystem>();
         if (inventory != null)
         {
-            foreach (var item in inventory.GetAllItems())
+            if (inventory.GetCurrentlyHeldSymbol().name == requiredItemName)
             {
-                if (item.itemName == requiredItemName)
-                {
-                    Unlock();
-                    return;
-                }
+                Unlock();
+                return;
             }
+            else
+            {
+                Debug.Log($"name: {inventory.GetCurrentlyHeldSymbol().name}");
+                Debug.Log($"Currently held item does not match required item: {requiredItemName}");
+            }
+            // foreach (var item in inventory.GetAllItems())
+            // {
+            //     if (item.itemName == requiredItemName)
+            //     {
+            //         Unlock();
+            //         return;
+            //     }
+            // }
         }
 
         Debug.Log($"Missing required item: {requiredItemName}");
