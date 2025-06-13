@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{4E7F0E47-86E3-452D-9D67-CB47BA1301A3}" SchemaVersion="123">
+	<SoundcasterSessions>
+		<WorkUnit Name="Default Work Unit" ID="{4E7F0E47-86E3-452D-9D67-CB47BA1301A3}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundcasterSession Name="MusicSoundcaste" ID="{B6655D23-2371-42C1-A844-A15002097315}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="Play_Sephiroth_Dark_Father" ID="{8C064B13-556E-4462-A161-123582C8AC31}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_WindFX" ID="{C271DFA8-A754-4613-8BCF-112AD026F4F4}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true"/>
+					<CurrentStateList ShowAll="true">
+						<CurrentStateRef Name="Play" ID="{EBFDE5A3-B55C-4469-8360-F74B8D474E6D}"/>
+					</CurrentStateList>
+					<CurrentSwitchList ShowAll="true"/>
+				</SoundcasterSession>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundcasterSessions>
+</WwiseDocument>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{C8ECC80D-E9D6-4BFF-A19B-89A701391981}" SchemaVersion="123">
+	<MixingSessions>
+		<WorkUnit Name="Default Work Unit" ID="{C8ECC80D-E9D6-4BFF-A19B-89A701391981}" PersistMode="Standalone">
+			<ChildrenList>
+				<MixingSession Name="MusicMixingDesk" ID="{2C769EEE-ABD7-42AA-A5EC-17D6FAEA9B14}">
+					<ObjectList>
+						<ObjectRef Name="Sephiroth-Dark-Father" ID="{050BBC96-7A3B-4A49-BAB2-C6AEDACE4906}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+						<ObjectRef Name="WindFX" ID="{A4049D1B-5AB3-4DFE-B78D-C753F09BB61E}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+					</ObjectList>
+				</MixingSession>
+			</ChildrenList>
+		</WorkUnit>
+	</MixingSessions>
+</WwiseDocument>

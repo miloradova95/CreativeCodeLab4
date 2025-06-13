@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}" SchemaVersion="123">
+	<AudioObjects>
+		<WorkUnit Name="Default Work Unit" ID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}" PersistMode="Standalone">
+			<ChildrenList>
+				<ActorMixer Name="MUSIC" ID="{B7E5D0B6-933C-4240-B9F7-87EC60795ED7}" ShortID="919038286">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{30E6C82D-CA09-4982-9526-B30677B897C0}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F97C2A95-B1AA-4265-B202-3828113802BF}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="Sephiroth-Dark-Father" ID="{050BBC96-7A3B-4A49-BAB2-C6AEDACE4906}" ShortID="845533510">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-7</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{30E6C82D-CA09-4982-9526-B30677B897C0}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F97C2A95-B1AA-4265-B202-3828113802BF}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Sephiroth-Dark-Father" ID="{1318B28B-70EC-42AD-9DE8-F18026F397D8}">
+									<PropertyList>
+										<Property Name="FadeInDuration" Type="Real64" Value="24.5110826386737"/>
+										<Property Name="LoopBegin" Type="Real64" Value="0"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>Sephiroth-Dark-Father.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="490213560"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<StateInfo>
+								<StateGroupList>
+									<StateGroupInfo>
+										<StateGroupRef Name="Music" ID="{3B551C23-EE4C-40DB-A4B9-1B6F3E437796}"/>
+									</StateGroupInfo>
+								</StateGroupList>
+								<CustomStateList>
+									<CustomState>
+										<StateRef Name="Finish" ID="{68FF0A92-3F33-407A-818E-004C442C738F}"/>
+										<CustomState Name="" ID="{0F44C1E0-E2A7-4AC0-9B42-4FF751196C65}" ShortID="400475008">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64" Value="-108"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="Play" ID="{EBFDE5A3-B55C-4469-8360-F74B8D474E6D}"/>
+										<CustomState Name="" ID="{B6108DD7-8888-4BA8-835A-C1EB18A0D61D}" ShortID="991027770"/>
+									</CustomState>
+								</CustomStateList>
+							</StateInfo>
+							<ActiveSourceList>
+								<ActiveSource Name="Sephiroth-Dark-Father" ID="{1318B28B-70EC-42AD-9DE8-F18026F397D8}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="WindFX" ID="{A4049D1B-5AB3-4DFE-B78D-C753F09BB61E}" ShortID="560003966">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{30E6C82D-CA09-4982-9526-B30677B897C0}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F97C2A95-B1AA-4265-B202-3828113802BF}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="WindFX" ID="{AFEB5091-547C-4E0E-A1E3-1128EF951B7C}">
+									<PropertyList>
+										<Property Name="FadeInDuration" Type="Real64" Value="0.284091192635582"/>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.852273577906747"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>WindFX.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="934422362"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<StateInfo>
+								<StateGroupList>
+									<StateGroupInfo>
+										<StateGroupRef Name="Music" ID="{3B551C23-EE4C-40DB-A4B9-1B6F3E437796}"/>
+									</StateGroupInfo>
+								</StateGroupList>
+								<CustomStateList>
+									<CustomState>
+										<StateRef Name="Finish" ID="{68FF0A92-3F33-407A-818E-004C442C738F}"/>
+										<CustomState Name="" ID="{786C16B6-D4CA-48AB-89F5-8996A74C3006}" ShortID="293834466"/>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="Play" ID="{EBFDE5A3-B55C-4469-8360-F74B8D474E6D}"/>
+										<CustomState Name="" ID="{C8F8C615-18FA-4085-8D90-20597897A2DA}" ShortID="897654030">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64" Value="-108"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+								</CustomStateList>
+							</StateInfo>
+							<ActiveSourceList>
+								<ActiveSource Name="WindFX" ID="{AFEB5091-547C-4E0E-A1E3-1128EF951B7C}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</ActorMixer>
+				<BlendContainer Name="WALK" ID="{BC6EF213-7B16-42B0-9807-4EE7825953FE}" ShortID="742222883">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{30E6C82D-CA09-4982-9526-B30677B897C0}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F97C2A95-B1AA-4265-B202-3828113802BF}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="StepsOnGrass" ID="{D707D24D-5566-4BF8-80F1-0E0ADC26C0CC}" ShortID="80569344">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{30E6C82D-CA09-4982-9526-B30677B897C0}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F97C2A95-B1AA-4265-B202-3828113802BF}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="StepsOnGrass" ID="{81F7510E-206B-4A07-9047-B504A22E0C12}">
+									<Language>SFX</Language>
+									<AudioFile>StepsOnGrass.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="1032657764"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="StepsOnGrass" ID="{81F7510E-206B-4A07-9047-B504A22E0C12}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</BlendContainer>
+				<RandomSequenceContainer Name="CollectSound" ID="{002BECE6-8EDD-44D5-A5EB-BB3A13A808AF}" ShortID="596130699">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{30E6C82D-CA09-4982-9526-B30677B897C0}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F97C2A95-B1AA-4265-B202-3828113802BF}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="CollectKeySound" ID="{862858FD-04DA-4767-9CF1-1562574EDFD0}" ShortID="63122386">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{30E6C82D-CA09-4982-9526-B30677B897C0}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F97C2A95-B1AA-4265-B202-3828113802BF}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="CollectKeySound" ID="{828FD601-EB0A-46C8-8153-90BBB8C9912E}">
+									<Language>SFX</Language>
+									<AudioFile>CollectKeySound.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="1000013532"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="CollectKeySound" ID="{828FD601-EB0A-46C8-8153-90BBB8C9912E}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</RandomSequenceContainer>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>
