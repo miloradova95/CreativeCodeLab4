@@ -13,17 +13,25 @@ public class ZombieController : MonoBehaviour
     [SerializeField] private float turnSpeed = 120f; // degrees per second
     
     [Header("Behavior Timings")]
-    [SerializeField] private float idleActionInterval = 3f;
+    [SerializeField] private float idleActionInterval = 2f;
     [SerializeField] private float chaseTimeout = 60f; // 1 minute
     
     [Header("Horde Behavior")]
-    [SerializeField] private float playerAttractionStrength = 0.3f; // How much zombies are drawn to player while idling
-    [SerializeField] private float avoidanceStrength = 1.0f; // How strongly zombies avoid each other
-    [SerializeField] private float proactiveMovementRange = 8f; // How far zombies will move proactively
+    [SerializeField] private float playerAttractionStrength = 0.7f; // Increased for more aggressive movement toward player
+    [SerializeField] private float avoidanceStrength = 1.0f;
+    [SerializeField] private float proactiveMovementRange = 12f; // Increased range
+    [SerializeField] private float hordeSpreadRadius = 3f; // How spread out the horde should be
     
-    [Header("Chase Avoidance")]
-    [SerializeField] private float chaseAvoidanceRadius = 5f; // Smaller radius for chase avoidance
-    [SerializeField] private float chaseAvoidanceStrength = 0.3f; // How much to deviate from direct path to player
+    [Header("Chase Behavior")]
+    [SerializeField] private float chaseUpdateInterval = 0.1f; // How often to update chase target
+    [SerializeField] private float chaseSpreadDistance = 4f; // Distance zombies spread around player
+    [SerializeField] private float chaseAvoidanceRadius = 2f; // Radius for avoiding other zombies while chasing
+    
+    [Header("Attack System")]
+    [SerializeField] private float attackRange = 2.5f; // Range to trigger attack
+    [SerializeField] private float attackDuration = 1.2f; // How long attack lasts
+    [SerializeField] private float attackCooldown = 2f; // Cooldown between attacks
+    [SerializeField] private float collisionDamageRadius = 1f; // Radius for collision damage
     
     [Header("Detection")]
     [SerializeField] private LayerMask playerLayer = -1;
@@ -31,7 +39,7 @@ public class ZombieController : MonoBehaviour
     [SerializeField] private LayerMask obstacleLayer = -1;
     
     // State management
-    public enum ZombieState { Idling, Pushing, Chasing }
+    public enum ZombieState { Idling, Pushing, Chasing, Attacking }
     private ZombieState currentState = ZombieState.Idling;
     
     // Components
@@ -45,11 +53,9 @@ public class ZombieController : MonoBehaviour
     private float chaseStartTime;
     private float lastPlayerSeenTime;
     private bool hasSeenPlayerThisChase;
-    private Vector3 lastKnownPlayerPosition;
     
     // Movement and turning
     private bool isTurningToPath;
-    private Vector3 targetMoveDirection;
     private float turnStartTime;
     
     // Idle behavior
@@ -60,12 +66,17 @@ public class ZombieController : MonoBehaviour
     
     // Pushing behavior
     private List<ZombieController> nearbyZombies = new List<ZombieController>();
-    private Vector3 pushDirection;
     
-    // Chase avoidance
+    // Chase behavior
     private Vector3 chaseTarget;
-    private float lastChaseTargetUpdateTime;
-    private float chaseTargetUpdateInterval = 0.2f; // Update chase target 5 times per second
+    private float lastChaseUpdateTime;
+    private int zombieIndex; // Unique index for horde positioning
+    
+    // Attack system
+    private bool isAttacking;
+    private float attackStartTime;
+    private float lastAttackTime;
+    private bool hasDealtCollisionDamage;
     
     // Static list to track all zombies
     private static List<ZombieController> allZombies = new List<ZombieController>();
@@ -91,14 +102,16 @@ public class ZombieController : MonoBehaviour
         // Setup NavMeshAgent
         navAgent.speed = moveSpeed;
         navAgent.acceleration = 8f;
-        navAgent.angularSpeed = 90f; // Re-enable some angular speed to help with navigation
-        navAgent.updateRotation = false; // Keep manual rotation but allow some NavMesh assistance
+        navAgent.angularSpeed = 0f; // Disable NavMesh rotation
+        navAgent.updateRotation = false; // Manual rotation control
+        navAgent.stoppingDistance = 0.1f;
         
         // Fix capsule positioning
         FixCapsulePosition();
         
-        // Add to global zombie list
+        // Add to global zombie list and assign index
         allZombies.Add(this);
+        zombieIndex = allZombies.Count - 1;
         
         // Initialize idle behavior
         InitializeIdleBehavior();
@@ -111,8 +124,8 @@ public class ZombieController : MonoBehaviour
     
     void Update()
     {
-        // Always check for player detection (unless already chasing)
-        if (currentState != ZombieState.Chasing)
+        // Always check for player detection (unless already chasing or attacking)
+        if (currentState != ZombieState.Chasing && currentState != ZombieState.Attacking)
         {
             CheckPlayerDetection();
         }
@@ -132,10 +145,19 @@ public class ZombieController : MonoBehaviour
             case ZombieState.Chasing:
                 HandleChasingState();
                 break;
+            case ZombieState.Attacking:
+                HandleAttackingState();
+                break;
         }
         
-        // Check for zombie avoidance - now includes chase avoidance
-        CheckZombieAvoidance();
+        // Check for zombie avoidance (not during attack)
+        if (currentState != ZombieState.Attacking)
+        {
+            CheckZombieAvoidance();
+        }
+        
+        // Check for collision damage
+        CheckCollisionDamage();
     }
     
     #region State Management
@@ -156,6 +178,9 @@ public class ZombieController : MonoBehaviour
             case ZombieState.Chasing:
                 ExitChasingState();
                 break;
+            case ZombieState.Attacking:
+                ExitAttackingState();
+                break;
         }
         
         currentState = newState;
@@ -172,6 +197,9 @@ public class ZombieController : MonoBehaviour
             case ZombieState.Chasing:
                 EnterChasingState();
                 break;
+            case ZombieState.Attacking:
+                EnterAttackingState();
+                break;
         }
     }
     
@@ -183,91 +211,87 @@ public class ZombieController : MonoBehaviour
     {
         if (capsuleCollider != null)
         {
-            // Adjust the capsule so it sits properly on the ground
             float capsuleHeight = capsuleCollider.height;
             capsuleCollider.center = new Vector3(0, capsuleHeight * 0.5f, 0);
         }
     }
     
     private void HandleMovementAndRotation()
+{
+    if (currentState == ZombieState.Attacking)
     {
-        if (!navAgent.hasPath || navAgent.remainingDistance < 0.1f)
+        navAgent.isStopped = true;
+        return;
+    }
+    
+    if (!navAgent.hasPath || navAgent.remainingDistance < 0.1f)
+    {
+        isTurningToPath = false;
+        if (navAgent.isStopped)
+            navAgent.isStopped = false;
+        return;
+    }
+    
+    Vector3 pathDirection = (navAgent.steeringTarget - transform.position).normalized;
+    pathDirection.y = 0;
+    
+    if (pathDirection.magnitude < 0.1f)
+    {
+        return;
+    }
+    
+    float angleToPath = Vector3.SignedAngle(transform.forward, pathDirection, Vector3.up);
+    float maxTurnAngle = 45f;
+    
+    if (Mathf.Abs(angleToPath) > maxTurnAngle)
+    {
+        if (!isTurningToPath)
+        {
+            isTurningToPath = true;
+            navAgent.isStopped = true;
+            turnStartTime = Time.time;
+        }
+        
+        if (Time.time - turnStartTime > 2f)
         {
             isTurningToPath = false;
-            if (navAgent.isStopped)
-                navAgent.isStopped = false;
+            navAgent.isStopped = false;
             return;
         }
         
-        // Get the direction we need to move
-        Vector3 pathDirection = (navAgent.steeringTarget - transform.position).normalized;
-        pathDirection.y = 0; // Keep movement on horizontal plane
+        // Smooth turning with delta time
+        float turnDirection = Mathf.Sign(angleToPath);
+        float maxTurnThisFrame = turnSpeed * Time.deltaTime;
+        float actualTurn = Mathf.Min(maxTurnThisFrame, Mathf.Abs(angleToPath)) * turnDirection;
         
-        // Skip rotation handling if direction is invalid
-        if (pathDirection.magnitude < 0.1f)
+        transform.Rotate(0, actualTurn, 0);
+        
+        float newAngleToPath = Vector3.SignedAngle(transform.forward, pathDirection, Vector3.up);
+        if (Mathf.Abs(newAngleToPath) <= maxTurnAngle * 0.7f)
         {
-            return;
-        }
-        
-        // Calculate the angle between current forward direction and path direction
-        float angleToPath = Vector3.SignedAngle(transform.forward, pathDirection, Vector3.up);
-        
-        // More aggressive turning thresholds and timeout system
-        float maxTurnAngle = (currentState == ZombieState.Chasing) ? 60f : 45f; // Allow wider turns during chase
-        
-        // Check if we need to turn more than the threshold
-        if (Mathf.Abs(angleToPath) > maxTurnAngle)
-        {
-            // Stop moving and turn on the spot
-            if (!isTurningToPath)
-            {
-                isTurningToPath = true;
-                navAgent.isStopped = true;
-                turnStartTime = Time.time;
-            }
-            
-            // Add timeout to prevent infinite turning
-            if (Time.time - turnStartTime > 3f) // 3 second timeout
-            {
-                // Force resume movement and let NavMesh handle it
-                isTurningToPath = false;
-                navAgent.isStopped = false;
-                return;
-            }
-            
-            // Turn towards the path direction with faster turning during chase
-            float currentTurnSpeed = (currentState == ZombieState.Chasing) ? turnSpeed * 1.5f : turnSpeed;
-            float turnDirection = Mathf.Sign(angleToPath);
-            float turnAmount = currentTurnSpeed * Time.deltaTime * turnDirection;
-            transform.Rotate(0, turnAmount, 0);
-            
-            // Check if we've turned enough to continue moving (more lenient)
-            float newAngleToPath = Vector3.SignedAngle(transform.forward, pathDirection, Vector3.up);
-            if (Mathf.Abs(newAngleToPath) <= maxTurnAngle * 0.8f) // Resume at 80% of max angle
-            {
-                isTurningToPath = false;
-                navAgent.isStopped = false;
-            }
-        }
-        else
-        {
-            // We can move forward, make sure we're not stopped
-            if (isTurningToPath)
-            {
-                isTurningToPath = false;
-                navAgent.isStopped = false;
-            }
-            
-            // Gradually turn while moving (small adjustments)
-            if (Mathf.Abs(angleToPath) > 5f) // Only adjust if we're off by more than 5 degrees
-            {
-                float turnDirection = Mathf.Sign(angleToPath);
-                float gentleTurnMultiplier = (currentState == ZombieState.Chasing) ? 0.5f : 0.3f; // Faster gentle turns during chase
-                float gentleTurnAmount = (turnSpeed * gentleTurnMultiplier) * Time.deltaTime * turnDirection;
-                transform.Rotate(0, gentleTurnAmount, 0);
-            }
+            isTurningToPath = false;
+            navAgent.isStopped = false;
         }
     }
+    else
+    {
+        if (isTurningToPath)
+        {
+            isTurningToPath = false;
+            navAgent.isStopped = false;
+        }
+        
+        // Gradual turning while moving with delta time
+        if (Mathf.Abs(angleToPath) > 5f)
+        {
+            float turnDirection = Mathf.Sign(angleToPath);
+            float maxTurnThisFrame = (turnSpeed * 0.3f) * Time.deltaTime;
+            float actualTurn = Mathf.Min(maxTurnThisFrame, Mathf.Abs(angleToPath)) * turnDirection;
+            
+            transform.Rotate(0, actualTurn, 0);
+        }
+    }
+}
     
     #endregion
     
@@ -287,37 +311,34 @@ public class ZombieController : MonoBehaviour
     }
     
     private void HandleIdleState()
+{
+    if (Time.time - lastActionTime >= idleActionInterval)
     {
-        // Perform idle actions at intervals
-        if (Time.time - lastActionTime >= idleActionInterval)
-        {
-            PerformIdleAction();
-            lastActionTime = Time.time;
-        }
+        PerformIdleAction();
+        lastActionTime = Time.time;
+    }
+    
+    if (isTurning)
+    {
+        float maxTurnThisFrame = turnSpeed * Time.deltaTime;
+        float turnAmount = maxTurnThisFrame * turnDirection;
+        transform.Rotate(0, turnAmount, 0);
         
-        // Handle turning
-        if (isTurning)
+        if (Time.time - lastActionTime >= Random.Range(0.5f, 1.5f))
         {
-            float turnAmount = turnSpeed * Time.deltaTime * turnDirection;
-            transform.Rotate(0, turnAmount, 0);
-            
-            // Stop turning after a random duration
-            if (Time.time - lastActionTime >= Random.Range(1f, 3f))
-            {
-                isTurning = false;
-            }
-        }
-        
-        // Handle movement to idle target
-        if (isMovingToIdleTarget && navAgent.hasPath)
-        {
-            if (navAgent.remainingDistance < 0.5f)
-            {
-                isMovingToIdleTarget = false;
-                navAgent.ResetPath();
-            }
+            isTurning = false;
         }
     }
+    
+    if (isMovingToIdleTarget && navAgent.hasPath)
+    {
+        if (navAgent.remainingDistance < 0.5f)
+        {
+            isMovingToIdleTarget = false;
+            navAgent.ResetPath();
+        }
+    }
+}
     
     private void InitializeIdleBehavior()
     {
@@ -326,25 +347,90 @@ public class ZombieController : MonoBehaviour
     }
     
     private void PerformIdleAction()
+{
+    // Much more idle behavior - mostly standing still with occasional movement
+    int action = Random.Range(0, 100);
+    
+    if (action < 40) // 40% chance to just stand still
     {
-        // More frequent movement with player attraction
-        int action = Random.Range(0, 4);
-        
-        switch (action)
+        // Do nothing - just idle
+        return;
+    }
+    else if (action < 60) // 20% chance to turn in place
+    {
+        StartTurning();
+    }
+    else if (action < 80) // 20% chance to shuffle slightly toward player
+    {
+        ShuffleTowardPlayer();
+    }
+    else if (action < 95) // 15% chance to avoid nearby zombies
+    {
+        if (HasNearbyZombies())
         {
-            case 0: // Stand still (less common now)
-                break;
-            case 1: // Turn slowly
-                StartTurning();
-                break;
-            case 2: // Move to nearby random position with player bias
-                MoveTowardPlayerBiasedPosition();
-                break;
-            case 3: // Actively move away from nearby zombies
-                MoveAwayFromNearbyZombies();
-                break;
+            MoveAwayFromNearbyZombies();
+        }
+        else
+        {
+            ShuffleTowardPlayer(); // Fallback to shuffling
         }
     }
+    else // 5% chance for random shuffle
+    {
+        RandomShuffle();
+    }
+}
+
+private bool HasNearbyZombies()
+{
+    Collider[] nearbyColliders = Physics.OverlapSphere(transform.position, personalSpaceRadius * 0.8f, zombieLayer);
+    return nearbyColliders.Length > 1; // More than just this zombie
+}
+
+private void RandomShuffle()
+{
+    float shuffleRange = 1.5f;
+    Vector3 randomDirection = Random.insideUnitSphere;
+    randomDirection.y = 0;
+    randomDirection.Normalize();
+    
+    Vector3 targetPosition = transform.position + randomDirection * shuffleRange;
+    targetPosition.y = transform.position.y;
+    
+    NavMeshHit hit;
+    if (NavMesh.SamplePosition(targetPosition, out hit, shuffleRange, NavMesh.AllAreas))
+    {
+        idleTarget = hit.position;
+        navAgent.SetDestination(idleTarget);
+        isMovingToIdleTarget = true;
+    }
+}
+
+private void ShuffleTowardPlayer()
+{
+    if (player == null) return;
+    
+    // Much smaller movement range for shuffling
+    float shuffleRange = 2f; // Reduced from proactiveMovementRange
+    
+    Vector3 directionToPlayer = (player.position - transform.position).normalized;
+    
+    // Add slight randomness to avoid all zombies moving in exactly the same direction
+    Vector3 randomOffset = Random.insideUnitSphere * 0.5f;
+    randomOffset.y = 0;
+    
+    Vector3 shuffleDirection = (directionToPlayer * 0.8f + randomOffset * 0.2f).normalized;
+    Vector3 targetPosition = transform.position + shuffleDirection * shuffleRange;
+    targetPosition.y = transform.position.y;
+    
+    NavMeshHit hit;
+    if (NavMesh.SamplePosition(targetPosition, out hit, shuffleRange, NavMesh.AllAreas))
+    {
+        idleTarget = hit.position;
+        navAgent.SetDestination(idleTarget);
+        isMovingToIdleTarget = true;
+    }
+}
     
     private void StartTurning()
     {
@@ -353,14 +439,30 @@ public class ZombieController : MonoBehaviour
         lastActionTime = Time.time;
     }
     
-    private void MoveToRandomNearbyPosition()
+private void MoveTowardPlayerBiasedPosition()
+{
+    MoveTowardPlayerBiasedPosition(proactiveMovementRange);
+}
+
+    private void MoveTowardPlayerBiasedPosition(float rangeOverride)
     {
-        Vector3 randomDirection = Random.insideUnitSphere * 3f;
-        randomDirection += transform.position;
-        randomDirection.y = transform.position.y; // Keep same height
-        
+        if (player == null) return;
+
+        Vector3 directionToPlayer = (player.position - transform.position).normalized;
+        Vector3 randomOffset = Random.insideUnitSphere * hordeSpreadRadius;
+        randomOffset.y = 0;
+
+        float angle = (zombieIndex * 137.5f) * Mathf.Deg2Rad;
+        Vector3 spreadOffset = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * hordeSpreadRadius;
+
+        Vector3 biasedDirection = (directionToPlayer * playerAttractionStrength +
+                                  (randomOffset + spreadOffset) * (1f - playerAttractionStrength)).normalized;
+
+        Vector3 targetPosition = transform.position + biasedDirection * rangeOverride;
+        targetPosition.y = transform.position.y;
+
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(randomDirection, out hit, 3f, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(targetPosition, out hit, rangeOverride, NavMesh.AllAreas))
         {
             idleTarget = hit.position;
             navAgent.SetDestination(idleTarget);
@@ -368,98 +470,63 @@ public class ZombieController : MonoBehaviour
         }
     }
     
-    private void MoveTowardPlayerBiasedPosition()
+   private void MoveAwayFromNearbyZombies()
+{
+    Collider[] nearbyColliders = Physics.OverlapSphere(transform.position, personalSpaceRadius, zombieLayer);
+    
+    if (nearbyColliders.Length <= 1)
     {
-        if (player == null)
+        ShuffleTowardPlayer(); // Changed from MoveTowardPlayerBiasedPosition
+        return;
+    }
+    
+    Vector3 avoidanceDirection = Vector3.zero;
+    int zombieCount = 0;
+    
+    foreach (Collider col in nearbyColliders)
+    {
+        ZombieController otherZombie = col.GetComponent<ZombieController>();
+        if (otherZombie != null && otherZombie != this)
         {
-            MoveToRandomNearbyPosition();
-            return;
+            Vector3 directionAway = transform.position - otherZombie.transform.position;
+            directionAway.y = 0;
+            float distance = directionAway.magnitude;
+            
+            if (distance > 0)
+            {
+                float influence = personalSpaceRadius / distance;
+                avoidanceDirection += directionAway.normalized * influence;
+                zombieCount++;
+            }
+        }
+    }
+    
+    if (zombieCount > 0)
+    {
+        avoidanceDirection = avoidanceDirection.normalized;
+        
+        // Still mix with player attraction but much more subtle
+        if (player != null)
+        {
+            Vector3 playerDirection = (player.position - transform.position).normalized;
+            avoidanceDirection = (avoidanceDirection * avoidanceStrength + 
+                                playerDirection * playerAttractionStrength * 0.3f).normalized;
         }
         
-        // Calculate direction toward player
-        Vector3 directionToPlayer = (player.position - transform.position).normalized;
-        
-        // Add some randomness to avoid direct movement
-        Vector3 randomOffset = Random.insideUnitSphere * 2f;
-        randomOffset.y = 0;
-        
-        // Combine player direction with randomness
-        Vector3 biasedDirection = (directionToPlayer * playerAttractionStrength + randomOffset * (1f - playerAttractionStrength)).normalized;
-        
-        // Calculate target position
-        Vector3 targetPosition = transform.position + biasedDirection * proactiveMovementRange;
+        // Smaller movement range for avoidance
+        float avoidanceRange = 3f;
+        Vector3 targetPosition = transform.position + avoidanceDirection * avoidanceRange;
         targetPosition.y = transform.position.y;
         
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(targetPosition, out hit, proactiveMovementRange, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(targetPosition, out hit, avoidanceRange, NavMesh.AllAreas))
         {
             idleTarget = hit.position;
             navAgent.SetDestination(idleTarget);
             isMovingToIdleTarget = true;
         }
-        else
-        {
-            // Fallback to random movement if biased position is invalid
-            MoveToRandomNearbyPosition();
-        }
     }
-    
-    private void MoveAwayFromNearbyZombies()
-    {
-        // Find all nearby zombies within personal space
-        Collider[] nearbyColliders = Physics.OverlapSphere(transform.position, personalSpaceRadius, zombieLayer);
-        
-        if (nearbyColliders.Length <= 1) // Only ourselves
-        {
-            MoveTowardPlayerBiasedPosition();
-            return;
-        }
-        
-        Vector3 avoidanceDirection = Vector3.zero;
-        int zombieCount = 0;
-        
-        foreach (Collider col in nearbyColliders)
-        {
-            ZombieController otherZombie = col.GetComponent<ZombieController>();
-            if (otherZombie != null && otherZombie != this)
-            {
-                Vector3 directionAway = transform.position - otherZombie.transform.position;
-                directionAway.y = 0;
-                float distance = directionAway.magnitude;
-                
-                if (distance > 0)
-                {
-                    // Closer zombies have more influence
-                    float influence = personalSpaceRadius / distance;
-                    avoidanceDirection += directionAway.normalized * influence;
-                    zombieCount++;
-                }
-            }
-        }
-        
-        if (zombieCount > 0)
-        {
-            avoidanceDirection = avoidanceDirection.normalized;
-            
-            // Mix avoidance with slight player attraction
-            if (player != null)
-            {
-                Vector3 playerDirection = (player.position - transform.position).normalized;
-                avoidanceDirection = (avoidanceDirection * avoidanceStrength + playerDirection * playerAttractionStrength * 0.3f).normalized;
-            }
-            
-            Vector3 targetPosition = transform.position + avoidanceDirection * proactiveMovementRange;
-            targetPosition.y = transform.position.y;
-            
-            NavMeshHit hit;
-            if (NavMesh.SamplePosition(targetPosition, out hit, proactiveMovementRange, NavMesh.AllAreas))
-            {
-                idleTarget = hit.position;
-                navAgent.SetDestination(idleTarget);
-                isMovingToIdleTarget = true;
-            }
-        }
-    }
+}
     
     #endregion
     
@@ -483,7 +550,6 @@ public class ZombieController : MonoBehaviour
             return;
         }
         
-        // Calculate more aggressive push direction away from nearby zombies
         Vector3 avoidanceDirection = Vector3.zero;
         foreach (ZombieController zombie in nearbyZombies)
         {
@@ -495,7 +561,6 @@ public class ZombieController : MonoBehaviour
                 
                 if (distance > 0)
                 {
-                    // Stronger influence for closer zombies
                     float influence = personalSpaceRadius / distance;
                     avoidanceDirection += directionAway.normalized * influence;
                 }
@@ -506,11 +571,11 @@ public class ZombieController : MonoBehaviour
         {
             avoidanceDirection.Normalize();
             
-            // Add slight player attraction even while pushing
+            // Add player attraction
             if (player != null)
             {
                 Vector3 playerDirection = (player.position - transform.position).normalized;
-                avoidanceDirection = (avoidanceDirection * 0.8f + playerDirection * 0.2f).normalized;
+                avoidanceDirection = (avoidanceDirection * 0.7f + playerDirection * 0.3f).normalized;
             }
             
             Vector3 targetPosition = transform.position + avoidanceDirection * proactiveMovementRange;
@@ -522,11 +587,11 @@ public class ZombieController : MonoBehaviour
             }
         }
         
-        // Check if we've moved far enough away (more lenient check)
+        // Check if we've moved far enough away
         bool stillTooClose = false;
         foreach (ZombieController zombie in nearbyZombies)
         {
-            if (zombie != null && Vector3.Distance(transform.position, zombie.transform.position) < personalSpaceRadius * 0.8f)
+            if (zombie != null && Vector3.Distance(transform.position, zombie.transform.position) < personalSpaceRadius * 0.7f)
             {
                 stillTooClose = true;
                 break;
@@ -541,7 +606,7 @@ public class ZombieController : MonoBehaviour
     
     #endregion
     
-    #region Chasing State
+    #region Chasing State - Completely Rewritten
     
     private void EnterChasingState()
     {
@@ -549,7 +614,8 @@ public class ZombieController : MonoBehaviour
         chaseStartTime = Time.time;
         hasSeenPlayerThisChase = false;
         lastPlayerSeenTime = Time.time;
-        lastChaseTargetUpdateTime = 0f; // Force immediate update
+        lastChaseUpdateTime = 0f;
+        hasDealtCollisionDamage = false;
     }
     
     private void ExitChasingState()
@@ -559,101 +625,259 @@ public class ZombieController : MonoBehaviour
     }
     
     private void HandleChasingState()
-    {
-        if (player == null) return;
-        
-        bool canSeePlayer = CanSeePlayer();
-        
-        if (canSeePlayer)
-        {
-            hasSeenPlayerThisChase = true;
-            lastPlayerSeenTime = Time.time;
-        }
-        
-        // Update chase target periodically to include avoidance
-        if (Time.time - lastChaseTargetUpdateTime >= chaseTargetUpdateInterval)
-        {
-            CalculateChaseTarget();
-            lastChaseTargetUpdateTime = Time.time;
-        }
-        
-        // Use the calculated chase target instead of directly chasing player
-        navAgent.SetDestination(chaseTarget);
-        
-        // Check if we should stop chasing - only if we've seen the player at least once
-        // and they've been outside our vision bubble for the full timeout duration
-        if (hasSeenPlayerThisChase && !canSeePlayer)
-        {
-            float timeSincePlayerSeen = Time.time - lastPlayerSeenTime;
-            if (timeSincePlayerSeen >= chaseTimeout)
-            {
-                SetState(ZombieState.Idling);
-            }
-        }
-    }
-    
-    private void CalculateChaseTarget()
 {
     if (player == null) return;
     
-    Vector3 directPlayerDirection = (player.position - transform.position).normalized;
-    Vector3 adjustedDirection = directPlayerDirection;
+    bool canSeePlayer = CanSeePlayer();
+    float distanceToPlayer = Vector3.Distance(transform.position, player.position);
     
-    // Find nearby zombies during chase
-    Collider[] nearbyColliders = Physics.OverlapSphere(transform.position, chaseAvoidanceRadius, zombieLayer);
-    
-    Vector3 avoidanceDirection = Vector3.zero;
-    int nearbyCount = 0;
-    
-    foreach (Collider col in nearbyColliders)
+    // Check if we should attack
+    if (canSeePlayer && distanceToPlayer <= attackRange && CanAttack())
     {
-        ZombieController otherZombie = col.GetComponent<ZombieController>();
-        if (otherZombie != null && otherZombie != this)
+        SetState(ZombieState.Attacking);
+        return;
+    }
+    
+    if (canSeePlayer)
+    {
+        hasSeenPlayerThisChase = true;
+        lastPlayerSeenTime = Time.time;
+    }
+    
+    // Always update chase target - this was the main issue
+    if (Time.time - lastChaseUpdateTime >= chaseUpdateInterval)
+    {
+        UpdateChaseTarget();
+        lastChaseUpdateTime = Time.time;
+    }
+    
+    // Always set destination - even if we're close, keep trying to get closer
+    navAgent.SetDestination(chaseTarget);
+    
+    // Check if we should stop chasing
+    if (hasSeenPlayerThisChase && !canSeePlayer)
+    {
+        float timeSincePlayerSeen = Time.time - lastPlayerSeenTime;
+        if (timeSincePlayerSeen >= chaseTimeout)
         {
-            Vector3 directionAway = transform.position - otherZombie.transform.position;
-            directionAway.y = 0;
-            float distance = directionAway.magnitude;
-            
-            if (distance > 0 && distance < chaseAvoidanceRadius)
-            {
-                // Closer zombies have more influence
-                float influence = (chaseAvoidanceRadius - distance) / chaseAvoidanceRadius;
-                avoidanceDirection += directionAway.normalized * influence;
-                nearbyCount++;
-            }
+            SetState(ZombieState.Idling);
         }
     }
+}
     
-    // Calculate target position
-    Vector3 targetPosition = player.position;
+    private void UpdateChaseTarget()
+{
+    if (player == null) return;
     
-    if (nearbyCount > 0)
+    Vector3 playerPos = player.position;
+    float distanceToPlayer = Vector3.Distance(transform.position, playerPos);
+    
+    // If we're very close, try to get even closer instead of maintaining formation
+    if (distanceToPlayer <= attackRange * 1.5f)
     {
-        avoidanceDirection = avoidanceDirection.normalized;
+        // Try to get as close as possible, with slight offset to avoid all zombies going to exact same spot
+        Vector3 directApproach = playerPos + Random.insideUnitSphere * 0.5f;
+        directApproach.y = playerPos.y;
         
-        // Add offset to avoid clustering, now using chaseAvoidanceStrength
-        Vector3 offset = avoidanceDirection * chaseAvoidanceStrength * Mathf.Min(2f, chaseAvoidanceRadius * 0.4f);
-        targetPosition = player.position + offset;
-    }
-    
-    // Only update chase target if the new target is significantly different
-    // This prevents constant micro-adjustments that cause turning issues
-    if (Vector3.Distance(chaseTarget, targetPosition) > 1f)
-    {
-        // Ensure the target is on the NavMesh
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(targetPosition, out hit, 5f, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(directApproach, out hit, 2f, NavMesh.AllAreas))
         {
             chaseTarget = hit.position;
         }
         else
         {
-            // Fallback to direct player position if offset position is invalid
-            chaseTarget = player.position;
+            chaseTarget = playerPos;
+        }
+        return;
+    }
+    
+    // Normal formation behavior for longer distances
+    float angle = (zombieIndex * 45f) * Mathf.Deg2Rad;
+    float radius = chaseSpreadDistance + (zombieIndex % 3) * 1.5f;
+    
+    Vector3 formationOffset = new Vector3(
+        Mathf.Cos(angle) * radius,
+        0,
+        Mathf.Sin(angle) * radius
+    );
+    
+    Vector3 targetPosition = playerPos + formationOffset;
+    
+    // Avoid other zombies
+    Vector3 avoidanceOffset = CalculateChaseAvoidance();
+    targetPosition += avoidanceOffset;
+    
+    // Ensure target is on NavMesh
+    NavMeshHit navHit;
+    if (NavMesh.SamplePosition(targetPosition, out navHit, 10f, NavMesh.AllAreas))
+    {
+        chaseTarget = navHit.position;
+    }
+    else
+    {
+        chaseTarget = playerPos;
+    }
+}
+
+    
+    private Vector3 CalculateChaseAvoidance()
+    {
+        Vector3 avoidanceOffset = Vector3.zero;
+        
+        // Find nearby zombies
+        Collider[] nearbyColliders = Physics.OverlapSphere(transform.position, chaseAvoidanceRadius, zombieLayer);
+        
+        foreach (Collider col in nearbyColliders)
+        {
+            ZombieController otherZombie = col.GetComponent<ZombieController>();
+            if (otherZombie != null && otherZombie != this)
+            {
+                Vector3 directionAway = transform.position - otherZombie.transform.position;
+                directionAway.y = 0;
+                float distance = directionAway.magnitude;
+                
+                if (distance > 0 && distance < chaseAvoidanceRadius)
+                {
+                    // Closer zombies have more influence
+                    float influence = (chaseAvoidanceRadius - distance) / chaseAvoidanceRadius;
+                    avoidanceOffset += directionAway.normalized * influence * 2f;
+                }
+            }
+        }
+        
+        return avoidanceOffset;
+    }
+    
+    #endregion
+    
+    #region Attacking State - New
+    
+    private void EnterAttackingState()
+    {
+        navAgent.isStopped = true;
+        isAttacking = true;
+        attackStartTime = Time.time;
+        lastAttackTime = Time.time;
+
+        if (player != null)
+        {
+            Vector3 directionToPlayer = (player.position - transform.position).normalized;
+            directionToPlayer.y = 0;
+            if (directionToPlayer.magnitude > 0.1f)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
+            }
+        }
+
+        StartAttackEffect();
+    }
+    
+    private void ExitAttackingState()
+    {
+        navAgent.isStopped = false;
+        isAttacking = false;
+    }
+    
+    private void HandleAttackingState()
+    {
+        float elapsed = Time.time - attackStartTime;
+
+        if (elapsed >= attackDuration)
+        {
+            if (Vector3.Distance(transform.position, player.position) <= attackRange)
+            {
+                if (Time.time - lastAttackTime >= attackCooldown)
+                {
+                    SetState(ZombieState.Attacking);
+                }
+                else
+                {
+                    SetState(ZombieState.Chasing);
+                }
+            }
+            else
+            {
+                SetState(ZombieState.Chasing);
+            }
+            return;
+        }
+
+        float attackProgress = elapsed / attackDuration;
+        if (attackProgress >= 0.4f && attackProgress <= 0.7f)
+        {
+            CheckAttackHit();
         }
     }
-    // If the change is small, keep the existing chase target to maintain path stability
-}
+    
+    private bool CanAttack()
+    {
+        return !isAttacking && (Time.time - lastAttackTime >= attackCooldown);
+    }
+    
+    private void StartAttackEffect()
+    {
+        // Add visual/audio effects for attack start
+        // This is where you'd trigger attack animations
+        Debug.Log($"Zombie {name} starting attack!");
+    }
+    
+    private void CheckAttackHit()
+    {
+        if (player == null) return;
+        
+        // Create attack hitbox in front of zombie
+        Vector3 attackCenter = transform.position + transform.forward * (attackRange * 0.7f);
+        
+        // Check if player is in attack range
+        if (Vector3.Distance(attackCenter, player.position) <= attackRange * 0.8f)
+        {
+            // Deal attack damage (placeholder)
+            DealAttackDamage();
+        }
+    }
+    
+    private void DealAttackDamage()
+    {
+        // Placeholder for attack damage
+        // This is where you'd subtract HP from player
+        Debug.Log($"Zombie {name} dealt attack damage to player!");
+    }
+    
+    #endregion
+    
+    #region Collision Damage System - New
+    
+    private void CheckCollisionDamage()
+    {
+        if (player == null || hasDealtCollisionDamage || currentState == ZombieState.Attacking) return;
+        
+        // Check if player is within collision damage radius
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        
+        if (distanceToPlayer <= collisionDamageRadius)
+        {
+            // Deal collision damage (placeholder)
+            DealCollisionDamage();
+            hasDealtCollisionDamage = true;
+            
+            // Reset collision damage flag after a short delay
+            StartCoroutine(ResetCollisionDamageFlag());
+        }
+    }
+    
+    private void DealCollisionDamage()
+    {
+        // Placeholder for collision damage
+        // This is where you'd subtract HP from player
+        Debug.Log($"Zombie {name} dealt collision damage to player!");
+    }
+    
+    private IEnumerator ResetCollisionDamageFlag()
+    {
+        yield return new WaitForSeconds(1f); // 1 second cooldown on collision damage
+        hasDealtCollisionDamage = false;
+    }
     
     #endregion
     
@@ -676,13 +900,12 @@ public class ZombieController : MonoBehaviour
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (distanceToPlayer > visionRadius) return false;
         
-        // Check if there are obstacles blocking vision
         Vector3 directionToPlayer = (player.position - transform.position).normalized;
         RaycastHit hit;
         
         if (Physics.Raycast(transform.position + Vector3.up * 0.5f, directionToPlayer, out hit, visionRadius, obstacleLayer))
         {
-            return false; // Obstacle is blocking vision
+            return false;
         }
         
         return true;
@@ -690,9 +913,8 @@ public class ZombieController : MonoBehaviour
     
     private void CheckZombieAvoidance()
     {
-        if (currentState == ZombieState.Chasing)
+        if (currentState == ZombieState.Chasing || currentState == ZombieState.Attacking)
         {
-            // Chase state handles its own avoidance through CalculateChaseTarget()
             return;
         }
         
@@ -709,7 +931,6 @@ public class ZombieController : MonoBehaviour
             }
         }
         
-        // If we detect zombies too close and we're not already pushing, start pushing
         if (nearbyZombies.Count > 0 && currentState == ZombieState.Idling)
         {
             SetState(ZombieState.Pushing);
@@ -720,17 +941,11 @@ public class ZombieController : MonoBehaviour
     
     #region Public Methods
     
-    /// <summary>
-    /// Force this zombie to start chasing (can be called from external events)
-    /// </summary>
     public void StartChasing()
     {
         SetState(ZombieState.Chasing);
     }
     
-    /// <summary>
-    /// Stop chasing and return to idle
-    /// </summary>
     public void StopChasing()
     {
         if (currentState == ZombieState.Chasing)
@@ -739,9 +954,6 @@ public class ZombieController : MonoBehaviour
         }
     }
     
-    /// <summary>
-    /// Get current state for debugging or external systems
-    /// </summary>
     public ZombieState GetCurrentState()
     {
         return currentState;
@@ -761,7 +973,15 @@ public class ZombieController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, personalSpaceRadius);
         
-        // Chase avoidance radius (only when chasing)
+        // Attack range
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+        
+        // Collision damage radius
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, collisionDamageRadius);
+        
+        // Chase avoidance radius (when chasing)
         if (currentState == ZombieState.Chasing)
         {
             Gizmos.color = Color.blue;
@@ -781,6 +1001,14 @@ public class ZombieController : MonoBehaviour
         {
             Gizmos.color = Color.cyan;
             Gizmos.DrawWireCube(chaseTarget, Vector3.one * 0.3f);
+        }
+        
+        // Attack hitbox visualization
+        if (currentState == ZombieState.Attacking)
+        {
+            Gizmos.color = Color.red;
+            Vector3 attackCenter = transform.position + transform.forward * (attackRange * 0.7f);
+            Gizmos.DrawWireSphere(attackCenter, attackRange * 0.8f);
         }
     }
     
