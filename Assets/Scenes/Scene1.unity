@@ -550,7 +550,7 @@ MonoBehaviour:
   forwardSpeedMultiplier: 2
   jumpHeight: 1.4
   gravity: -9.81
-  debuffSpeedMultiplier: 0.5
+  debuffSpeedMultiplier: 0.4
   mouseSensitivity: 2
   invertY: 0
   maxLookAngle: 80
@@ -569,10 +569,10 @@ MonoBehaviour:
   walkSwayRotation: 3
   forwardSwaySpeedMultiplier: 1.3
   sprintSwayMultiplier: 1.6
-  debuffSwayMultiplier: 1.5
+  debuffSwayMultiplier: 1.8
   shakeIntensity: 0.3
   shakeDuration: 0.5
-  sprintAcceleration: 3
+  sprintAcceleration: 2
   sprintDeceleration: 5
   playerCamera: {fileID: 1877400490}
   shooter: {fileID: 102938128}
