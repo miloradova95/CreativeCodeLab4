@@ -1312,17 +1312,17 @@ PrefabInstance:
     - target: {fileID: 906307786339004033, guid: 2068a0cc94e72a841818c77f8bd1a677,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 72.7
+      value: 2.8
       objectReference: {fileID: 0}
     - target: {fileID: 906307786339004033, guid: 2068a0cc94e72a841818c77f8bd1a677,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 49.13
+      value: 46.9
       objectReference: {fileID: 0}
     - target: {fileID: 906307786339004033, guid: 2068a0cc94e72a841818c77f8bd1a677,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.2
+      value: 31.9
       objectReference: {fileID: 0}
     - target: {fileID: 906307786339004033, guid: 2068a0cc94e72a841818c77f8bd1a677,
         type: 3}
@@ -1358,6 +1358,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4378411598904691676, guid: 2068a0cc94e72a841818c77f8bd1a677,
+        type: 3}
+      propertyPath: attackRange
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4378411598904691676, guid: 2068a0cc94e72a841818c77f8bd1a677,
+        type: 3}
+      propertyPath: attackDamageAmount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4378411598904691676, guid: 2068a0cc94e72a841818c77f8bd1a677,
+        type: 3}
+      propertyPath: idleActionInterval
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4378411598904691676, guid: 2068a0cc94e72a841818c77f8bd1a677,
+        type: 3}
+      propertyPath: proactiveMovementRange
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4378411598904691676, guid: 2068a0cc94e72a841818c77f8bd1a677,
+        type: 3}
+      propertyPath: collisionDamageCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4378411598904691676, guid: 2068a0cc94e72a841818c77f8bd1a677,
+        type: 3}
+      propertyPath: playerAttractionStrength
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4433659312306525908, guid: 2068a0cc94e72a841818c77f8bd1a677,
         type: 3}
