@@ -1,0 +1,16 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3437602786	Play_Sephiroth_Dark_Father			\Default Work Unit\Play_Sephiroth_Dark_Father	
+	4156545574	Play_WindFX			\Default Work Unit\Play_WindFX	
+
+State Group	ID	Name			Wwise Object Path	Notes
+	3991942870	Music			\Default Work Unit\Music	
+
+State	ID	Name	State Group			Notes
+	748895195	None	Music			
+	1256202815	Play	Music			
+	2555741448	Finish	Music			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	490213560	Sephiroth-Dark-Father	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\17\{1772D929-D47C-77B8-0894-30D63057A7D2}.wem		\Actor-Mixer Hierarchy\Default Work Unit\MUSIC\Sephiroth-Dark-Father		85217376
+	934422362	WindFX	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\3F\{3FEB7FBD-A612-1CD9-8250-6D31FE3E6267}.wem		\Actor-Mixer Hierarchy\Default Work Unit\MUSIC\WindFX		3544804
+

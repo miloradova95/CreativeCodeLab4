@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" SchemaVersion="123">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Play_Sephiroth_Dark_Father" ID="{8C064B13-556E-4462-A161-123582C8AC31}">
+					<ChildrenList>
+						<Action Name="" ID="{338DE71E-2B92-49BC-A07F-F71EFF56A4DF}" ShortID="787745192">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Sephiroth-Dark-Father" ID="{050BBC96-7A3B-4A49-BAB2-C6AEDACE4906}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_WindFX" ID="{C271DFA8-A754-4613-8BCF-112AD026F4F4}">
+					<ChildrenList>
+						<Action Name="" ID="{A20FB66D-7DF5-400D-8DEF-C5DFD26D30F4}" ShortID="198981299">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="WindFX" ID="{A4049D1B-5AB3-4DFE-B78D-C753F09BB61E}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

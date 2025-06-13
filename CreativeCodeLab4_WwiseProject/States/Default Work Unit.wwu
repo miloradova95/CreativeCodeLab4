@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{20548F50-C5BA-4C3F-92D3-332B826E2F9C}" SchemaVersion="123">
+	<States>
+		<WorkUnit Name="Default Work Unit" ID="{20548F50-C5BA-4C3F-92D3-332B826E2F9C}" PersistMode="Standalone">
+			<ChildrenList>
+				<StateGroup Name="Music" ID="{3B551C23-EE4C-40DB-A4B9-1B6F3E437796}">
+					<ChildrenList>
+						<State Name="None" ID="{C2787E82-2C72-46FC-9681-BBFC0FCF0F57}"/>
+						<State Name="Play" ID="{EBFDE5A3-B55C-4469-8360-F74B8D474E6D}"/>
+						<State Name="Finish" ID="{68FF0A92-3F33-407A-818E-004C442C738F}"/>
+					</ChildrenList>
+					<TransitionList>
+						<Transition>
+							<StartState Name="Play" ID="{EBFDE5A3-B55C-4469-8360-F74B8D474E6D}"/>
+							<EndState Name="Finish" ID="{68FF0A92-3F33-407A-818E-004C442C738F}"/>
+							<Time>5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+					</TransitionList>
+				</StateGroup>
+			</ChildrenList>
+		</WorkUnit>
+	</States>
+</WwiseDocument>

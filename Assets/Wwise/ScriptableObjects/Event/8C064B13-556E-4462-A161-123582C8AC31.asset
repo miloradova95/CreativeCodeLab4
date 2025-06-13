@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a311e1988c7c8489b7da24f61ac321, type: 3}
+  m_Name: 8C064B13-556E-4462-A161-123582C8AC31
+  m_EditorClassIdentifier: 
+  objectName: Play_Sephiroth_Dark_Father
+  id: 3437602786
+  guid: 8C064B13-556E-4462-A161-123582C8AC31
+  IsInUserDefinedSoundBank: 1

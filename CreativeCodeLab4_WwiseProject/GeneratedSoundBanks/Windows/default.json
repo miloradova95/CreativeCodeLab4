@@ -1,0 +1,67 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "782826392",
+    "Type": "User",
+    "GUID": "{92CC9182-73E2-4D78-AE21-3B8651A68D3E}",
+    "Language": "SFX",
+    "Hash": "{5BFC450B-F3A2-36BA-BDDD-1EEA8EE93459}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\default",
+    "ShortName": "default",
+    "Path": "default.bnk",
+    "Media": [
+     {
+      "Id": "490213560",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Sephiroth-Dark-Father.wav",
+      "CachePath": "17/{1772D929-D47C-77B8-0894-30D63057A7D2}.wem"
+     },
+     {
+      "Id": "934422362",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WindFX.wav",
+      "CachePath": "3F/{3FEB7FBD-A612-1CD9-8250-6D31FE3E6267}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3437602786",
+      "Name": "Play_Sephiroth_Dark_Father",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Sephiroth_Dark_Father",
+      "GUID": "{8C064B13-556E-4462-A161-123582C8AC31}",
+      "DurationType": "OneShot",
+      "DurationMin": "483.09116",
+      "DurationMax": "483.09116",
+      "MediaRefs": [
+       {
+        "Id": "490213560"
+       }
+      ]
+     },
+     {
+      "Id": "4156545574",
+      "Name": "Play_WindFX",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_WindFX",
+      "GUID": "{C271DFA8-A754-4613-8BCF-112AD026F4F4}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "934422362"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{45D2E843-C76E-05AB-1C64-438A08EB727C}"
+ }
+}
