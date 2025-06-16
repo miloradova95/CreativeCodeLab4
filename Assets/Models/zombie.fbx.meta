@@ -29,7 +29,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: woundMat
-    second: {fileID: 2100000, guid: 3426dc1cc389ced43958c4b58575f516, type: 2}
+    second: {fileID: 2100000, guid: 64c4a656a1c882143b67d6c33a8d394e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
