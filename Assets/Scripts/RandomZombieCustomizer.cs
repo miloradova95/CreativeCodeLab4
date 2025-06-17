@@ -53,8 +53,8 @@ public class RandomZombieCustomizer : MonoBehaviour
         RandomizeShirtMaterial();
         RandomizeTrousersMaterial();
         RandomizeSkinMaterial();
-        ToggleRandomCovers(armsCover);
-        ToggleRandomCovers(headCover);
+        ToggleRandomCovers(armsCover, skinMaterialInstance);
+        ToggleRandomCovers(headCover, skinMaterialInstance);
         ToggleRandomCovers(legsCover, trousersMaterialInstance);
         ToggleRandomCovers(torsoCover, shirtMaterialInstance);
     }
@@ -72,7 +72,8 @@ public class RandomZombieCustomizer : MonoBehaviour
     {
         if (trousersMaterialInstance != null)
         {
-            trousersMaterialInstance.SetInt("_alternativeColor", Random.value > 0.5f ? 1 : 0);
+            trousersMaterialInstance.SetInt("_alternativeColor1", Random.value > 0.5f ? 1 : 0);
+            trousersMaterialInstance.SetInt("_alternativeColor2", Random.value > 0.5f ? 1 : 0);
         }
     }
 
