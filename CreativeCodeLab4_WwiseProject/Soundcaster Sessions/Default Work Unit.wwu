@@ -4,21 +4,18 @@
 		<WorkUnit Name="Default Work Unit" ID="{4E7F0E47-86E3-452D-9D67-CB47BA1301A3}" PersistMode="Standalone">
 			<ChildrenList>
 				<SoundcasterSession Name="MusicSoundcaste" ID="{B6655D23-2371-42C1-A844-A15002097315}">
-					<ModuleList>
-						<Module>
-							<ObjectRef Name="Play_Sephiroth_Dark_Father" ID="{8C064B13-556E-4462-A161-123582C8AC31}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}"/>
-							<Position X="0" Y="0"/>
-						</Module>
-						<Module>
-							<ObjectRef Name="Play_WindFX" ID="{C271DFA8-A754-4613-8BCF-112AD026F4F4}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}"/>
-							<Position X="1" Y="0"/>
-						</Module>
-					</ModuleList>
-					<RTPCValueList ShowAll="true"/>
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="BreathIntensity" ID="{310DD5EA-A4BA-494C-BD62-C3DF8052913B}"/>
+							<Value>9.50910925655432E-312</Value>
+						</RTPCValue>
+					</RTPCValueList>
 					<CurrentStateList ShowAll="true">
-						<CurrentStateRef Name="Play" ID="{EBFDE5A3-B55C-4469-8360-F74B8D474E6D}"/>
+						<CurrentStateRef Name="None" ID="{C2787E82-2C72-46FC-9681-BBFC0FCF0F57}"/>
 					</CurrentStateList>
-					<CurrentSwitchList ShowAll="true"/>
+					<CurrentSwitchList ShowAll="true">
+						<CurrentSwitchRef Name="Dirt" ID="{B96194FA-2F04-4F55-8766-831728E7A6CC}"/>
+					</CurrentSwitchList>
 				</SoundcasterSession>
 			</ChildrenList>
 		</WorkUnit>

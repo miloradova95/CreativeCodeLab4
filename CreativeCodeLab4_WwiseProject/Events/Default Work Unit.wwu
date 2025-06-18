@@ -3,23 +3,143 @@
 	<Events>
 		<WorkUnit Name="Default Work Unit" ID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" PersistMode="Standalone">
 			<ChildrenList>
-				<Event Name="Play_Sephiroth_Dark_Father" ID="{8C064B13-556E-4462-A161-123582C8AC31}">
+				<Event Name="Footsteps" ID="{70D1DA59-801C-494B-AFDA-F80A7E7F50BA}">
 					<ChildrenList>
-						<Action Name="" ID="{338DE71E-2B92-49BC-A07F-F71EFF56A4DF}" ShortID="787745192">
+						<Action Name="" ID="{CC4C76BF-E1FE-457B-A717-1B127FC46F2A}" ShortID="642998944">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Sephiroth-Dark-Father" ID="{050BBC96-7A3B-4A49-BAB2-C6AEDACE4906}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+									<ObjectRef Name="Footsteps" ID="{38A42BA9-71F5-4FB9-82D5-93F0DF8F10B8}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Play_WindFX" ID="{C271DFA8-A754-4613-8BCF-112AD026F4F4}">
+				<Event Name="KeyCollect" ID="{BD9BB150-F96A-404E-B023-EB96B5F8FC61}">
 					<ChildrenList>
-						<Action Name="" ID="{A20FB66D-7DF5-400D-8DEF-C5DFD26D30F4}" ShortID="198981299">
+						<Action Name="" ID="{85339332-7DAC-4F3F-B596-698717324994}" ShortID="210427977">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="WindFX" ID="{A4049D1B-5AB3-4DFE-B78D-C753F09BB61E}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+									<ObjectRef Name="CollectKeySound" ID="{F2B29E16-3EE8-43D5-8C46-281E58AA6AD3}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="UnlockDoor" ID="{DE1CAA49-EC49-4ABF-A5A8-73155F454CD9}">
+					<ChildrenList>
+						<Action Name="" ID="{4E854C05-1680-42EA-BF37-5118901FCA59}" ShortID="757551708">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UnlockAndOpen" ID="{F8E26C36-704F-4911-8834-F8F09BA1782B}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="CantUnlockDoor" ID="{DCC87047-1619-4893-B82E-26BF12EC7F4F}">
+					<ChildrenList>
+						<Action Name="" ID="{2A335ED8-285C-4C94-8690-3CFB557A5082}" ShortID="864679652">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UnlockandClosed" ID="{22269E1C-5F51-4236-B884-DAE20A3CCBBF}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="OutOfStamina" ID="{402D7BB6-67DA-43E7-9C11-26E3C31A3A13}">
+					<ChildrenList>
+						<Action Name="" ID="{88160E64-EA0D-4B37-9406-0F2F9D669A96}" ShortID="546708230">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="OutOfStamina" ID="{C8F21665-EE51-4318-9D5F-56907032FFDA}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Jump" ID="{EFA350E3-8224-42CA-BB23-416435541C53}">
+					<ChildrenList>
+						<Action Name="" ID="{8F18CD05-782A-4099-AC1A-77C8A75D5F67}" ShortID="12890803">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="JumpSound" ID="{DB38FFE6-8EAC-47EA-BEA8-D6F102128DC7}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Ambient" ID="{6BDF00D4-FC0F-428B-8AE3-5B8A399F17C5}">
+					<ChildrenList>
+						<Action Name="" ID="{B26DD5FD-82D7-4E62-8601-46E39652D290}" ShortID="161791953">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Ambient" ID="{0A82D619-99F8-42A0-B1D4-E919EE8E75F9}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="GameStart" ID="{FA37E8A0-5037-4430-B774-96EFB4A62C3D}">
+					<ChildrenList>
+						<Action Name="" ID="{FE787697-E5CC-4C2F-ACAC-FB7ED143488A}" ShortID="1016590086">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="GameStartMan" ID="{0C58D0DD-4290-45A4-ACAE-59C9BAC97F35}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Folder Name="SprintEvent" ID="{6D0FEDC3-C099-42DF-9E52-B2EDBF5D34D8}" ShortID="76822820">
+					<ChildrenList>
+						<Event Name="Sprint" ID="{04DB34A1-CC68-48B2-B8A1-3271E230F859}">
+							<ChildrenList>
+								<Action Name="" ID="{3623AE36-F132-433D-B132-B8862EE0FE53}" ShortID="35034892">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="MultipleBreathingSounds" ID="{E4944B4E-CE8C-4529-B08F-26A4339B9F62}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="StopSprint" ID="{BB569452-B31B-4B73-9A5B-61453F1367C4}">
+							<ChildrenList>
+								<Action Name="" ID="{D347CD24-50F1-407B-BC83-279C8EAB3596}" ShortID="14214414">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="MultipleBreathingSounds" ID="{E4944B4E-CE8C-4529-B08F-26A4339B9F62}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Event Name="Play_Breathing" ID="{25A7D07C-9932-4EDD-AD21-4FDF44522C88}">
+					<ChildrenList>
+						<Action Name="" ID="{7D51EFBB-C20D-4446-BE87-3A6AD86B6AF3}" ShortID="983581048">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BreathingContainer" ID="{150198E8-CB3D-476C-8BBB-D9BB3A0F5FCA}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_Breathing" ID="{18965D83-78CA-4980-95CC-C1957EFDA538}">
+					<ChildrenList>
+						<Action Name="" ID="{EC4CE47F-F1FB-4CE8-95D7-95E4F1D6F7E3}" ShortID="734614461">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BreathingContainer" ID="{150198E8-CB3D-476C-8BBB-D9BB3A0F5FCA}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

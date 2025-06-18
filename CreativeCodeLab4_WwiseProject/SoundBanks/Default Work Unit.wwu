@@ -3,10 +3,26 @@
 	<SoundBanks>
 		<WorkUnit Name="Default Work Unit" ID="{BBF960E4-20D4-4A36-BE8E-890C18897DFE}" PersistMode="Standalone">
 			<ChildrenList>
-				<SoundBank Name="default" ID="{92CC9182-73E2-4D78-AE21-3B8651A68D3E}">
+				<SoundBank Name="Player" ID="{92CC9182-73E2-4D78-AE21-3B8651A68D3E}">
 					<ObjectInclusionList>
-						<ObjectRef Name="Play_Sephiroth_Dark_Father" ID="{8C064B13-556E-4462-A161-123582C8AC31}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Play_WindFX" ID="{C271DFA8-A754-4613-8BCF-112AD026F4F4}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="KeyCollect" ID="{BD9BB150-F96A-404E-B023-EB96B5F8FC61}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Jump" ID="{EFA350E3-8224-42CA-BB23-416435541C53}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="OutOfStamina" ID="{402D7BB6-67DA-43E7-9C11-26E3C31A3A13}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="CantUnlockDoor" ID="{DCC87047-1619-4893-B82E-26BF12EC7F4F}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Sprint" ID="{04DB34A1-CC68-48B2-B8A1-3271E230F859}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Footsteps" ID="{70D1DA59-801C-494B-AFDA-F80A7E7F50BA}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_Breathing" ID="{18965D83-78CA-4980-95CC-C1957EFDA538}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="UnlockDoor" ID="{DE1CAA49-EC49-4ABF-A5A8-73155F454CD9}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="StopSprint" ID="{BB569452-B31B-4B73-9A5B-61453F1367C4}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Breathing" ID="{25A7D07C-9932-4EDD-AD21-4FDF44522C88}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="Ambient" ID="{BD98EE00-3588-4E87-84ED-D1B823278846}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Ambient" ID="{6BDF00D4-FC0F-428B-8AE3-5B8A399F17C5}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="GameStart" ID="{FA37E8A0-5037-4430-B774-96EFB4A62C3D}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

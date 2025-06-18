@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{8404FE09-9272-04B1-3036-1D1562A87123}",
+    "Hash": "{8B553C92-3EAD-B756-0C3F-243ED5E66D65}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -42,6 +42,14 @@
       "GUID": "{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"
      }
     ],
+    "GameParameters": [
+     {
+      "Id": "1332993226",
+      "Name": "BreathIntensity",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\BreathIntensity",
+      "GUID": "{310DD5EA-A4BA-494C-BD62-C3DF8052913B}"
+     }
+    ],
     "StateGroups": [
      {
       "Id": "3991942870",
@@ -69,9 +77,31 @@
        }
       ]
      }
+    ],
+    "SwitchGroups": [
+     {
+      "Id": "2835351336",
+      "Name": "GroundType",
+      "ObjectPath": "\\Switches\\Default Work Unit\\GroundType",
+      "GUID": "{690E45E3-0DAD-4E16-8733-C5B6CE7FB3C3}",
+      "Switches": [
+       {
+        "Id": "2185786256",
+        "Name": "Gravel",
+        "ObjectPath": "\\Switches\\Default Work Unit\\GroundType\\Gravel",
+        "GUID": "{39152A8E-B280-48ED-A7DD-53D99BCCBEFD}"
+       },
+       {
+        "Id": "2195636714",
+        "Name": "Dirt",
+        "ObjectPath": "\\Switches\\Default Work Unit\\GroundType\\Dirt",
+        "GUID": "{B96194FA-2F04-4F55-8766-831728E7A6CC}"
+       }
+      ]
+     }
     ]
    }
   ],
-  "FileHash": "{DC76B5A1-6D22-01FD-7180-878D5049CF8B}"
+  "FileHash": "{45C66663-FF92-FBBD-9ACE-648068689CDF}"
  }
 }

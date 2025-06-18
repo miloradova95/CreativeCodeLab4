@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 219facee439e17342b1f2f47685e43ca, type: 3}
+  m_Name: 310DD5EA-A4BA-494C-BD62-C3DF8052913B
+  m_EditorClassIdentifier: 
+  objectName: BreathIntensity
+  id: 1332993226
+  guid: 310DD5EA-A4BA-494C-BD62-C3DF8052913B
