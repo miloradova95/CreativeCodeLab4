@@ -13,8 +13,18 @@ namespace AK
 {
     namespace EVENTS
     {
-        static const AkUniqueID PLAY_SEPHIROTH_DARK_FATHER = 3437602786U;
-        static const AkUniqueID PLAY_WINDFX = 4156545574U;
+        static const AkUniqueID AMBIENT = 77978275U;
+        static const AkUniqueID CANTUNLOCKDOOR = 1002233763U;
+        static const AkUniqueID FOOTSTEPS = 2385628198U;
+        static const AkUniqueID GAMESTART = 4058101365U;
+        static const AkUniqueID JUMP = 3833651337U;
+        static const AkUniqueID KEYCOLLECT = 1664127144U;
+        static const AkUniqueID OUTOFSTAMINA = 785636115U;
+        static const AkUniqueID PLAY_BREATHING = 4093367312U;
+        static const AkUniqueID SPRINT = 1296465089U;
+        static const AkUniqueID STOP_BREATHING = 6482866U;
+        static const AkUniqueID STOPSPRINT = 3711495321U;
+        static const AkUniqueID UNLOCKDOOR = 1184125749U;
     } // namespace EVENTS
 
     namespace STATES
@@ -33,10 +43,31 @@ namespace AK
 
     } // namespace STATES
 
+    namespace SWITCHES
+    {
+        namespace GROUNDTYPE
+        {
+            static const AkUniqueID GROUP = 2835351336U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID DIRT = 2195636714U;
+                static const AkUniqueID GRAVEL = 2185786256U;
+            } // namespace SWITCH
+        } // namespace GROUNDTYPE
+
+    } // namespace SWITCHES
+
+    namespace GAME_PARAMETERS
+    {
+        static const AkUniqueID BREATHINTENSITY = 1332993226U;
+    } // namespace GAME_PARAMETERS
+
     namespace BANKS
     {
         static const AkUniqueID INIT = 1355168291U;
-        static const AkUniqueID DEFAULT = 782826392U;
+        static const AkUniqueID AMBIENT = 77978275U;
+        static const AkUniqueID PLAYER = 1069431850U;
     } // namespace BANKS
 
     namespace BUSSES
