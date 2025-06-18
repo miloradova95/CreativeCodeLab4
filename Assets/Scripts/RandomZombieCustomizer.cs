@@ -31,7 +31,7 @@ public class RandomZombieCustomizer : MonoBehaviour
 
     void ApplyMaterialInstances()
     {
-        var renderers = GetComponentsInChildren<MeshRenderer>();
+        var renderers = GetComponentsInChildren<SkinnedMeshRenderer>();
         foreach (var rend in renderers)
         {
             var materials = rend.materials;
