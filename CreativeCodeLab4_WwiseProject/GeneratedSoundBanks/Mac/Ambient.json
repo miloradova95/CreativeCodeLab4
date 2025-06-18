@@ -1,0 +1,108 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "77978275",
+    "Type": "User",
+    "GUID": "{BD98EE00-3588-4E87-84ED-D1B823278846}",
+    "Language": "SFX",
+    "Hash": "{F3FF8E0B-13A9-8D32-AE1D-EE0CA7038BA1}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\Ambient",
+    "ShortName": "Ambient",
+    "Path": "Ambient.bnk",
+    "Media": [
+     {
+      "Id": "131875592",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SeagullSoundReverb.wav",
+      "CachePath": "98/{98F14526-D5AB-866D-79C6-3FEA798C34C8}.wem"
+     },
+     {
+      "Id": "167594540",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "GameStartMan.wav",
+      "CachePath": "B2/{B2BE9B2F-C0AF-F831-1FCF-12BDF0A7B90B}.wem"
+     },
+     {
+      "Id": "510794557",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CrowSoundReverb.wav",
+      "CachePath": "6D/{6DE59A6E-B739-2599-221C-46AEE191E8B1}.wem"
+     },
+     {
+      "Id": "562520294",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AmbientSoundscapeFull.wav",
+      "CachePath": "6D/{6DBBC50F-84AD-FDB7-7D09-05928AB954BD}.wem"
+     }
+    ],
+    "Plugins": {
+     "Custom": [
+      {
+       "Id": "184152294",
+       "Name": "Silence",
+       "ObjectPath": "\\Actor-Mixer Hierarchy\\Default Work Unit\\Ambient\\AmbientBeach\\Silence\\Silence",
+       "GUID": "{DDC690AE-7D49-4689-946F-19CF10A6920D}",
+       "LibName": "Wwise Silence",
+       "LibId": "6619138"
+      }
+     ]
+    },
+    "Events": [
+     {
+      "Id": "77978275",
+      "Name": "Ambient",
+      "ObjectPath": "\\Events\\Default Work Unit\\Ambient",
+      "GUID": "{6BDF00D4-FC0F-428B-8AE3-5B8A399F17C5}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "131875592"
+       },
+       {
+        "Id": "510794557"
+       },
+       {
+        "Id": "562520294"
+       }
+      ],
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "184152294"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "4058101365",
+      "Name": "GameStart",
+      "ObjectPath": "\\Events\\Default Work Unit\\GameStart",
+      "GUID": "{FA37E8A0-5037-4430-B774-96EFB4A62C3D}",
+      "DurationType": "OneShot",
+      "DurationMin": "3.661918",
+      "DurationMax": "3.661918",
+      "MediaRefs": [
+       {
+        "Id": "167594540"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{E6E2AC59-E076-5DDA-3AE5-5B5E374AEE69}"
+ }
+}

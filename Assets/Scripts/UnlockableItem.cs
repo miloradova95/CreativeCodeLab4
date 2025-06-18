@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class UnlockableItem : Item
@@ -6,39 +7,63 @@ public class UnlockableItem : Item
     public string requiredItemName;
     public bool isUnlocked = false;
 
-    public override void Interact()
+    private CallEvent callEvent;
+
+    private void Start()
     {
-        if (isUnlocked)
+        callEvent = GetComponent<CallEvent>();
+        if (callEvent == null)
         {
-            Debug.Log("Already unlocked.");
+            callEvent = FindObjectOfType<CallEvent>();
+        }
+
+        if (callEvent == null)
+        {
+            Debug.LogWarning("CallEvent component not found!");
+        }
+    }
+
+public override void Interact()
+{
+    if (isUnlocked)
+    {
+        Debug.Log("Already unlocked.");
+        return;
+    }
+
+    InventorySystem inventory = FindObjectOfType<InventorySystem>();
+    if (inventory != null)
+    {
+        if (inventory.GetCurrentlyHeldSymbol().name == requiredItemName)
+        {
+            // Delay unlock and sound
+            if (callEvent != null)
+                StartCoroutine(DelayedUnlock());
             return;
         }
-
-        InventorySystem inventory = FindObjectOfType<InventorySystem>();
-        if (inventory != null)
+        else
         {
-            if (inventory.GetCurrentlyHeldSymbol().name == requiredItemName)
-            {
-                Unlock();
-                return;
-            }
-            else
-            {
-                Debug.Log($"name: {inventory.GetCurrentlyHeldSymbol().name}");
-                Debug.Log($"Currently held item does not match required item: {requiredItemName}");
-            }
-            // foreach (var item in inventory.GetAllItems())
-            // {
-            //     if (item.itemName == requiredItemName)
-            //     {
-            //         Unlock();
-            //         return;
-            //     }
-            // }
-        }
+            Debug.Log($"name: {inventory.GetCurrentlyHeldSymbol().name}");
+            Debug.Log($"Currently held item does not match required item: {requiredItemName}");
 
-        Debug.Log($"Missing required item: {requiredItemName}");
+            if (callEvent != null)
+                callEvent.Callevent("CantUnlockDoor");
+        }
     }
+    else
+    {
+        Debug.Log($"Missing required item: {requiredItemName}");
+        if (callEvent != null)
+            callEvent.Callevent("CantUnlockDoor");
+    }
+}
+
+private IEnumerator DelayedUnlock()
+{
+    callEvent.Callevent("UnlockDoor"); // Play unlock sound
+    yield return new WaitForSeconds(1.5f);
+    Unlock();
+}
 
     private void Unlock()
     {

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class InteractionSystem : MonoBehaviour
@@ -15,6 +16,8 @@ public class InteractionSystem : MonoBehaviour
 
     private Item currentLookedAtItem;
 
+    private CallEvent callEvent;
+
     void Start()
     {
         if (playerCamera == null)
@@ -22,6 +25,8 @@ public class InteractionSystem : MonoBehaviour
 
         if (interactionPrompt != null)
             interactionPrompt.SetActive(false);
+
+        callEvent = GetComponent<CallEvent>();
     }
 
     void Update()
@@ -77,6 +82,11 @@ public class InteractionSystem : MonoBehaviour
                 {
                     CollectibleItem collectible = currentLookedAtItem.GetComponent<CollectibleItem>();
                     collectible.Interact();
+                    if (callEvent != null)
+                    {
+                        // Call the footstep sound event    
+                        callEvent.Callevent("KeyCollect");
+                    }
                     currentLookedAtItem = null;
                     UpdateInteractionUI();
                 }
@@ -87,6 +97,8 @@ public class InteractionSystem : MonoBehaviour
                     if (unlockable != null)
                     {
                         unlockable.Interact();
+                        return;
+
                     }
                 }
             }

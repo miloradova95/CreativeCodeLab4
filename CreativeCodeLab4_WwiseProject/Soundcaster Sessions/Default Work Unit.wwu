@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{4E7F0E47-86E3-452D-9D67-CB47BA1301A3}" SchemaVersion="123">
+	<SoundcasterSessions>
+		<WorkUnit Name="Default Work Unit" ID="{4E7F0E47-86E3-452D-9D67-CB47BA1301A3}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundcasterSession Name="MusicSoundcaste" ID="{B6655D23-2371-42C1-A844-A15002097315}">
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="BreathIntensity" ID="{310DD5EA-A4BA-494C-BD62-C3DF8052913B}"/>
+							<Value>9.50910925655432E-312</Value>
+						</RTPCValue>
+					</RTPCValueList>
+					<CurrentStateList ShowAll="true">
+						<CurrentStateRef Name="None" ID="{C2787E82-2C72-46FC-9681-BBFC0FCF0F57}"/>
+					</CurrentStateList>
+					<CurrentSwitchList ShowAll="true">
+						<CurrentSwitchRef Name="Dirt" ID="{B96194FA-2F04-4F55-8766-831728E7A6CC}"/>
+					</CurrentSwitchList>
+				</SoundcasterSession>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundcasterSessions>
+</WwiseDocument>

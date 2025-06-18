@@ -1,0 +1,107 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "1355168291",
+    "Type": "User",
+    "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
+    "Language": "SFX",
+    "Hash": "{8B553C92-3EAD-B756-0C3F-243ED5E66D65}",
+    "ObjectPath": "Init",
+    "ShortName": "Init",
+    "Path": "Init.bnk",
+    "Plugins": {
+     "AudioDevices": [
+      {
+       "Id": "2317455096",
+       "Name": "No_Output",
+       "ObjectPath": "\\Audio Devices\\Default Work Unit\\No_Output",
+       "GUID": "{5D973B42-3C06-401E-AD2C-BFAB2DE2E8AE}",
+       "LibName": "No Output",
+       "LibId": "11862023"
+      },
+      {
+       "Id": "3859886410",
+       "Name": "System",
+       "ObjectPath": "\\Audio Devices\\Default Work Unit\\System",
+       "GUID": "{8F244F0D-71E3-47C7-A233-D6EFA2234BD6}",
+       "LibName": "System",
+       "LibId": "11403271"
+      }
+     ]
+    },
+    "Busses": [
+     {
+      "Id": "3803692087",
+      "Name": "Master Audio Bus",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus",
+      "GUID": "{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "1332993226",
+      "Name": "BreathIntensity",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\BreathIntensity",
+      "GUID": "{310DD5EA-A4BA-494C-BD62-C3DF8052913B}"
+     }
+    ],
+    "StateGroups": [
+     {
+      "Id": "3991942870",
+      "Name": "Music",
+      "ObjectPath": "\\States\\Default Work Unit\\Music",
+      "GUID": "{3B551C23-EE4C-40DB-A4B9-1B6F3E437796}",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\Music\\None",
+        "GUID": "{C2787E82-2C72-46FC-9681-BBFC0FCF0F57}"
+       },
+       {
+        "Id": "1256202815",
+        "Name": "Play",
+        "ObjectPath": "\\States\\Default Work Unit\\Music\\Play",
+        "GUID": "{EBFDE5A3-B55C-4469-8360-F74B8D474E6D}"
+       },
+       {
+        "Id": "2555741448",
+        "Name": "Finish",
+        "ObjectPath": "\\States\\Default Work Unit\\Music\\Finish",
+        "GUID": "{68FF0A92-3F33-407A-818E-004C442C738F}"
+       }
+      ]
+     }
+    ],
+    "SwitchGroups": [
+     {
+      "Id": "2835351336",
+      "Name": "GroundType",
+      "ObjectPath": "\\Switches\\Default Work Unit\\GroundType",
+      "GUID": "{690E45E3-0DAD-4E16-8733-C5B6CE7FB3C3}",
+      "Switches": [
+       {
+        "Id": "2185786256",
+        "Name": "Gravel",
+        "ObjectPath": "\\Switches\\Default Work Unit\\GroundType\\Gravel",
+        "GUID": "{39152A8E-B280-48ED-A7DD-53D99BCCBEFD}"
+       },
+       {
+        "Id": "2195636714",
+        "Name": "Dirt",
+        "ObjectPath": "\\Switches\\Default Work Unit\\GroundType\\Dirt",
+        "GUID": "{B96194FA-2F04-4F55-8766-831728E7A6CC}"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{45C66663-FF92-FBBD-9ACE-648068689CDF}"
+ }
+}
