@@ -193,6 +193,32 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="TitelMusic" ID="{0D20855F-4B32-47B5-A935-E99B1838A095}">
+					<ChildrenList>
+						<Action Name="" ID="{BDF5BB34-4C80-490D-B710-A0123879D222}" ShortID="691711577">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Feigur - Désolation" ID="{641AE56B-F628-4E80-8882-104B78FFFA45}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_TitleMusic_Fadeout" ID="{E7B62C47-6069-4E54-B764-89BBF3FBACA0}">
+					<ChildrenList>
+						<Action Name="" ID="{3C59355D-A830-4B59-8C90-A71B9645034A}" ShortID="1023924827">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="3"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Feigur - Désolation" ID="{641AE56B-F628-4E80-8882-104B78FFFA45}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

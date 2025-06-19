@@ -1,0 +1,57 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2395694371",
+    "Type": "User",
+    "GUID": "{BC4AC9DF-34A3-4D7C-AE12-3D7BEB911E46}",
+    "Language": "SFX",
+    "Hash": "{C8C88245-26EA-1264-D3D8-2467F77D8685}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\TitelScreen",
+    "ShortName": "TitelScreen",
+    "Path": "TitelScreen.bnk",
+    "Media": [
+     {
+      "Id": "509001901",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Feigur - Désolation.wav",
+      "CachePath": "FF/{FF4FF568-7742-B443-BA62-76599E1BF894}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "252319044",
+      "Name": "Stop_TitleMusic_Fadeout",
+      "ObjectPath": "\\Events\\Default Work Unit\\Stop_TitleMusic_Fadeout",
+      "GUID": "{E7B62C47-6069-4E54-B764-89BBF3FBACA0}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "4203696116",
+      "Name": "TitelMusic",
+      "ObjectPath": "\\Events\\Default Work Unit\\TitelMusic",
+      "GUID": "{0D20855F-4B32-47B5-A935-E99B1838A095}",
+      "DurationType": "OneShot",
+      "DurationMin": "175.61908",
+      "DurationMax": "175.61908",
+      "MediaRefs": [
+       {
+        "Id": "509001901"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{2EAED56E-8E18-E4ED-28EB-A88BB9B7D9A2}"
+ }
+}

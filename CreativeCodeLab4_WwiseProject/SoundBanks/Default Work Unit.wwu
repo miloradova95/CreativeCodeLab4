@@ -44,6 +44,14 @@
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
+				<SoundBank Name="TitelScreen" ID="{BC4AC9DF-34A3-4D7C-AE12-3D7BEB911E46}">
+					<ObjectInclusionList>
+						<ObjectRef Name="TitelMusic" ID="{0D20855F-4B32-47B5-A935-E99B1838A095}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_TitleMusic_Fadeout" ID="{E7B62C47-6069-4E54-B764-89BBF3FBACA0}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
 			</ChildrenList>
 		</WorkUnit>
 	</SoundBanks>

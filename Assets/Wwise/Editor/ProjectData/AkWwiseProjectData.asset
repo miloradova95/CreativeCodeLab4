@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: e460f9bbd420364abe8e890c18897dfe
     GuidInternal: 
-    m_lastTime: -8584512378988835103
+    m_lastTime: -8584512345826295526
     List:
     - name: Ambient
       guid: 00ee98bd8835874e84edd1b823278846
@@ -110,6 +110,20 @@ MonoBehaviour:
         ObjectType: 7
         guid: 8291cc92e273784dae213b8651a68d3e
       Path: SoundBanks\Default Work Unit\Player
+    - name: TitelScreen
+      guid: dfc94abca3347c4dae123d7beb911e46
+      id: 2395694371
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e460f9bbd420364abe8e890c18897dfe
+      - ElementName: TitelScreen
+        ObjectType: 7
+        guid: dfc94abca3347c4dae123d7beb911e46
+      Path: SoundBanks\Default Work Unit\TitelScreen
     - name: Zombies
       guid: 59f4f3ff791e62449d3e8b52ce71088f
       id: 4113933398
@@ -136,7 +150,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 348f8a34c4e7244699a39657bc40c4f9
     GuidInternal: 
-    m_lastTime: -8584512379253666405
+    m_lastTime: -8584512345920665103
     List:
     - name: Ambient
       guid: d400df6b0ffc8b428ae35b8a399f17c5
@@ -373,6 +387,40 @@ MonoBehaviour:
         ObjectType: 3
         guid: 835d9618ca78804995ccc1957efda538
       Path: Events\Default Work Unit\Stop_Breathing
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Stop_TitleMusic_Fadeout
+      guid: 472cb6e76960544eb76489bbf3fbaca0
+      id: 252319044
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 348f8a34c4e7244699a39657bc40c4f9
+      - ElementName: Stop_TitleMusic_Fadeout
+        ObjectType: 3
+        guid: 472cb6e76960544eb76489bbf3fbaca0
+      Path: Events\Default Work Unit\Stop_TitleMusic_Fadeout
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: TitelMusic
+      guid: 5f85200d324bb547a935e99b1838a095
+      id: 4203696116
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 348f8a34c4e7244699a39657bc40c4f9
+      - ElementName: TitelMusic
+        ObjectType: 3
+        guid: 5f85200d324bb547a935e99b1838a095
+      Path: Events\Default Work Unit\TitelMusic
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -614,7 +662,7 @@ MonoBehaviour:
     m_lastTime: -8584512746481844399
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 030000000500000015000000160000001700000018000000190000001a0000001b0000001c0000001e00000020000000210000002200000023000000240000004400000045000000ca000000cb000000
+  ExpandedWaapiItemIds: 03000000050000000600000015000000160000001700000018000000190000001a0000001b0000001c0000001d0000001e00000020000000210000002200000023000000240000004400000045000000ca000000cb000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

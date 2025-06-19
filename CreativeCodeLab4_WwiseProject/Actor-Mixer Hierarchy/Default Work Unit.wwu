@@ -5136,35 +5136,6 @@
 								<ActiveSource Name="AmbientSoundscapeFull" ID="{A9AA2562-944D-44C7-AB4D-3366A9A05DBF}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="AmbientSoundscapeIntense" ID="{8D6EA4ED-9A6E-45FA-8538-9EC7E73262AB}" ShortID="1011282643">
-							<PropertyList>
-								<Property Name="Inclusion" Type="bool">
-									<ValueList>
-										<Value>False</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{30E6C82D-CA09-4982-9526-B30677B897C0}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F97C2A95-B1AA-4265-B202-3828113802BF}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="Feigur - Désolation" ID="{5901AF5F-96E3-42F7-B23B-0167B7A7D8E0}">
-									<Language>SFX</Language>
-									<AudioFile>Feigur - Désolation.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="509001901"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="Feigur - Désolation" ID="{5901AF5F-96E3-42F7-B23B-0167B7A7D8E0}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
 					</ChildrenList>
 					<BlendTrackList>
 						<BlendTrack Name="AmbientBlend" ID="{72CC0B53-CD3C-40E0-9109-63A150DEC072}" ShortID="1048382890">
@@ -6255,6 +6226,45 @@
 						</ObjectList>
 					</ObjectLists>
 				</RandomSequenceContainer>
+				<ActorMixer Name="TitelMusic" ID="{17D5E936-B881-4AB0-A356-9AB3F17653C3}" ShortID="773185839">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{30E6C82D-CA09-4982-9526-B30677B897C0}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F97C2A95-B1AA-4265-B202-3828113802BF}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="Feigur - Désolation" ID="{641AE56B-F628-4E80-8882-104B78FFFA45}" ShortID="833753247">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{30E6C82D-CA09-4982-9526-B30677B897C0}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F97C2A95-B1AA-4265-B202-3828113802BF}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Feigur - Désolation" ID="{64B0E02C-BEF0-4DA1-9496-D426BA63CCFB}">
+									<PropertyList>
+										<Property Name="FadeInDuration" Type="Real64" Value="3.94258827998721"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="281.72115194951"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>Feigur - Désolation.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="509001901"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Feigur - Désolation" ID="{64B0E02C-BEF0-4DA1-9496-D426BA63CCFB}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</ActorMixer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

@@ -1,0 +1,7 @@
+Event	ID	Name			Wwise Object Path	Notes
+	252319044	Stop_TitleMusic_Fadeout			\Default Work Unit\Stop_TitleMusic_Fadeout	
+	4203696116	TitelMusic			\Default Work Unit\TitelMusic	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	509001901	Feigur - Désolation	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\FF\{FF4FF568-7742-B443-BA62-76599E1BF894}.wem		\Actor-Mixer Hierarchy\Default Work Unit\TitelMusic\Feigur - Désolation		30979296
+
