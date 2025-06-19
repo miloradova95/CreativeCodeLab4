@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{CA4D0DCF-2704-4D69-A1B9-72FBB0D41D04}",
     "Language": "SFX",
-    "Hash": "{F8197EFD-56BD-4F7A-E5A3-3DE847CBD123}",
+    "Hash": "{E924BE0A-AF46-C67F-9B62-51E000E3A559}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Environment",
     "ShortName": "Environment",
     "Path": "Environment.bnk",
@@ -24,6 +24,14 @@
       "CachePath": "E0/{E0160EDB-199C-6CDF-24A1-243C2F6E81E5}.wem"
      },
      {
+      "Id": "743386761",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ChurchBell.wav",
+      "CachePath": "D4/{D4D58150-639F-846D-2110-6362EBDCC2D2}.wem"
+     },
+     {
       "Id": "1043112304",
       "Language": "SFX",
       "Streaming": "false",
@@ -32,6 +40,18 @@
       "CachePath": "1B/{1B12E146-AB4C-10B0-1ED7-DB1AF20DF826}.wem"
      }
     ],
+    "Plugins": {
+     "Custom": [
+      {
+       "Id": "634061483",
+       "Name": "Silence",
+       "ObjectPath": "\\Actor-Mixer Hierarchy\\Default Work Unit\\ChurchBells\\Silence\\Silence",
+       "GUID": "{254A6DD5-C1CB-418A-B7A5-EB8FAABC0013}",
+       "LibName": "Wwise Silence",
+       "LibId": "6619138"
+      }
+     ]
+    },
     "Events": [
      {
       "Id": "2425448196",
@@ -45,6 +65,26 @@
         "Id": "671991412"
        }
       ]
+     },
+     {
+      "Id": "3818553682",
+      "Name": "ChurchBells",
+      "ObjectPath": "\\Events\\Default Work Unit\\ChurchBells",
+      "GUID": "{6AD11C19-B48A-4C22-8ADD-BB1924E58316}",
+      "MaxAttenuation": "200",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "743386761"
+       }
+      ],
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "634061483"
+        }
+       ]
+      }
      },
      {
       "Id": "20988954",
@@ -62,6 +102,6 @@
     ]
    }
   ],
-  "FileHash": "{5F971BAD-7A54-DDDB-20AC-959AA5D2DCF6}"
+  "FileHash": "{7765542C-09B7-B98B-D27E-C6453085933B}"
  }
 }

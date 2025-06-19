@@ -6161,6 +6161,100 @@
 						</Sound>
 					</ChildrenList>
 				</ActorMixer>
+				<RandomSequenceContainer Name="ChurchBells" ID="{3C976E71-F7DE-4520-A320-BA16BCDEE7AA}" ShortID="266700016">
+					<PropertyList>
+						<Property Name="AttenuationDistanceScaling" Type="Real32" Value="4"/>
+						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+						<Property Name="PlayMechanismLoopCount" Type="int32" Value="1"/>
+						<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+						<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Attenuation">
+							<ObjectRef Name="Distance" ID="{8F6CF17A-CB35-42A0-80C1-BB3420E5E610}" WorkUnitID="{00213170-F082-49C1-9643-5A7A85427A1F}"/>
+						</Reference>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{30E6C82D-CA09-4982-9526-B30677B897C0}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F97C2A95-B1AA-4265-B202-3828113802BF}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="ChurchBell" ID="{88A42F99-B533-436E-98D2-E4E55E965D24}" ShortID="950757776">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="IsLoopingInfinite" Type="bool" Value="False"/>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>8</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-300</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{30E6C82D-CA09-4982-9526-B30677B897C0}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F97C2A95-B1AA-4265-B202-3828113802BF}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="ChurchBell" ID="{09727175-5840-4F5A-909E-2480A223F09C}">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.0953393125738713"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="3.7118770616502"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>ChurchBell.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="743386761"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="ChurchBell" ID="{09727175-5840-4F5A-909E-2480A223F09C}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Silence" ID="{56C321B4-D651-4C51-A554-6B1D789CD814}" ShortID="963502020">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{30E6C82D-CA09-4982-9526-B30677B897C0}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F97C2A95-B1AA-4265-B202-3828113802BF}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<SourcePlugin Name="Silence" ID="{254A6DD5-C1CB-418A-B7A5-EB8FAABC0013}" ShortID="634061483" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+									<PropertyList>
+										<Property Name="Length" Type="Real32" Value="30"/>
+									</PropertyList>
+									<Language>SFX</Language>
+								</SourcePlugin>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Silence" ID="{254A6DD5-C1CB-418A-B7A5-EB8FAABC0013}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+					<ObjectLists>
+						<ObjectList Name="Playlist">
+							<Reference>
+								<ObjectRef Name="ChurchBell" ID="{88A42F99-B533-436E-98D2-E4E55E965D24}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+							</Reference>
+							<Reference>
+								<ObjectRef Name="Silence" ID="{56C321B4-D651-4C51-A554-6B1D789CD814}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
+				</RandomSequenceContainer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

@@ -292,6 +292,7 @@ public class FirstPersonController : MonoBehaviour
     void StartDying()
     {
 
+        callEvent.Callevent("Stop_Breathing");
         callEvent.Callevent("Death");
         currentState = PlayerState.Dying;
         
@@ -752,7 +753,7 @@ public class FirstPersonController : MonoBehaviour
             // The RaycastShooter handles its own input, but we can add additional controls here
             if (Input.GetMouseButtonDown(0)) // Left mouse button
             {
-                shooter.FireRaycast();
+                //shooter.FireRaycast();
             }
         }
     }

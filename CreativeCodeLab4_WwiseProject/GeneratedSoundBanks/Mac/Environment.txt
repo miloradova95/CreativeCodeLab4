@@ -1,8 +1,13 @@
 Event	ID	Name			Wwise Object Path	Notes
 	20988954	WindChurch			\Default Work Unit\WindChurch	
 	2425448196	BeachWaves			\Default Work Unit\BeachWaves	
+	3818553682	ChurchBells			\Default Work Unit\ChurchBells	
+
+Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
+	634061483	Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\ChurchBells\Silence\Silence	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	671991412	WavesSound	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\E0\{E0160EDB-199C-6CDF-24A1-243C2F6E81E5}.wem		\Actor-Mixer Hierarchy\Default Work Unit\WavesSound		11958072
+	743386761	ChurchBell	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\D4\{D4D58150-639F-846D-2110-6362EBDCC2D2}.wem		\Actor-Mixer Hierarchy\Default Work Unit\ChurchBells\ChurchBell		654872
 	1043112304	WindSound	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\1B\{1B12E146-AB4C-10B0-1ED7-DB1AF20DF826}.wem		\Actor-Mixer Hierarchy\Default Work Unit\WindSound		9283612
 

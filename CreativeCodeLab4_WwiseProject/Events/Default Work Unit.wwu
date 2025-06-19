@@ -182,6 +182,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="ChurchBells" ID="{6AD11C19-B48A-4C22-8ADD-BB1924E58316}">
+					<ChildrenList>
+						<Action Name="" ID="{B5887D86-74CD-465C-B7B5-54F737A5E998}" ShortID="913772000">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ChurchBells" ID="{3C976E71-F7DE-4520-A320-BA16BCDEE7AA}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

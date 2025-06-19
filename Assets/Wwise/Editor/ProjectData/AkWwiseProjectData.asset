@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: e460f9bbd420364abe8e890c18897dfe
     GuidInternal: 
-    m_lastTime: -8584512560426322051
+    m_lastTime: -8584512378988835103
     List:
     - name: Ambient
       guid: 00ee98bd8835874e84edd1b823278846
@@ -136,7 +136,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 348f8a34c4e7244699a39657bc40c4f9
     GuidInternal: 
-    m_lastTime: -8584512560426585036
+    m_lastTime: -8584512379253666405
     List:
     - name: Ambient
       guid: d400df6b0ffc8b428ae35b8a399f17c5
@@ -186,6 +186,74 @@ MonoBehaviour:
         ObjectType: 3
         guid: 4770c8dc19169348b82e26bf12ec7f4f
       Path: Events\Default Work Unit\CantUnlockDoor
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: ChurchBells
+      guid: 191cd16a8ab4224c8addbb1924e58316
+      id: 3818553682
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 348f8a34c4e7244699a39657bc40c4f9
+      - ElementName: ChurchBells
+        ObjectType: 3
+        guid: 191cd16a8ab4224c8addbb1924e58316
+      Path: Events\Default Work Unit\ChurchBells
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: DamageSound
+      guid: 2657e28b86e153478611eaf265e95836
+      id: 3254952287
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 348f8a34c4e7244699a39657bc40c4f9
+      - ElementName: DamageSound
+        ObjectType: 3
+        guid: 2657e28b86e153478611eaf265e95836
+      Path: Events\Default Work Unit\DamageSound
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Death
+      guid: 9952b98f19addb4c9ce6e27e0aab43b4
+      id: 779278001
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 348f8a34c4e7244699a39657bc40c4f9
+      - ElementName: Death
+        ObjectType: 3
+        guid: 9952b98f19addb4c9ce6e27e0aab43b4
+      Path: Events\Default Work Unit\Death
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Dig
+      guid: ea33cb758673d542bc815a85592dc39a
+      id: 445985471
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 348f8a34c4e7244699a39657bc40c4f9
+      - ElementName: Dig
+        ObjectType: 3
+        guid: ea33cb758673d542bc815a85592dc39a
+      Path: Events\Default Work Unit\Dig
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -546,7 +614,7 @@ MonoBehaviour:
     m_lastTime: -8584512746481844399
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 0300000005000000060000000700000015000000160000001700000018000000190000001a0000001b0000001c0000001e0000002000000021000000
+  ExpandedWaapiItemIds: 030000000500000015000000160000001700000018000000190000001a0000001b0000001c0000001e00000020000000210000002200000023000000240000004400000045000000ca000000cb000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

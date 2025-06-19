@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class RaycastShooter : MonoBehaviour
 {
     [Header("Shooting Settings")]
-    public KeyCode shootKey = KeyCode.Space;
+    public KeyCode shootKey = KeyCode.X;
     public LayerMask raycastLayers = -1;
     public int maxReflections = 10;
     public float rayDistance = 1000f;
