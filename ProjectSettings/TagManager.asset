@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Door
   - Collectible
+  - Destroyable
   layers:
   - Default
   - TransparentFX

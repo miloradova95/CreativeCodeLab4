@@ -101,6 +101,16 @@ public class InteractionSystem : MonoBehaviour
 
                     }
                 }
+
+                if (currentLookedAtItem.gameObject.CompareTag("Destroyable"))
+                {
+                    DestroyableItem destroyable = currentLookedAtItem.GetComponent<DestroyableItem>();
+                    if (destroyable != null)
+                    {
+                        destroyable.Interact();
+                        return;
+                    }
+                }
             }
         }
     }
