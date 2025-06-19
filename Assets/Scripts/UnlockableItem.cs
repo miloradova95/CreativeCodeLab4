@@ -11,6 +11,7 @@ public class UnlockableItem : Item
 
     private void Start()
     {
+        base.Start();
         callEvent = GetComponent<CallEvent>();
         if (callEvent == null)
         {
@@ -61,7 +62,7 @@ public override void Interact()
 private IEnumerator DelayedUnlock()
 {
     callEvent.Callevent("UnlockDoor"); // Play unlock sound
-    yield return new WaitForSeconds(1.5f);
+    yield return new WaitForSeconds(0.5f);
     Unlock();
 }
 
