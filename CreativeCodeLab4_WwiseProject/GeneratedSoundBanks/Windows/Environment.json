@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{CA4D0DCF-2704-4D69-A1B9-72FBB0D41D04}",
     "Language": "SFX",
-    "Hash": "{89DA8564-62F8-55C7-598E-E8E49F732D62}",
+    "Hash": "{0C41A930-A836-F659-7CA3-57436561DAE4}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Environment",
     "ShortName": "Environment",
     "Path": "Environment.bnk",
@@ -21,7 +21,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "WavesSound.wav",
-      "CachePath": "EC/{EC389EFB-9735-670C-FC01-EB141F68CE76}.wem"
+      "CachePath": "E0/{E0160EDB-199C-6CDF-24A1-243C2F6E81E5}.wem"
      },
      {
       "Id": "1043112304",
@@ -29,7 +29,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "WindSound.wav",
-      "CachePath": "44/{44E228F5-9BC7-EFED-157F-743D5601DFA9}.wem"
+      "CachePath": "1B/{1B12E146-AB4C-10B0-1ED7-DB1AF20DF826}.wem"
      }
     ],
     "Events": [
@@ -62,6 +62,6 @@
     ]
    }
   ],
-  "FileHash": "{EA4009CC-4D5D-A83D-A069-DAD40290F2DD}"
+  "FileHash": "{C1CE9EE4-BD52-6A7D-5457-CA2110334981}"
  }
 }

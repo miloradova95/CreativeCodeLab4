@@ -3,6 +3,6 @@ Event	ID	Name			Wwise Object Path	Notes
 	2425448196	BeachWaves			\Default Work Unit\BeachWaves	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	671991412	WavesSound	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\EC\{EC389EFB-9735-670C-FC01-EB141F68CE76}.wem		\Actor-Mixer Hierarchy\Default Work Unit\WavesSound		11958072
-	1043112304	WindSound	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\44\{44E228F5-9BC7-EFED-157F-743D5601DFA9}.wem		\Actor-Mixer Hierarchy\Default Work Unit\WindSound		9283612
+	671991412	WavesSound	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\E0\{E0160EDB-199C-6CDF-24A1-243C2F6E81E5}.wem		\Actor-Mixer Hierarchy\Default Work Unit\WavesSound		11958072
+	1043112304	WindSound	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\1B\{1B12E146-AB4C-10B0-1ED7-DB1AF20DF826}.wem		\Actor-Mixer Hierarchy\Default Work Unit\WindSound		9283612
 
