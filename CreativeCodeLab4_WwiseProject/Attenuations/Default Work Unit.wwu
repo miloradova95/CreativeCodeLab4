@@ -5,7 +5,7 @@
 			<ChildrenList>
 				<Attenuation Name="Distance" ID="{8F6CF17A-CB35-42A0-80C1-BB3420E5E610}" ShortID="77863787">
 					<PropertyList>
-						<Property Name="RadiusMax" Type="Real64" Value="200"/>
+						<Property Name="RadiusMax" Type="Real64" Value="50"/>
 					</PropertyList>
 					<CurveUsageInfoList>
 						<VolumeDryUsage>
@@ -21,7 +21,12 @@
 											<Flags>5</Flags>
 										</Point>
 										<Point>
-											<XPos>200</XPos>
+											<XPos>45.04438</XPos>
+											<YPos>-8.77243</YPos>
+											<Flags>0</Flags>
+										</Point>
+										<Point>
+											<XPos>50</XPos>
 											<YPos>-200</YPos>
 											<Flags>37</Flags>
 										</Point>
@@ -42,7 +47,7 @@
 											<Flags>5</Flags>
 										</Point>
 										<Point>
-											<XPos>200</XPos>
+											<XPos>50</XPos>
 											<YPos>-200</YPos>
 											<Flags>37</Flags>
 										</Point>
@@ -66,13 +71,13 @@
 											<Flags>5</Flags>
 										</Point>
 										<Point>
-											<XPos>104.43786</XPos>
+											<XPos>26.109465</XPos>
 											<YPos>46</YPos>
 											<Flags>0</Flags>
 										</Point>
 										<Point>
-											<XPos>200</XPos>
-											<YPos>100</YPos>
+											<XPos>50</XPos>
+											<YPos>99</YPos>
 											<Flags>37</Flags>
 										</Point>
 									</PointList>

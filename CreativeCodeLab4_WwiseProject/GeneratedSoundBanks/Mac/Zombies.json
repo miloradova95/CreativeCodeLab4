@@ -1,0 +1,219 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "4113933398",
+    "Type": "User",
+    "GUID": "{FFF3F459-1E79-4462-9D3E-8B52CE71088F}",
+    "Language": "SFX",
+    "Hash": "{392C12F1-F5B8-59EA-72C4-230B9CF3435F}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\Zombies",
+    "ShortName": "Zombies",
+    "Path": "Zombies.bnk",
+    "Media": [
+     {
+      "Id": "34399834",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "316204__littlerobotsoundfactory__zombie_73.wav",
+      "CachePath": "6F/{6F955F38-2BE4-6383-7462-79F04F3B7253}.wem"
+     },
+     {
+      "Id": "46137195",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "316201__littlerobotsoundfactory__zombie_08.wav",
+      "CachePath": "5A/{5AEB34C2-8573-5947-B56E-8CC4AE6BE468}.wem"
+     },
+     {
+      "Id": "169427358",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "316195__littlerobotsoundfactory__zombie_00.wav",
+      "CachePath": "5A/{5A51272C-269D-3267-0B69-0E8D548AA5D0}.wem"
+     },
+     {
+      "Id": "214708963",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "316199__littlerobotsoundfactory__zombie_04.wav",
+      "CachePath": "0B/{0BD27E0E-893F-59A1-7BC6-BBF5C918BDAA}.wem"
+     },
+     {
+      "Id": "347905513",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "316196__littlerobotsoundfactory__zombie_07.wav",
+      "CachePath": "2E/{2EADA1B7-4D0F-7D92-18C9-3F381B0CDCC6}.wem"
+     },
+     {
+      "Id": "354852505",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "316192__littlerobotsoundfactory__zombie_03.wav",
+      "CachePath": "CB/{CBFFDD41-DE4F-FD1E-5B89-0288866D6A28}.wem"
+     },
+     {
+      "Id": "379398028",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "316206__littlerobotsoundfactory__zombie_70.wav",
+      "CachePath": "0A/{0A91FEA9-4A39-F0E4-620D-1C395943EA70}.wem"
+     },
+     {
+      "Id": "432216156",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "316203__littlerobotsoundfactory__zombie_57.wav",
+      "CachePath": "D7/{D78682A7-EF3E-B185-F19B-352824723338}.wem"
+     },
+     {
+      "Id": "454260145",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "316198__littlerobotsoundfactory__zombie_05.wav",
+      "CachePath": "04/{04592A5F-67EF-637B-31DB-B745FEC608BA}.wem"
+     },
+     {
+      "Id": "467464557",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "316197__littlerobotsoundfactory__zombie_06.wav",
+      "CachePath": "44/{44F07654-2C71-D0C8-A58D-2C1852D34DC7}.wem"
+     },
+     {
+      "Id": "608958681",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "316193__littlerobotsoundfactory__zombie_02.wav",
+      "CachePath": "DD/{DD47D3C5-74C0-6602-8E43-2CB3510A5F09}.wem"
+     },
+     {
+      "Id": "618352953",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "316200__littlerobotsoundfactory__zombie_09.wav",
+      "CachePath": "73/{730B0FD4-C343-90AF-5489-7C933EA81C9B}.wem"
+     },
+     {
+      "Id": "666666609",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "316194__littlerobotsoundfactory__zombie_01.wav",
+      "CachePath": "C8/{C8611D50-0084-DB13-D6ED-B2AEC74C289A}.wem"
+     },
+     {
+      "Id": "863852859",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "316202__littlerobotsoundfactory__zombie_72.wav",
+      "CachePath": "78/{785CB668-E544-AEB2-AA1D-033818873052}.wem"
+     },
+     {
+      "Id": "952934022",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "316205__littlerobotsoundfactory__zombie_68.wav",
+      "CachePath": "78/{784EE303-79D1-BB2C-81A2-E51073310458}.wem"
+     }
+    ],
+    "Plugins": {
+     "Custom": [
+      {
+       "Id": "560318152",
+       "Name": "Silence",
+       "ObjectPath": "\\Actor-Mixer Hierarchy\\Default Work Unit\\ZombieSounds\\Silence\\Silence",
+       "GUID": "{781022B7-88AF-45D1-879C-4D7A1043839D}",
+       "LibName": "Wwise Silence",
+       "LibId": "6619138"
+      }
+     ]
+    },
+    "Events": [
+     {
+      "Id": "2064502588",
+      "Name": "ZombieSound",
+      "ObjectPath": "\\Events\\Default Work Unit\\ZombieSound",
+      "GUID": "{23D9A702-1F8B-4B8C-9DCE-75CEFA7CD75A}",
+      "MaxAttenuation": "50",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "34399834"
+       },
+       {
+        "Id": "46137195"
+       },
+       {
+        "Id": "169427358"
+       },
+       {
+        "Id": "214708963"
+       },
+       {
+        "Id": "347905513"
+       },
+       {
+        "Id": "354852505"
+       },
+       {
+        "Id": "379398028"
+       },
+       {
+        "Id": "432216156"
+       },
+       {
+        "Id": "454260145"
+       },
+       {
+        "Id": "467464557"
+       },
+       {
+        "Id": "608958681"
+       },
+       {
+        "Id": "618352953"
+       },
+       {
+        "Id": "666666609"
+       },
+       {
+        "Id": "863852859"
+       },
+       {
+        "Id": "952934022"
+       }
+      ],
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "560318152"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "FileHash": "{ADF3F933-C276-1A43-6D36-79D678DF386B}"
+ }
+}

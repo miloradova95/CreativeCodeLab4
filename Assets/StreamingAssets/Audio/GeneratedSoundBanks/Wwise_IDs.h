@@ -25,6 +25,7 @@ namespace AK
         static const AkUniqueID STOP_BREATHING = 6482866U;
         static const AkUniqueID UNLOCKDOOR = 1184125749U;
         static const AkUniqueID WINDCHURCH = 20988954U;
+        static const AkUniqueID ZOMBIESOUND = 2064502588U;
     } // namespace EVENTS
 
     namespace STATES
@@ -69,6 +70,7 @@ namespace AK
         static const AkUniqueID AMBIENT = 77978275U;
         static const AkUniqueID ENVIRONMENT = 1229948536U;
         static const AkUniqueID PLAYER = 1069431850U;
+        static const AkUniqueID ZOMBIES = 4113933398U;
     } // namespace BANKS
 
     namespace BUSSES
