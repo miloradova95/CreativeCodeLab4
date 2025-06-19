@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro; // Add this for TextMeshPro
 
 public class TitleScreenManager : MonoBehaviour
 {
@@ -15,9 +16,9 @@ public class TitleScreenManager : MonoBehaviour
 
     [Header("Settings UI")]
     public Slider sensitivitySlider;
-    public Text sensitivityValueText;
+    public TextMeshProUGUI sensitivityValueText; // Changed from Text to TextMeshProUGUI
     public Button difficultyButton;
-    public Text difficultyText;
+    public TextMeshProUGUI difficultyText; // Changed from Text to TextMeshProUGUI
 
     [Header("Scene Management")]
     public string gameSceneName = "GameScene";

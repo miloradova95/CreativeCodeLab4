@@ -8,13 +8,13 @@ public class SettingsManager : MonoBehaviour
 
     [Header("Settings")]
     public float mouseSensitivity = 2f;
-    public Difficulty difficulty = Difficulty.Standard;
+    public Difficulty difficulty = Difficulty.STANDARD;
 
     public enum Difficulty
     {
-        Easy,
-        Standard,
-        Hard
+        EASY,
+        STANDARD,
+        HARD
     }
 
     // Difficulty-based stats
@@ -24,9 +24,9 @@ public class SettingsManager : MonoBehaviour
         {
             switch (difficulty)
             {
-                case Difficulty.Easy: return 300f;
-                case Difficulty.Standard: return 200f;
-                case Difficulty.Hard: return 100f;
+                case Difficulty.EASY: return 300f;
+                case Difficulty.STANDARD: return 200f;
+                case Difficulty.HARD: return 100f;
                 default: return 200f;
             }
         }
@@ -35,9 +35,9 @@ public class SettingsManager : MonoBehaviour
         {
             switch (difficulty)
             {
-                case Difficulty.Easy: return 300f;
-                case Difficulty.Standard: return 200f;
-                case Difficulty.Hard: return 100f;
+                case Difficulty.EASY: return 300f;
+                case Difficulty.STANDARD: return 200f;
+                case Difficulty.HARD: return 100f;
                 default: return 200f;
             }
         }
