@@ -10,19 +10,11 @@
     "Type": "User",
     "GUID": "{92CC9182-73E2-4D78-AE21-3B8651A68D3E}",
     "Language": "SFX",
-    "Hash": "{8F8E7015-0BED-A5E6-6751-AF9A0B45E81A}",
+    "Hash": "{74348A3A-FA88-BB83-433E-B60CC900467E}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Player",
     "ShortName": "Player",
     "Path": "Player.bnk",
     "Media": [
-     {
-      "Id": "12225832",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "footsteps-outdoor-nature-surfaces\\504197__joao_janz__boots-soft-gravel-footstep-1_13.wav",
-      "CachePath": "7D/{7DE840F8-DB58-C5E3-C906-4823A904F803}.wem"
-     },
      {
       "Id": "22641373",
       "Language": "SFX",
@@ -38,6 +30,22 @@
       "Location": "Memory",
       "ShortName": "footsteps-outdoor-nature-surfaces\\504224__joao_janz__boots-slow-dirt-footstep-1_4.wav",
       "CachePath": "79/{79F48B09-200C-FC4D-E44B-6AE3992B9619}.wem"
+     },
+     {
+      "Id": "140042243",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "footsteps-outdoor-nature-surfaces\\504267__joao_janz__boots-gravel-footstep-2_23.wav",
+      "CachePath": "D7/{D7748397-5E9F-81E1-9292-850EC8DFC179}.wem"
+     },
+     {
+      "Id": "177463433",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "footsteps-outdoor-nature-surfaces\\504265__joao_janz__boots-gravel-footstep-2_25.wav",
+      "CachePath": "22/{22877009-987F-92DA-9175-EF195C7CA2E7}.wem"
      },
      {
       "Id": "210616047",
@@ -56,20 +64,20 @@
       "CachePath": "D8/{D88B5EE3-F2C8-1426-6E78-5173F81FCF75}.wem"
      },
      {
-      "Id": "412064687",
+      "Id": "289367857",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "MultipleBreathingSounds.wav",
-      "CachePath": "92/{920B7684-E8B2-BA95-B066-68DEBC0F99C5}.wem"
+      "ShortName": "footsteps-outdoor-nature-surfaces\\504266__joao_janz__boots-gravel-footstep-2_24.wav",
+      "CachePath": "99/{99E7B1FC-8464-FA1C-EDD7-813F9EEC0514}.wem"
      },
      {
-      "Id": "417525584",
+      "Id": "399301073",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "footsteps-outdoor-nature-surfaces\\504198__joao_janz__boots-soft-gravel-footstep-1_12.wav",
-      "CachePath": "10/{10A515FD-C71C-11E9-6BE6-FB7D884DE90D}.wem"
+      "ShortName": "footsteps-outdoor-nature-surfaces\\504268__joao_janz__boots-gravel-footstep-2_22.wav",
+      "CachePath": "B6/{B644D16F-EA9E-189E-51A9-447E6A96554B}.wem"
      },
      {
       "Id": "426003109",
@@ -184,6 +192,14 @@
       "CachePath": "C5/{C5E654C1-6F1F-8511-AD9C-E53A50498F5D}.wem"
      },
      {
+      "Id": "844376364",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "footsteps-outdoor-nature-surfaces\\504264__joao_janz__boots-gravel-footstep-2_19.wav",
+      "CachePath": "76/{76D1B3CF-A495-BCD8-2E08-3507AB356618}.wem"
+     },
+     {
       "Id": "864078391",
       "Language": "SFX",
       "Streaming": "false",
@@ -277,7 +293,7 @@
       "ObjectPath": "\\Events\\Default Work Unit\\Footsteps",
       "GUID": "{70D1DA59-801C-494B-AFDA-F80A7E7F50BA}",
       "DurationType": "OneShot",
-      "DurationMin": "0.56960225",
+      "DurationMin": "0.6066607",
       "DurationMax": "1.4791408",
       "SwitchContainers": [
        {
@@ -289,10 +305,16 @@
         },
         "MediaRefs": [
          {
-          "Id": "12225832"
+          "Id": "140042243"
          },
          {
-          "Id": "417525584"
+          "Id": "177463433"
+         },
+         {
+          "Id": "289367857"
+         },
+         {
+          "Id": "399301073"
          },
          {
           "Id": "725142867"
@@ -302,6 +324,9 @@
          },
          {
           "Id": "776649004"
+         },
+         {
+          "Id": "844376364"
          }
         ]
        },
@@ -427,32 +452,10 @@
       ]
      },
      {
-      "Id": "1296465089",
-      "Name": "Sprint",
-      "ObjectPath": "\\Events\\Default Work Unit\\SprintEvent\\Sprint",
-      "GUID": "{04DB34A1-CC68-48B2-B8A1-3271E230F859}",
-      "DurationType": "Infinite",
-      "MediaRefs": [
-       {
-        "Id": "412064687"
-       }
-      ]
-     },
-     {
       "Id": "6482866",
       "Name": "Stop_Breathing",
       "ObjectPath": "\\Events\\Default Work Unit\\Stop_Breathing",
       "GUID": "{18965D83-78CA-4980-95CC-C1957EFDA538}",
-      "MaxAttenuation": "0",
-      "DurationType": "OneShot",
-      "DurationMin": "0",
-      "DurationMax": "0"
-     },
-     {
-      "Id": "3711495321",
-      "Name": "StopSprint",
-      "ObjectPath": "\\Events\\Default Work Unit\\SprintEvent\\StopSprint",
-      "GUID": "{BB569452-B31B-4B73-9A5B-61453F1367C4}",
       "MaxAttenuation": "0",
       "DurationType": "OneShot",
       "DurationMin": "0",
@@ -505,6 +508,6 @@
     ]
    }
   ],
-  "FileHash": "{47CD1DA9-BB76-B3C9-BA59-A72A6C52F6DE}"
+  "FileHash": "{C599F8C8-6BB4-E313-FD59-E4DE6345A617}"
  }
 }

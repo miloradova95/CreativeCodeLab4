@@ -14,6 +14,7 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID AMBIENT = 77978275U;
+        static const AkUniqueID BEACHWAVES = 2425448196U;
         static const AkUniqueID CANTUNLOCKDOOR = 1002233763U;
         static const AkUniqueID FOOTSTEPS = 2385628198U;
         static const AkUniqueID GAMESTART = 4058101365U;
@@ -21,10 +22,9 @@ namespace AK
         static const AkUniqueID KEYCOLLECT = 1664127144U;
         static const AkUniqueID OUTOFSTAMINA = 785636115U;
         static const AkUniqueID PLAY_BREATHING = 4093367312U;
-        static const AkUniqueID SPRINT = 1296465089U;
         static const AkUniqueID STOP_BREATHING = 6482866U;
-        static const AkUniqueID STOPSPRINT = 3711495321U;
         static const AkUniqueID UNLOCKDOOR = 1184125749U;
+        static const AkUniqueID WINDCHURCH = 20988954U;
     } // namespace EVENTS
 
     namespace STATES
@@ -67,6 +67,7 @@ namespace AK
     {
         static const AkUniqueID INIT = 1355168291U;
         static const AkUniqueID AMBIENT = 77978275U;
+        static const AkUniqueID ENVIRONMENT = 1229948536U;
         static const AkUniqueID PLAYER = 1069431850U;
     } // namespace BANKS
 

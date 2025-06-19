@@ -91,35 +91,6 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Folder Name="SprintEvent" ID="{6D0FEDC3-C099-42DF-9E52-B2EDBF5D34D8}" ShortID="76822820">
-					<ChildrenList>
-						<Event Name="Sprint" ID="{04DB34A1-CC68-48B2-B8A1-3271E230F859}">
-							<ChildrenList>
-								<Action Name="" ID="{3623AE36-F132-433D-B132-B8862EE0FE53}" ShortID="35034892">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="MultipleBreathingSounds" ID="{E4944B4E-CE8C-4529-B08F-26A4339B9F62}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="StopSprint" ID="{BB569452-B31B-4B73-9A5B-61453F1367C4}">
-							<ChildrenList>
-								<Action Name="" ID="{D347CD24-50F1-407B-BC83-279C8EAB3596}" ShortID="14214414">
-									<PropertyList>
-										<Property Name="ActionType" Type="int16" Value="2"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="MultipleBreathingSounds" ID="{E4944B4E-CE8C-4529-B08F-26A4339B9F62}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-					</ChildrenList>
-				</Folder>
 				<Event Name="Play_Breathing" ID="{25A7D07C-9932-4EDD-AD21-4FDF44522C88}">
 					<ChildrenList>
 						<Action Name="" ID="{7D51EFBB-C20D-4446-BE87-3A6AD86B6AF3}" ShortID="983581048">
@@ -140,6 +111,28 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="BreathingContainer" ID="{150198E8-CB3D-476C-8BBB-D9BB3A0F5FCA}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="WindChurch" ID="{DC8D27D4-16B4-4B16-8C80-A3F3E98128B1}">
+					<ChildrenList>
+						<Action Name="" ID="{C6029FDC-89D8-4EAE-BD34-F50003036B45}" ShortID="758251835">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="WindSound" ID="{0768CA41-0332-4D91-8A9B-ED6EFF0E1B7A}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="BeachWaves" ID="{3E76CEF5-4EA9-43E8-A94D-EB692B12E679}">
+					<ChildrenList>
+						<Action Name="" ID="{6882216D-077D-471C-9E42-97AFC38C888B}" ShortID="559506602">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="WavesSound" ID="{9857E1B0-A60E-491C-B646-32F0C33DC34D}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

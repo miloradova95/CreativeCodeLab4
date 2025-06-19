@@ -1,0 +1,67 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "1229948536",
+    "Type": "User",
+    "GUID": "{CA4D0DCF-2704-4D69-A1B9-72FBB0D41D04}",
+    "Language": "SFX",
+    "Hash": "{89DA8564-62F8-55C7-598E-E8E49F732D62}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\Environment",
+    "ShortName": "Environment",
+    "Path": "Environment.bnk",
+    "Media": [
+     {
+      "Id": "671991412",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WavesSound.wav",
+      "CachePath": "EC/{EC389EFB-9735-670C-FC01-EB141F68CE76}.wem"
+     },
+     {
+      "Id": "1043112304",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WindSound.wav",
+      "CachePath": "44/{44E228F5-9BC7-EFED-157F-743D5601DFA9}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2425448196",
+      "Name": "BeachWaves",
+      "ObjectPath": "\\Events\\Default Work Unit\\BeachWaves",
+      "GUID": "{3E76CEF5-4EA9-43E8-A94D-EB692B12E679}",
+      "MaxAttenuation": "400",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "671991412"
+       }
+      ]
+     },
+     {
+      "Id": "20988954",
+      "Name": "WindChurch",
+      "ObjectPath": "\\Events\\Default Work Unit\\WindChurch",
+      "GUID": "{DC8D27D4-16B4-4B16-8C80-A3F3E98128B1}",
+      "MaxAttenuation": "300",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "1043112304"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{5A64028F-8042-A260-D1D4-11AD91FB4B12}"
+ }
+}

@@ -9,11 +9,9 @@
 						<ObjectRef Name="Jump" ID="{EFA350E3-8224-42CA-BB23-416435541C53}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="OutOfStamina" ID="{402D7BB6-67DA-43E7-9C11-26E3C31A3A13}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="CantUnlockDoor" ID="{DCC87047-1619-4893-B82E-26BF12EC7F4F}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Sprint" ID="{04DB34A1-CC68-48B2-B8A1-3271E230F859}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Footsteps" ID="{70D1DA59-801C-494B-AFDA-F80A7E7F50BA}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Stop_Breathing" ID="{18965D83-78CA-4980-95CC-C1957EFDA538}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="UnlockDoor" ID="{DE1CAA49-EC49-4ABF-A5A8-73155F454CD9}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="StopSprint" ID="{BB569452-B31B-4B73-9A5B-61453F1367C4}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Breathing" ID="{25A7D07C-9932-4EDD-AD21-4FDF44522C88}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
@@ -23,6 +21,14 @@
 					<ObjectInclusionList>
 						<ObjectRef Name="Ambient" ID="{6BDF00D4-FC0F-428B-8AE3-5B8A399F17C5}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="GameStart" ID="{FA37E8A0-5037-4430-B774-96EFB4A62C3D}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="Environment" ID="{CA4D0DCF-2704-4D69-A1B9-72FBB0D41D04}">
+					<ObjectInclusionList>
+						<ObjectRef Name="BeachWaves" ID="{3E76CEF5-4EA9-43E8-A94D-EB692B12E679}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="WindChurch" ID="{DC8D27D4-16B4-4B16-8C80-A3F3E98128B1}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
