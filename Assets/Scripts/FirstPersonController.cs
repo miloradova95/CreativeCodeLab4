@@ -291,6 +291,8 @@ public class FirstPersonController : MonoBehaviour
 
     void StartDying()
     {
+
+        callEvent.Callevent("Death");
         currentState = PlayerState.Dying;
         
         // Stop camera effects
@@ -329,6 +331,8 @@ public class FirstPersonController : MonoBehaviour
             
             if (deathScreenManager != null)
             {
+
+
                 deathScreenManager.StartDeathSequence();
             }
             
@@ -875,6 +879,7 @@ public class FirstPersonController : MonoBehaviour
 {
     if (Time.time - lastZombieHitTime < zombieHitCooldown || currentState != PlayerState.Alive) return;
 
+    callEvent.Callevent("DamageSound");
     TakeDamage(damage);
     lastZombieHitTime = Time.time;
 }

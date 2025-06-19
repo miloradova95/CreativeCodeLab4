@@ -7,11 +7,14 @@
 					<ObjectInclusionList>
 						<ObjectRef Name="KeyCollect" ID="{BD9BB150-F96A-404E-B023-EB96B5F8FC61}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Jump" ID="{EFA350E3-8224-42CA-BB23-416435541C53}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Dig" ID="{75CB33EA-7386-42D5-BC81-5A85592DC39A}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="OutOfStamina" ID="{402D7BB6-67DA-43E7-9C11-26E3C31A3A13}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="DamageSound" ID="{8BE25726-E186-4753-8611-EAF265E95836}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="CantUnlockDoor" ID="{DCC87047-1619-4893-B82E-26BF12EC7F4F}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Footsteps" ID="{70D1DA59-801C-494B-AFDA-F80A7E7F50BA}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Stop_Breathing" ID="{18965D83-78CA-4980-95CC-C1957EFDA538}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="UnlockDoor" ID="{DE1CAA49-EC49-4ABF-A5A8-73155F454CD9}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Death" ID="{8FB95299-AD19-4CDB-9CE6-E27E0AAB43B4}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Breathing" ID="{25A7D07C-9932-4EDD-AD21-4FDF44522C88}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>

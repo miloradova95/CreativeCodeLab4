@@ -107,6 +107,7 @@ public class InteractionSystem : MonoBehaviour
                     DestroyableItem destroyable = currentLookedAtItem.GetComponent<DestroyableItem>();
                     if (destroyable != null)
                     {
+                        callEvent.Callevent("Dig");
                         destroyable.Interact();
                         return;
                     }

@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{92CC9182-73E2-4D78-AE21-3B8651A68D3E}",
     "Language": "SFX",
-    "Hash": "{74348A3A-FA88-BB83-433E-B60CC900467E}",
+    "Hash": "{82015846-E080-741C-5068-9D3904D908C1}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Player",
     "ShortName": "Player",
     "Path": "Player.bnk",
@@ -30,6 +30,14 @@
       "Location": "Memory",
       "ShortName": "footsteps-outdoor-nature-surfaces\\504224__joao_janz__boots-slow-dirt-footstep-1_4.wav",
       "CachePath": "79/{79F48B09-200C-FC4D-E44B-6AE3992B9619}.wem"
+     },
+     {
+      "Id": "121587804",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "DIG.wav",
+      "CachePath": "04/{04C6D3B4-301F-F1A7-B12A-44B1C7F6D640}.wem"
      },
      {
       "Id": "140042243",
@@ -62,6 +70,14 @@
       "Location": "Memory",
       "ShortName": "footsteps-outdoor-nature-surfaces\\504226__joao_janz__boots-dirt-footstep-1_5.wav",
       "CachePath": "D8/{D88B5EE3-F2C8-1426-6E78-5173F81FCF75}.wem"
+     },
+     {
+      "Id": "285729941",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "DeathReverb.wav",
+      "CachePath": "D1/{D1A93FC9-2638-4FBE-8CBB-6619C9CE864F}.wem"
      },
      {
       "Id": "289367857",
@@ -270,6 +286,14 @@
       "Location": "Memory",
       "ShortName": "footsteps-outdoor-nature-surfaces\\504193__joao_janz__boots-slow-dirt-footstep-1_6.wav",
       "CachePath": "63/{6367AF43-D991-7D92-2F6F-68BDB8FB52F4}.wem"
+     },
+     {
+      "Id": "1065549985",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "grunt.wav",
+      "CachePath": "73/{73A20CF0-FE48-F6AE-DFFA-1D02FFCF3794}.wem"
      }
     ],
     "Events": [
@@ -284,6 +308,48 @@
       "MediaRefs": [
        {
         "Id": "866506344"
+       }
+      ]
+     },
+     {
+      "Id": "3254952287",
+      "Name": "DamageSound",
+      "ObjectPath": "\\Events\\Default Work Unit\\DamageSound",
+      "GUID": "{8BE25726-E186-4753-8611-EAF265E95836}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.8838654",
+      "DurationMax": "0.8838654",
+      "MediaRefs": [
+       {
+        "Id": "1065549985"
+       }
+      ]
+     },
+     {
+      "Id": "779278001",
+      "Name": "Death",
+      "ObjectPath": "\\Events\\Default Work Unit\\Death",
+      "GUID": "{8FB95299-AD19-4CDB-9CE6-E27E0AAB43B4}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.5220096",
+      "DurationMax": "1.5220096",
+      "MediaRefs": [
+       {
+        "Id": "285729941"
+       }
+      ]
+     },
+     {
+      "Id": "445985471",
+      "Name": "Dig",
+      "ObjectPath": "\\Events\\Default Work Unit\\Dig",
+      "GUID": "{75CB33EA-7386-42D5-BC81-5A85592DC39A}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.5623599",
+      "DurationMax": "1.5623599",
+      "MediaRefs": [
+       {
+        "Id": "121587804"
        }
       ]
      },
@@ -508,6 +574,6 @@
     ]
    }
   ],
-  "FileHash": "{E5EBC378-BF93-094F-DA94-3123A6AF00F5}"
+  "FileHash": "{C318F6C8-74EA-902E-D3F4-3DA84BB63404}"
  }
 }

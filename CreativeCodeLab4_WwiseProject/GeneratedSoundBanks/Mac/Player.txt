@@ -1,10 +1,13 @@
 Event	ID	Name			Wwise Object Path	Notes
 	6482866	Stop_Breathing			\Default Work Unit\Stop_Breathing	
+	445985471	Dig			\Default Work Unit\Dig	
+	779278001	Death			\Default Work Unit\Death	
 	785636115	OutOfStamina			\Default Work Unit\OutOfStamina	
 	1002233763	CantUnlockDoor			\Default Work Unit\CantUnlockDoor	
 	1184125749	UnlockDoor			\Default Work Unit\UnlockDoor	
 	1664127144	KeyCollect			\Default Work Unit\KeyCollect	
 	2385628198	Footsteps			\Default Work Unit\Footsteps	
+	3254952287	DamageSound			\Default Work Unit\DamageSound	
 	3833651337	Jump			\Default Work Unit\Jump	
 	4093367312	Play_Breathing			\Default Work Unit\Play_Breathing	
 
@@ -21,10 +24,12 @@ Game Parameter	ID	Name			Wwise Object Path	Notes
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	22641373	504195__joao_janz__boots-slow-dirt-footstep-1_8	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\B1\{B1E3572C-3635-DA68-581B-A8C8005FD674}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\FootstepsDirtSeq\FootstepsHeel\504195__joao_janz__boots-slow-dirt-footstep-1_8		15540
 	44784488	504224__joao_janz__boots-slow-dirt-footstep-1_4	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\79\{79F48B09-200C-FC4D-E44B-6AE3992B9619}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\FootstepsDirtSeq\FootstepsHeel\504224__joao_janz__boots-slow-dirt-footstep-1_4		19828
+	121587804	DIG	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\04\{04C6D3B4-301F-F1A7-B12A-44B1C7F6D640}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Digging\DIG		275696
 	140042243	504267__joao_janz__boots-gravel-footstep-2_23	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\D7\{D7748397-5E9F-81E1-9292-850EC8DFC179}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\FootstepsGravel\504267__joao_janz__boots-gravel-footstep-2_23		165876
 	177463433	504265__joao_janz__boots-gravel-footstep-2_25	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\22\{22877009-987F-92DA-9175-EF195C7CA2E7}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\FootstepsGravel\504265__joao_janz__boots-gravel-footstep-2_25		167188
 	210616047	504227__joao_janz__boots-dirt-footstep-1_4	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\EA\{EA3BF56B-D21A-D5BB-E1B1-6F71A1950A72}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\FootstepsDirtSeq\FootstepsToe\504227__joao_janz__boots-dirt-footstep-1_4		123408
 	247851005	504226__joao_janz__boots-dirt-footstep-1_5	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\D8\{D88B5EE3-F2C8-1426-6E78-5173F81FCF75}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\FootstepsDirtSeq\FootstepsHeel\504226__joao_janz__boots-dirt-footstep-1_5		23352
+	285729941	DeathReverb	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\D1\{D1A93FC9-2638-4FBE-8CBB-6619C9CE864F}.wem		\Actor-Mixer Hierarchy\Default Work Unit\GameOver\DeathReverb		242064
 	289367857	504266__joao_janz__boots-gravel-footstep-2_24	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\99\{99E7B1FC-8464-FA1C-EDD7-813F9EEC0514}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\FootstepsGravel\504266__joao_janz__boots-gravel-footstep-2_24		158952
 	399301073	504268__joao_janz__boots-gravel-footstep-2_22	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\B6\{B644D16F-EA9E-189E-51A9-447E6A96554B}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\FootstepsGravel\504268__joao_janz__boots-gravel-footstep-2_22		161900
 	426003109	UnlockAndOpen	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\96\{96B5D23A-9928-A50A-5A9D-0EDA8D3739E3}.wem		\Actor-Mixer Hierarchy\Default Work Unit\UnlockDoor\UnlockAndOpen		455980
@@ -51,4 +56,5 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	1000013532	CollectKeySound	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\A7\{A7603079-FB86-862B-9E24-081B40C8F9A8}.wem		\Actor-Mixer Hierarchy\Default Work Unit\KeyCollect\CollectKeySound		82596
 	1032142310	504227__joao_janz__boots-dirt-footstep-1_4	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\54\{54696F51-FA12-01D0-FA52-3C3715B673C7}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\FootstepsDirtSeq\FootstepsHeel\504227__joao_janz__boots-dirt-footstep-1_4		21508
 	1059161110	504193__joao_janz__boots-slow-dirt-footstep-1_6	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\63\{6367AF43-D991-7D92-2F6F-68BDB8FB52F4}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\FootstepsDirtSeq\FootstepsToe\504193__joao_janz__boots-slow-dirt-footstep-1_6		133836
+	1065549985	grunt	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\73\{73A20CF0-FE48-F6AE-DFFA-1D02FFCF3794}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Grunt\grunt		151284
 

@@ -51,6 +51,7 @@ public class DeathScreenManager : MonoBehaviour
     public void StartDeathSequence()
     {
         if (isDeathSequenceActive) return;
+
         
         isDeathSequenceActive = true;
         StartCoroutine(DeathSequenceCoroutine());

@@ -149,6 +149,39 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Dig" ID="{75CB33EA-7386-42D5-BC81-5A85592DC39A}">
+					<ChildrenList>
+						<Action Name="" ID="{AE93AC37-3ADA-4D0F-BC6D-4DE6EE6061E7}" ShortID="752967439">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="DIG" ID="{5F77F0F5-593F-408C-99AE-9EE472E04D0D}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Death" ID="{8FB95299-AD19-4CDB-9CE6-E27E0AAB43B4}">
+					<ChildrenList>
+						<Action Name="" ID="{8F371AED-9422-4894-9F34-1E3F8E324C9F}" ShortID="255952721">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="DeathReverb" ID="{92CBFDBA-9F49-46BF-81EE-D1423BBC1935}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="DamageSound" ID="{8BE25726-E186-4753-8611-EAF265E95836}">
+					<ChildrenList>
+						<Action Name="" ID="{A17D6C7D-4525-4946-9DB7-8A06343C5709}" ShortID="178835670">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="grunt" ID="{630AA27E-AC01-4553-AB91-3D1FE9D45E05}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

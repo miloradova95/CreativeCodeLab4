@@ -5635,6 +5635,11 @@
 						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 						<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 						<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-20</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Attenuation">
@@ -6025,6 +6030,137 @@
 						</ObjectList>
 					</ObjectLists>
 				</RandomSequenceContainer>
+				<ActorMixer Name="Digging" ID="{EE45BE97-DF67-4ADB-A2A7-55E1A01593C1}" ShortID="1015714606">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{30E6C82D-CA09-4982-9526-B30677B897C0}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F97C2A95-B1AA-4265-B202-3828113802BF}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="DIG" ID="{5F77F0F5-593F-408C-99AE-9EE472E04D0D}" ShortID="309717776">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{30E6C82D-CA09-4982-9526-B30677B897C0}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F97C2A95-B1AA-4265-B202-3828113802BF}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DIG" ID="{3CD2BB5A-926B-4702-B9F9-D0F9F382F480}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="22.2412527441608"/>
+										<Property Name="TrimEnd" Type="Real64" Value="23.8036126189294"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>DIG.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="121587804"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DIG" ID="{3CD2BB5A-926B-4702-B9F9-D0F9F382F480}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</ActorMixer>
+				<ActorMixer Name="GameOver" ID="{A36ECB99-D57B-4418-8354-14D6DFE3DC11}" ShortID="661202246">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{30E6C82D-CA09-4982-9526-B30677B897C0}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F97C2A95-B1AA-4265-B202-3828113802BF}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="DeathReverb" ID="{92CBFDBA-9F49-46BF-81EE-D1423BBC1935}" ShortID="304999936">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-180</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{30E6C82D-CA09-4982-9526-B30677B897C0}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F97C2A95-B1AA-4265-B202-3828113802BF}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DeathReverb" ID="{9FE8EDAF-0036-42BD-8ABB-96926B6A3FB8}">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.167335647370171"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.167335647370171"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>DeathReverb.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="285729941"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DeathReverb" ID="{9FE8EDAF-0036-42BD-8ABB-96926B6A3FB8}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</ActorMixer>
+				<ActorMixer Name="Grunt" ID="{E8C8DC74-3EF2-45D3-8695-7167C5BF0C69}" ShortID="624452437">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{30E6C82D-CA09-4982-9526-B30677B897C0}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F97C2A95-B1AA-4265-B202-3828113802BF}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="grunt" ID="{630AA27E-AC01-4553-AB91-3D1FE9D45E05}" ShortID="439307177">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-200</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{30E6C82D-CA09-4982-9526-B30677B897C0}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F97C2A95-B1AA-4265-B202-3828113802BF}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="grunt" ID="{6D18619E-6850-42E7-B3D8-6D8D60585E8E}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="7.30379914642555"/>
+										<Property Name="TrimEnd" Type="Real64" Value="8.09123373593758"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>grunt.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="1065549985"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="grunt" ID="{6D18619E-6850-42E7-B3D8-6D8D60585E8E}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</ActorMixer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
