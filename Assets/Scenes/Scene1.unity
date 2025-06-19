@@ -162,7 +162,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 60}
-  m_SizeDelta: {x: 400, y: 80}
+  m_SizeDelta: {x: 320, y: 80}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &9763624
 MonoBehaviour:
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8207547, g: 0.8207547, b: 0.8207547, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.47058824}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2747,7 +2747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2786,9 +2786,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundImage: {fileID: 973039204}
   itemImage: {fileID: 1381699645}
-  emptySlotColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  filledSlotColor: {r: 1, g: 1, b: 1, a: 1}
-  highlightedSlotColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  emptySlotColor: {r: 0, g: 0, b: 0, a: 1}
+  filledSlotColor: {r: 0, g: 0, b: 0, a: 1}
+  highlightedSlotColor: {r: 0.6886792, g: 0.5258819, b: 0.25663045, a: 1}
   highlightPulseSpeed: 2
   highlightPulseMin: 0.7
   highlightPulseMax: 1
@@ -3035,7 +3035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3074,9 +3074,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundImage: {fileID: 1109023091}
   itemImage: {fileID: 142126189}
-  emptySlotColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  filledSlotColor: {r: 1, g: 1, b: 1, a: 1}
-  highlightedSlotColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  emptySlotColor: {r: 0, g: 0, b: 0, a: 1}
+  filledSlotColor: {r: 0, g: 0, b: 0, a: 1}
+  highlightedSlotColor: {r: 0.6886792, g: 0.5258819, b: 0.25663045, a: 1}
   highlightPulseSpeed: 2
   highlightPulseMin: 0.7
   highlightPulseMax: 1
@@ -4683,7 +4683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4722,9 +4722,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundImage: {fileID: 1385328562}
   itemImage: {fileID: 792859882}
-  emptySlotColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  filledSlotColor: {r: 1, g: 1, b: 1, a: 1}
-  highlightedSlotColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  emptySlotColor: {r: 0, g: 0, b: 0, a: 1}
+  filledSlotColor: {r: 0, g: 0, b: 0, a: 1}
+  highlightedSlotColor: {r: 0.6886792, g: 0.5258819, b: 0.25663045, a: 1}
   highlightPulseSpeed: 2
   highlightPulseMin: 0.7
   highlightPulseMax: 1
@@ -7925,7 +7925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7964,9 +7964,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundImage: {fileID: 1559858217}
   itemImage: {fileID: 2086365405}
-  emptySlotColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  filledSlotColor: {r: 1, g: 1, b: 1, a: 1}
-  highlightedSlotColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  emptySlotColor: {r: 0, g: 0, b: 0, a: 1}
+  filledSlotColor: {r: 0, g: 0, b: 0, a: 1}
+  highlightedSlotColor: {r: 0.6886792, g: 0.5258819, b: 0.25663045, a: 1}
   highlightPulseSpeed: 2
   highlightPulseMin: 0.7
   highlightPulseMax: 1
@@ -10124,7 +10124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10163,9 +10163,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundImage: {fileID: 1930129580}
   itemImage: {fileID: 1034947105}
-  emptySlotColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  filledSlotColor: {r: 1, g: 1, b: 1, a: 1}
-  highlightedSlotColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  emptySlotColor: {r: 0, g: 0, b: 0, a: 1}
+  filledSlotColor: {r: 0, g: 0, b: 0, a: 1}
+  highlightedSlotColor: {r: 0.6886792, g: 0.5258819, b: 0.25663045, a: 1}
   highlightPulseSpeed: 2
   highlightPulseMin: 0.7
   highlightPulseMax: 1
