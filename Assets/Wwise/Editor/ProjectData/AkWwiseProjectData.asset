@@ -20,11 +20,11 @@ MonoBehaviour:
       guid: 00000000000000000000000000000000
     - ElementName: Default Work Unit
       ObjectType: 12
-      guid: 61b940e198bb0b42a8f5a168f4fc7478
+      guid: 826f5c312fa8df488d1c9e3e08923698
     ParentPath: Virtual Acoustics\Default Work Unit
-    guid: 61b940e198bb0b42a8f5a168f4fc7478
+    guid: 826f5c312fa8df488d1c9e3e08923698
     GuidInternal: 
-    m_lastTime: -8584513432418161490
+    m_lastTime: -8584512746481834401
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -34,11 +34,11 @@ MonoBehaviour:
       guid: 00000000000000000000000000000000
     - ElementName: Default Work Unit
       ObjectType: 12
-      guid: 49fd17f61c86e246ac94c587c27acf17
+      guid: 952a7cf9aab16542b2023828113802bf
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
-    guid: 49fd17f61c86e246ac94c587c27acf17
+    guid: 952a7cf9aab16542b2023828113802bf
     GuidInternal: 
-    m_lastTime: -8584513432419040268
+    m_lastTime: -8584512746486909972
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -49,7 +49,7 @@ MonoBehaviour:
         guid: 00000000000000000000000000000000
       - ElementName: Default Work Unit
         ObjectType: 12
-        guid: 49fd17f61c86e246ac94c587c27acf17
+        guid: 952a7cf9aab16542b2023828113802bf
       - ElementName: Master Audio Bus
         ObjectType: 2
         guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -62,12 +62,40 @@ MonoBehaviour:
       guid: 00000000000000000000000000000000
     - ElementName: Default Work Unit
       ObjectType: 12
-      guid: de327e8180d57d4da48347e6bbe641ce
+      guid: e460f9bbd420364abe8e890c18897dfe
     ParentPath: SoundBanks\Default Work Unit
-    guid: de327e8180d57d4da48347e6bbe641ce
+    guid: e460f9bbd420364abe8e890c18897dfe
     GuidInternal: 
-    m_lastTime: -8584513432418938142
-    List: []
+    m_lastTime: -8584512746481854401
+    List:
+    - name: Ambient
+      guid: 00ee98bd8835874e84edd1b823278846
+      id: 77978275
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e460f9bbd420364abe8e890c18897dfe
+      - ElementName: Ambient
+        ObjectType: 7
+        guid: 00ee98bd8835874e84edd1b823278846
+      Path: SoundBanks\Default Work Unit\Ambient
+    - name: Player
+      guid: 8291cc92e273784dae213b8651a68d3e
+      id: 1069431850
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e460f9bbd420364abe8e890c18897dfe
+      - ElementName: Player
+        ObjectType: 7
+        guid: 8291cc92e273784dae213b8651a68d3e
+      Path: SoundBanks\Default Work Unit\Player
   EventWwu:
   - PhysicalPath: Events\Default Work Unit.wwu
     PathAndIcons:
@@ -76,12 +104,239 @@ MonoBehaviour:
       guid: 00000000000000000000000000000000
     - ElementName: Default Work Unit
       ObjectType: 12
-      guid: 4be52e1eb744364c8964b76149654db5
+      guid: 348f8a34c4e7244699a39657bc40c4f9
     ParentPath: Events\Default Work Unit
-    guid: 4be52e1eb744364c8964b76149654db5
+    guid: 348f8a34c4e7244699a39657bc40c4f9
     GuidInternal: 
-    m_lastTime: -8584513432418650020
-    List: []
+    m_lastTime: -8584512746496629760
+    List:
+    - name: Ambient
+      guid: d400df6b0ffc8b428ae35b8a399f17c5
+      id: 77978275
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 348f8a34c4e7244699a39657bc40c4f9
+      - ElementName: Ambient
+        ObjectType: 3
+        guid: d400df6b0ffc8b428ae35b8a399f17c5
+      Path: Events\Default Work Unit\Ambient
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: CantUnlockDoor
+      guid: 4770c8dc19169348b82e26bf12ec7f4f
+      id: 1002233763
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 348f8a34c4e7244699a39657bc40c4f9
+      - ElementName: CantUnlockDoor
+        ObjectType: 3
+        guid: 4770c8dc19169348b82e26bf12ec7f4f
+      Path: Events\Default Work Unit\CantUnlockDoor
+      maxAttenuation: 0
+      maxDuration: 1.0517242
+      minDuration: 1.0517242
+    - name: Footsteps
+      guid: 59dad1701c804b49afdaf80a7e7f50ba
+      id: 2385628198
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 348f8a34c4e7244699a39657bc40c4f9
+      - ElementName: Footsteps
+        ObjectType: 3
+        guid: 59dad1701c804b49afdaf80a7e7f50ba
+      Path: Events\Default Work Unit\Footsteps
+      maxAttenuation: 0
+      maxDuration: 1.4791408
+      minDuration: 0.56960225
+    - name: GameStart
+      guid: a0e837fa37503044b77496efb4a62c3d
+      id: 4058101365
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 348f8a34c4e7244699a39657bc40c4f9
+      - ElementName: GameStart
+        ObjectType: 3
+        guid: a0e837fa37503044b77496efb4a62c3d
+      Path: Events\Default Work Unit\GameStart
+      maxAttenuation: 0
+      maxDuration: 3.661918
+      minDuration: 3.661918
+    - name: Jump
+      guid: e350a3ef2482ca42bb23416435541c53
+      id: 3833651337
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 348f8a34c4e7244699a39657bc40c4f9
+      - ElementName: Jump
+        ObjectType: 3
+        guid: e350a3ef2482ca42bb23416435541c53
+      Path: Events\Default Work Unit\Jump
+      maxAttenuation: 0
+      maxDuration: 0.3458128
+      minDuration: 0.3458128
+    - name: KeyCollect
+      guid: 50b19bbd6af94e40b023eb96b5f8fc61
+      id: 1664127144
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 348f8a34c4e7244699a39657bc40c4f9
+      - ElementName: KeyCollect
+        ObjectType: 3
+        guid: 50b19bbd6af94e40b023eb96b5f8fc61
+      Path: Events\Default Work Unit\KeyCollect
+      maxAttenuation: 0
+      maxDuration: 0.51893544
+      minDuration: 0.51893544
+    - name: OutOfStamina
+      guid: b67b2d40da67e7439c1126e3c31a3a13
+      id: 785636115
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 348f8a34c4e7244699a39657bc40c4f9
+      - ElementName: OutOfStamina
+        ObjectType: 3
+        guid: b67b2d40da67e7439c1126e3c31a3a13
+      Path: Events\Default Work Unit\OutOfStamina
+      maxAttenuation: 0
+      maxDuration: 12.088208
+      minDuration: 12.088208
+    - name: Play_Breathing
+      guid: 7cd0a7253299dd4ead214fdf44522c88
+      id: 4093367312
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 348f8a34c4e7244699a39657bc40c4f9
+      - ElementName: Play_Breathing
+        ObjectType: 3
+        guid: 7cd0a7253299dd4ead214fdf44522c88
+      Path: Events\Default Work Unit\Play_Breathing
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Sprint
+      guid: a134db0468ccb248b8a13271e230f859
+      id: 1296465089
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 348f8a34c4e7244699a39657bc40c4f9
+      - ElementName: SprintEvent
+        ObjectType: 4
+        guid: c3ed0f6d99c0df429e52b2edbf5d34d8
+      - ElementName: Sprint
+        ObjectType: 3
+        guid: a134db0468ccb248b8a13271e230f859
+      Path: Events\Default Work Unit\SprintEvent\Sprint
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: SprintEvent
+      guid: c3ed0f6d99c0df429e52b2edbf5d34d8
+      id: 3889174651
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 348f8a34c4e7244699a39657bc40c4f9
+      - ElementName: SprintEvent
+        ObjectType: 4
+        guid: c3ed0f6d99c0df429e52b2edbf5d34d8
+      Path: Events\Default Work Unit\SprintEvent
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Stop_Breathing
+      guid: 835d9618ca78804995ccc1957efda538
+      id: 6482866
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 348f8a34c4e7244699a39657bc40c4f9
+      - ElementName: Stop_Breathing
+        ObjectType: 3
+        guid: 835d9618ca78804995ccc1957efda538
+      Path: Events\Default Work Unit\Stop_Breathing
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: StopSprint
+      guid: 529456bb1bb3734b9a5b61453f1367c4
+      id: 3711495321
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 348f8a34c4e7244699a39657bc40c4f9
+      - ElementName: SprintEvent
+        ObjectType: 4
+        guid: c3ed0f6d99c0df429e52b2edbf5d34d8
+      - ElementName: StopSprint
+        ObjectType: 3
+        guid: 529456bb1bb3734b9a5b61453f1367c4
+      Path: Events\Default Work Unit\SprintEvent\StopSprint
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: UnlockDoor
+      guid: 49aa1cde49ecbf4aa5a873155f454cd9
+      id: 1184125749
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 348f8a34c4e7244699a39657bc40c4f9
+      - ElementName: UnlockDoor
+        ObjectType: 3
+        guid: 49aa1cde49ecbf4aa5a873155f454cd9
+      Path: Events\Default Work Unit\UnlockDoor
+      maxAttenuation: 0
+      maxDuration: 2.5843763
+      minDuration: 2.5843763
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -90,12 +345,26 @@ MonoBehaviour:
       guid: 00000000000000000000000000000000
     - ElementName: Default Work Unit
       ObjectType: 12
-      guid: 6f8c589d83c4704ab2a62c4f1430726a
+      guid: 33232cfa0bb91549aec9878eeae86e9e
     ParentPath: Game Parameters\Default Work Unit
-    guid: 6f8c589d83c4704ab2a62c4f1430726a
+    guid: 33232cfa0bb91549aec9878eeae86e9e
     GuidInternal: 
-    m_lastTime: -8584513432418555754
-    List: []
+    m_lastTime: -8584512746496629760
+    List:
+    - name: BreathIntensity
+      guid: ead50d31baa44c49bd62c3df8052913b
+      id: 1332993226
+      PathAndIcons:
+      - ElementName: Game Parameters
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 33232cfa0bb91549aec9878eeae86e9e
+      - ElementName: BreathIntensity
+        ObjectType: 13
+        guid: ead50d31baa44c49bd62c3df8052913b
+      Path: Game Parameters\Default Work Unit\BreathIntensity
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     PathAndIcons:
@@ -104,12 +373,78 @@ MonoBehaviour:
       guid: 00000000000000000000000000000000
     - ElementName: Default Work Unit
       ObjectType: 12
-      guid: c19ba38045ae0b45a3ed0a5a34f87ed7
+      guid: 508f5420bac53f4c92d3332b826e2f9c
     ParentPath: States\Default Work Unit
-    guid: c19ba38045ae0b45a3ed0a5a34f87ed7
+    guid: 508f5420bac53f4c92d3332b826e2f9c
     GuidInternal: 
-    m_lastTime: -8584513432418063563
-    List: []
+    m_lastTime: -8584512746481844399
+    List:
+    - name: Music
+      guid: 231c553b4ceedb40a4b91b6f3e437796
+      id: 3991942870
+      PathAndIcons:
+      - ElementName: States
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 508f5420bac53f4c92d3332b826e2f9c
+      - ElementName: Music
+        ObjectType: 9
+        guid: 231c553b4ceedb40a4b91b6f3e437796
+      Path: States\Default Work Unit\Music
+      values:
+      - name: Finish
+        guid: 920aff68333f7a40818e004c442c738f
+        id: 2555741448
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 508f5420bac53f4c92d3332b826e2f9c
+        - ElementName: Music
+          ObjectType: 9
+          guid: 231c553b4ceedb40a4b91b6f3e437796
+        - ElementName: Finish
+          ObjectType: 8
+          guid: 920aff68333f7a40818e004c442c738f
+      - name: None
+        guid: 827e78c2722cfc469681bbfc0fcf0f57
+        id: 748895195
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 508f5420bac53f4c92d3332b826e2f9c
+        - ElementName: Music
+          ObjectType: 9
+          guid: 231c553b4ceedb40a4b91b6f3e437796
+        - ElementName: None
+          ObjectType: 8
+          guid: 827e78c2722cfc469681bbfc0fcf0f57
+      - name: Play
+        guid: a3e5fdeb5cb569448360f74b8d474e6d
+        id: 1256202815
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 508f5420bac53f4c92d3332b826e2f9c
+        - ElementName: Music
+          ObjectType: 9
+          guid: 231c553b4ceedb40a4b91b6f3e437796
+        - ElementName: Play
+          ObjectType: 8
+          guid: a3e5fdeb5cb569448360f74b8d474e6d
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     PathAndIcons:
@@ -118,12 +453,62 @@ MonoBehaviour:
       guid: 00000000000000000000000000000000
     - ElementName: Default Work Unit
       ObjectType: 12
-      guid: 924b41fd9aa7bb4099dbf4f326f9ba42
+      guid: 4e5b256531c45f42809d38bda8b33aa7
     ParentPath: Switches\Default Work Unit
-    guid: 924b41fd9aa7bb4099dbf4f326f9ba42
+    guid: 4e5b256531c45f42809d38bda8b33aa7
     GuidInternal: 
-    m_lastTime: -8584513432418245545
-    List: []
+    m_lastTime: -8584512746481844399
+    List:
+    - name: GroundType
+      guid: e3450e69ad0d164e8733c5b6ce7fb3c3
+      id: 2835351336
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 4e5b256531c45f42809d38bda8b33aa7
+      - ElementName: GroundType
+        ObjectType: 11
+        guid: e3450e69ad0d164e8733c5b6ce7fb3c3
+      Path: Switches\Default Work Unit\GroundType
+      values:
+      - name: Dirt
+        guid: fa9461b9042f554f8766831728e7a6cc
+        id: 2195636714
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 4e5b256531c45f42809d38bda8b33aa7
+        - ElementName: GroundType
+          ObjectType: 11
+          guid: e3450e69ad0d164e8733c5b6ce7fb3c3
+        - ElementName: Dirt
+          ObjectType: 10
+          guid: fa9461b9042f554f8766831728e7a6cc
+      - name: Gravel
+        guid: 8e2a153980b2ed48a7dd53d99bccbefd
+        id: 2185786256
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 4e5b256531c45f42809d38bda8b33aa7
+        - ElementName: GroundType
+          ObjectType: 11
+          guid: e3450e69ad0d164e8733c5b6ce7fb3c3
+        - ElementName: Gravel
+          ObjectType: 10
+          guid: 8e2a153980b2ed48a7dd53d99bccbefd
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
     PathAndIcons:
@@ -132,11 +517,11 @@ MonoBehaviour:
       guid: 00000000000000000000000000000000
     - ElementName: Default Work Unit
       ObjectType: 12
-      guid: 4931b4d3bf55334c80c9616862db907e
+      guid: 5b23ab1e15d07e4fb6c138576dff2f67
     ParentPath: Triggers\Default Work Unit
-    guid: 4931b4d3bf55334c80c9616862db907e
+    guid: 5b23ab1e15d07e4fb6c138576dff2f67
     GuidInternal: 
-    m_lastTime: -8584513432420003231
+    m_lastTime: -8584512746481844399
     List: []
   ExpandedFileSystemItemIds: 
   ExpandedWaapiItemIds: 0300000006000000150000001600000017000000190000001a0000001b0000001c0000001e0000002000000021000000
