@@ -8,21 +8,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -6309851983853704496, guid: e9229a39eb62b804da873c7167e217ff,
-        type: 3}
-      propertyPath: m_Name
-      value: leftArmBot
-      objectReference: {fileID: 0}
-    - target: {fileID: -1388952743026796439, guid: e9229a39eb62b804da873c7167e217ff,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1781723816576711469, guid: e9229a39eb62b804da873c7167e217ff,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bed4a3080826d404c8876e4969224bd9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -83,6 +68,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: zombieRig
       objectReference: {fileID: 0}
+    - target: {fileID: -6309851983853704496, guid: e9229a39eb62b804da873c7167e217ff,
+        type: 3}
+      propertyPath: m_Name
+      value: leftArmBot
+      objectReference: {fileID: 0}
+    - target: {fileID: -1388952743026796439, guid: e9229a39eb62b804da873c7167e217ff,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781723816576711469, guid: e9229a39eb62b804da873c7167e217ff,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -95,6 +95,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1319705062242514944}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bed4a3080826d404c8876e4969224bd9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8063647317010155702}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bed4a3080826d404c8876e4969224bd9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9018254727055270045}
     - targetCorrespondingSourceObject: {fileID: 2532570097803184450, guid: bed4a3080826d404c8876e4969224bd9,
         type: 3}
       insertIndex: -1
@@ -222,6 +230,69 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8063647317010155702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3487080139439306328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c53e8d177cc92546a9c1c95f907c1ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+  chaseSpeed: 4
+  visionRadius: 30
+  personalSpaceRadius: 20
+  turnSpeed: 120
+  idleActionInterval: 3
+  chaseTimeout: 60
+  playerAttractionStrength: 0.3
+  avoidanceStrength: 1
+  proactiveMovementRange: 8
+  hordeSpreadRadius: 3
+  chaseUpdateInterval: 0.1
+  chaseSpreadDistance: 4
+  chaseAvoidanceRadius: 5
+  attackRange: 2.5
+  attackDuration: 1.2
+  attackCooldown: 2
+  collisionDamageRadius: 1
+  attackDamage: 20
+  collisionDamage: 5
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  zombieLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+--- !u!195 &9018254727055270045
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3487080139439306328}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0.5
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0.7
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &4241752900426047351 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 466204967702942846, guid: bed4a3080826d404c8876e4969224bd9,
