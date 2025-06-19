@@ -22,6 +22,10 @@ public class TitleScreenManager : MonoBehaviour
 
     [Header("Scene Management")]
     public string gameSceneName = "GameScene";
+    
+    [Header("Fade Transition")]
+    public Image fadePanel; // Drag a black UI Image here
+    public float fadeDuration = 5f;
 
     private SettingsManager settingsManager;
 
@@ -67,6 +71,13 @@ public class TitleScreenManager : MonoBehaviour
             sensitivitySlider.onValueChanged.AddListener(OnSensitivityChanged);
         }
 
+        // Setup fade panel
+        if (fadePanel != null)
+        {
+            fadePanel.color = new Color(0, 0, 0, 0); // Start transparent
+            fadePanel.gameObject.SetActive(false);
+        }
+
         // Update UI elements
         UpdateSettingsUI();
 
@@ -80,8 +91,50 @@ public class TitleScreenManager : MonoBehaviour
         // Save settings before starting game
         settingsManager.SaveSettings();
         
+        // Start fade transition
+        StartCoroutine(FadeToScene());
+    }
+    
+    IEnumerator FadeToScene()
+    {
+        // Disable all buttons to prevent multiple clicks
+        SetButtonsInteractable(false);
+        
+        // Enable fade panel
+        if (fadePanel != null)
+        {
+            fadePanel.gameObject.SetActive(true);
+            
+            // Fade to black
+            float elapsedTime = 0f;
+            Color fadeColor = fadePanel.color;
+            
+            while (elapsedTime < fadeDuration)
+            {
+                elapsedTime += Time.deltaTime;
+                float alpha = Mathf.Clamp01(elapsedTime / fadeDuration);
+                fadePanel.color = new Color(fadeColor.r, fadeColor.g, fadeColor.b, alpha);
+                yield return null;
+            }
+            
+            // Ensure we're fully black
+            fadePanel.color = new Color(0, 0, 0, 1);
+        }
+        else
+        {
+            // If no fade panel, just wait the duration
+            yield return new WaitForSeconds(fadeDuration);
+        }
+        
         // Load game scene
         SceneManager.LoadScene(1);
+    }
+    
+    void SetButtonsInteractable(bool interactable)
+    {
+        if (startGameButton != null) startGameButton.interactable = interactable;
+        if (settingsButton != null) settingsButton.interactable = interactable;
+        if (exitButton != null) exitButton.interactable = interactable;
     }
 
     public void OpenSettings()
