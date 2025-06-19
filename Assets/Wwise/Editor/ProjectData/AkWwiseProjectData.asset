@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: e460f9bbd420364abe8e890c18897dfe
     GuidInternal: 
-    m_lastTime: -8584512662604740000
+    m_lastTime: -8584512560426322051
     List:
     - name: Ambient
       guid: 00ee98bd8835874e84edd1b823278846
@@ -110,6 +110,20 @@ MonoBehaviour:
         ObjectType: 7
         guid: 8291cc92e273784dae213b8651a68d3e
       Path: SoundBanks\Default Work Unit\Player
+    - name: Zombies
+      guid: 59f4f3ff791e62449d3e8b52ce71088f
+      id: 4113933398
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e460f9bbd420364abe8e890c18897dfe
+      - ElementName: Zombies
+        ObjectType: 7
+        guid: 59f4f3ff791e62449d3e8b52ce71088f
+      Path: SoundBanks\Default Work Unit\Zombies
   EventWwu:
   - PhysicalPath: Events\Default Work Unit.wwu
     PathAndIcons:
@@ -122,7 +136,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 348f8a34c4e7244699a39657bc40c4f9
     GuidInternal: 
-    m_lastTime: -8584512662615548928
+    m_lastTime: -8584512560426585036
     List:
     - name: Ambient
       guid: d400df6b0ffc8b428ae35b8a399f17c5
@@ -328,6 +342,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: ZombieSound
+      guid: 02a7d9238b1f8c4b9dce75cefa7cd75a
+      id: 2064502588
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 348f8a34c4e7244699a39657bc40c4f9
+      - ElementName: ZombieSound
+        ObjectType: 3
+        guid: 02a7d9238b1f8c4b9dce75cefa7cd75a
+      Path: Events\Default Work Unit\ZombieSound
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -515,7 +546,7 @@ MonoBehaviour:
     m_lastTime: -8584512746481844399
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 030000000600000015000000160000001700000018000000190000001a0000001b0000001c0000001e0000002000000021000000
+  ExpandedWaapiItemIds: 0300000005000000060000000700000015000000160000001700000018000000190000001a0000001b0000001c0000001e0000002000000021000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0
