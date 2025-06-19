@@ -21,7 +21,6 @@ public class FirstPersonController : MonoBehaviour
     [Header("Health System")]
     public float maxHealth = 100f;
     public float healthRegenRate = 2f; // Health per second
-    public float healthDebuffThreshold = 30f; // Below this value, movement is slowed
     public float healthRegenCooldown = 15f; // Seconds before health starts regenerating
 
     [Header("Stamina System")]
@@ -31,6 +30,14 @@ public class FirstPersonController : MonoBehaviour
     public float staminaRegenCooldown = 10f; // Seconds before stamina starts regenerating
     public float sprintStaminaDrain = 20f; // Stamina per second while sprinting
     public float jumpStaminaCost = 15f; // Stamina cost per jump
+
+    [Header("Fall Damage")]
+    public float fallDamageThreshold = 8f; // Height at which fall damage starts
+    public float fallDamageMultiplier = 10f; // Damage per unit of fall distance
+
+    [Header("Death System")]
+    public float deathCameraTiltAngle = -90f; // Angle to tilt camera when dying
+    public float deathCameraTiltSpeed = 2f; // Speed of camera tilt animation
 
     [Header("Breathing System")]
     public string breathingEventName = "Play_Breathing"; // Wwise event name for breathing blend container
@@ -64,7 +71,16 @@ public class FirstPersonController : MonoBehaviour
         VeryHeavy = 4       // 80-100 RTCP range
     }
 
+    public enum PlayerState
+    {
+        Alive,
+        Dying,
+        Dead
+    }
+
     private float currentStepRate;
+    private float healthDebuffThreshold; // Now calculated as 20% of maxHealth
+    private float staminaDebuffThreshold_Calculated; // Now calculated as 20% of maxStamina
 
     // Private variables
     private CharacterController controller;
@@ -89,6 +105,21 @@ public class FirstPersonController : MonoBehaviour
     private float lastHealthDamageTime;
     private float lastStaminaDrainTime;
     private bool isStaminaEmpty = false; // Tracks if stamina hit 0
+
+    // HitStun
+    private float zombieHitCooldown = 1.0f; // Invulnerability duration
+    private float lastZombieHitTime = -999f;
+
+    // Fall damage tracking
+    private float lastGroundedHeight;
+    private bool wasFalling = false;
+
+    // Death system
+    private PlayerState currentState = PlayerState.Alive;
+    private float deathCameraTiltTarget = 0f;
+    private Quaternion deathCameraStartRotation;
+    private HealthUIManager healthUIManager;
+    private DeathScreenManager deathScreenManager;
 
     // Breathing system variables
     private BreathingLevel currentBreathingLevel = BreathingLevel.Passive;
@@ -119,6 +150,10 @@ public class FirstPersonController : MonoBehaviour
         if (shooter == null)
             shooter = GetComponentInChildren<RaycastShooter>();
 
+        // Find UI managers
+        healthUIManager = FindObjectOfType<HealthUIManager>();
+        deathScreenManager = FindObjectOfType<DeathScreenManager>();
+
         // Store original camera position for effects
         if (playerCamera != null)
         {
@@ -147,6 +182,13 @@ public class FirstPersonController : MonoBehaviour
         // Set camera reference AFTER creating the component
         interactionSystem.playerCamera = playerCamera;
 
+        // Apply settings from SettingsManager
+        ApplyGameSettings();
+
+        // Calculate dynamic thresholds (20% of max values)
+        healthDebuffThreshold = maxHealth * 0.2f;
+        staminaDebuffThreshold_Calculated = maxStamina * 0.2f;
+
         // Initialize health and stamina
         currentHealth = maxHealth;
         currentStamina = maxStamina;
@@ -157,6 +199,9 @@ public class FirstPersonController : MonoBehaviour
         velocity = Vector3.zero;
         horizontalVelocity = Vector3.zero;
 
+        // Initialize fall damage tracking
+        lastGroundedHeight = transform.position.y;
+
         // Start breathing system
         StartBreathingSystem();
 
@@ -165,8 +210,32 @@ public class FirstPersonController : MonoBehaviour
         Cursor.visible = false;
     }
 
+    void ApplyGameSettings()
+    {
+        if (SettingsManager.Instance != null)
+        {
+            // Apply mouse sensitivity
+            mouseSensitivity = SettingsManager.Instance.mouseSensitivity;
+
+            // Apply difficulty settings
+            var difficulty = SettingsManager.Instance.difficulty;
+            maxHealth = SettingsManager.DifficultyStats.GetMaxHealth(difficulty);
+            maxStamina = SettingsManager.DifficultyStats.GetMaxStamina(difficulty);
+
+            Debug.Log($"Applied settings - Sensitivity: {mouseSensitivity}, Health: {maxHealth}, Stamina: {maxStamina}");
+        }
+    }
+
     void Update()
     {
+        if (currentState == PlayerState.Dead) return;
+
+        if (currentState == PlayerState.Dying)
+        {
+            HandleDeathAnimation();
+            return;
+        }
+
         // Store previous grounded state
         wasGroundedLastFrame = isGrounded;
 
@@ -177,11 +246,93 @@ public class FirstPersonController : MonoBehaviour
         UpdateHealthAndStamina();
         UpdateBreathingSystem();
         UpdateCameraEffects();
+        HandleFallDamage();
+
+        // Check for death
+        if (currentHealth <= 0f && currentState == PlayerState.Alive)
+        {
+            StartDying();
+        }
 
         // Toggle cursor lock with Escape
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             ToggleCursorLock();
+        }
+    }
+
+    void HandleFallDamage()
+    {
+        isGrounded = controller.isGrounded;
+
+        if (isGrounded)
+        {
+            if (wasFalling)
+            {
+                float fallDistance = lastGroundedHeight - transform.position.y;
+                
+                if (fallDistance > fallDamageThreshold)
+                {
+                    float damage = (fallDistance - fallDamageThreshold) * fallDamageMultiplier;
+                    TakeDamage(damage);
+                    Debug.Log($"Fall damage: {damage} (fell {fallDistance} units)");
+                }
+                
+                wasFalling = false;
+            }
+            
+            lastGroundedHeight = transform.position.y;
+        }
+        else if (velocity.y < -5f) // Only consider it falling if moving downward fast enough
+        {
+            wasFalling = true;
+        }
+    }
+
+    void StartDying()
+    {
+        currentState = PlayerState.Dying;
+        
+        // Stop camera effects
+        isShaking = false;
+        
+        // Store the starting rotation for death animation
+        deathCameraStartRotation = playerCamera.transform.localRotation;
+        deathCameraTiltTarget = deathCameraTiltAngle;
+        
+        // Unlock cursor movement during death
+        Cursor.lockState = CursorLockMode.None;
+        
+        Debug.Log("Player started dying");
+    }
+
+    void HandleDeathAnimation()
+    {
+        if (playerCamera == null) return;
+
+        // Animate camera tilt
+        float targetZ = deathCameraTiltTarget;
+        Vector3 currentEuler = playerCamera.transform.localRotation.eulerAngles;
+        
+        // Handle angle wrapping
+        if (currentEuler.z > 180f)
+            currentEuler.z -= 360f;
+            
+        float newZ = Mathf.MoveTowards(currentEuler.z, targetZ, deathCameraTiltSpeed * 90f * Time.deltaTime);
+        
+        playerCamera.transform.localRotation = Quaternion.Euler(currentEuler.x, currentEuler.y, newZ);
+        
+        // Check if animation is complete
+        if (Mathf.Abs(newZ - targetZ) < 1f)
+        {
+            currentState = PlayerState.Dead;
+            
+            if (deathScreenManager != null)
+            {
+                deathScreenManager.StartDeathSequence();
+            }
+            
+            Debug.Log("Player is now dead");
         }
     }
 
@@ -299,7 +450,7 @@ public class FirstPersonController : MonoBehaviour
 
     void UpdateCameraEffects()
     {
-        if (playerCamera == null) return;
+        if (playerCamera == null || currentState != PlayerState.Alive) return;
 
         Vector3 targetCameraPos = originalCameraPos;
         Quaternion targetCameraRot = Quaternion.Euler(xRotation, 0f, 0f);
@@ -416,7 +567,7 @@ public class FirstPersonController : MonoBehaviour
 
     void HandleMouseLook()
     {
-        if (Cursor.lockState != CursorLockMode.Locked) return;
+        if (Cursor.lockState != CursorLockMode.Locked || currentState != PlayerState.Alive) return;
 
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime * 60f;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime * 60f;
@@ -439,6 +590,8 @@ public class FirstPersonController : MonoBehaviour
 
     void HandleMovement()
     {
+        if (currentState != PlayerState.Alive) return;
+
         isGrounded = controller.isGrounded;
 
         if (isGrounded && velocity.y < 0)
@@ -555,23 +708,42 @@ public class FirstPersonController : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (currentState != PlayerState.Alive) return;
+
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
         lastHealthDamageTime = Time.time;
 
+        // Call Hurt event for Wwise
+        if (callEvent != null)
+        {
+            callEvent.Callevent("Hurt");
+        }
+
+        // Show damage flash on UI
+        if (healthUIManager != null)
+        {
+            healthUIManager.ShowDamageFlash();
+        }
+
         // Trigger camera shake when taking damage
         TriggerCameraShake();
+
+        Debug.Log($"Player took {damage} damage. Health: {currentHealth}/{maxHealth}");
     }
 
     public void TriggerCameraShake()
     {
-        isShaking = true;
-        shakeTimer = shakeDuration;
+        if (currentState == PlayerState.Alive)
+        {
+            isShaking = true;
+            shakeTimer = shakeDuration;
+        }
     }
 
     void HandleShooting()
     {
-        if (shooter != null)
+        if (shooter != null && currentState == PlayerState.Alive)
         {
             // The RaycastShooter handles its own input, but we can add additional controls here
             if (Input.GetMouseButtonDown(0)) // Left mouse button
@@ -583,6 +755,8 @@ public class FirstPersonController : MonoBehaviour
 
     void ToggleCursorLock()
     {
+        if (currentState != PlayerState.Alive) return;
+
         if (Cursor.lockState == CursorLockMode.Locked)
         {
             Cursor.lockState = CursorLockMode.None;
@@ -685,4 +859,23 @@ public class FirstPersonController : MonoBehaviour
     {
         return interactionSystem;
     }
+
+    // State management
+    public PlayerState GetPlayerState()
+    {
+        return currentState;
+    }
+
+    public bool IsPlayerAlive()
+    {
+        return currentState == PlayerState.Alive;
+    }
+    
+    public void ReceiveZombieAttack(float damage)
+{
+    if (Time.time - lastZombieHitTime < zombieHitCooldown || currentState != PlayerState.Alive) return;
+
+    TakeDamage(damage);
+    lastZombieHitTime = Time.time;
+}
 }
