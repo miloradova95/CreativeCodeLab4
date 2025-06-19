@@ -2365,17 +2365,17 @@ PrefabInstance:
     - target: {fileID: 4264706836758342882, guid: bf2f7fa6285b6bc4fb0c406371c4217d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -509.20566
+      value: -60.2
       objectReference: {fileID: 0}
     - target: {fileID: 4264706836758342882, guid: bf2f7fa6285b6bc4fb0c406371c4217d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 20.3
+      value: 199.991
       objectReference: {fileID: 0}
     - target: {fileID: 4264706836758342882, guid: bf2f7fa6285b6bc4fb0c406371c4217d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 515.55
+      value: 654.82
       objectReference: {fileID: 0}
     - target: {fileID: 4264706836758342882, guid: bf2f7fa6285b6bc4fb0c406371c4217d,
         type: 3}
@@ -2935,7 +2935,6 @@ MonoBehaviour:
   maxLookAngle: 80
   maxHealth: 100
   healthRegenRate: 2
-  healthDebuffThreshold: 30
   healthRegenCooldown: 15
   maxStamina: 100
   staminaRegenRate: 15
@@ -2943,6 +2942,10 @@ MonoBehaviour:
   staminaRegenCooldown: 5
   sprintStaminaDrain: 5
   jumpStaminaCost: 5
+  fallDamageThreshold: 8
+  fallDamageMultiplier: 10
+  deathCameraTiltAngle: -90
+  deathCameraTiltSpeed: 2
   breathingEventName: Play_Breathing
   breathingUpdateRate: 0.1
   walkSwayAmount: 0.05
@@ -2992,7 +2995,7 @@ Transform:
   m_GameObject: {fileID: 1272524632}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.98864883, z: -0, w: -0.15024468}
-  m_LocalPosition: {x: -57.2, y: 214.7, z: 657.3}
+  m_LocalPosition: {x: -57.2, y: 209.58, z: 657.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5008,6 +5011,8 @@ MonoBehaviour:
   attackDuration: 1.2
   attackCooldown: 2
   collisionDamageRadius: 1
+  attackDamage: 20
+  collisionDamage: 5
   playerLayer:
     serializedVersion: 2
     m_Bits: 4294967295
