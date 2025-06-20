@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: brickwall
+  m_Name: brickwallDark
   m_Shader: {fileID: -6465566751694194690, guid: 900247e43f47a8d46aea8da4b610cc05,
     type: 3}
   m_Parent: {fileID: 0}
@@ -153,10 +153,10 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _darkness: 0.237
+    - _darkness: 0.423
     - _hueShift: 8.79
-    - _saturation: 0.714
-    - _smoothnessBase: 0.832
+    - _saturation: 0.231
+    - _smoothnessBase: 0.904
     - _tiling: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
