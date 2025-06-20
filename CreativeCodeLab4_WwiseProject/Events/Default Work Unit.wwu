@@ -219,6 +219,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Cry" ID="{EF7B267E-A4C7-473D-9C02-FB146A95BBC0}">
+					<ChildrenList>
+						<Action Name="" ID="{24B433B1-CE0C-4436-B92B-ED50C3A05A6B}" ShortID="677353617">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="WomanCry" ID="{3E93B313-36F6-441C-895C-20E8D57DE4C9}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

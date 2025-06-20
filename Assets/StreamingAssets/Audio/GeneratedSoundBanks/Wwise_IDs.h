@@ -17,6 +17,7 @@ namespace AK
         static const AkUniqueID BEACHWAVES = 2425448196U;
         static const AkUniqueID CANTUNLOCKDOOR = 1002233763U;
         static const AkUniqueID CHURCHBELLS = 3818553682U;
+        static const AkUniqueID CRY = 731352139U;
         static const AkUniqueID DAMAGESOUND = 3254952287U;
         static const AkUniqueID DEATH = 779278001U;
         static const AkUniqueID DIG = 445985471U;

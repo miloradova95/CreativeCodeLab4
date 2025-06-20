@@ -10,11 +10,19 @@
     "Type": "User",
     "GUID": "{CA4D0DCF-2704-4D69-A1B9-72FBB0D41D04}",
     "Language": "SFX",
-    "Hash": "{E924BE0A-AF46-C67F-9B62-51E000E3A559}",
+    "Hash": "{B83DC496-B236-F0E9-931F-3B0F022F049D}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Environment",
     "ShortName": "Environment",
     "Path": "Environment.bnk",
     "Media": [
+     {
+      "Id": "243970549",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WomanCry.wav",
+      "CachePath": "CE/{CE20C1CB-5E3F-980D-711B-A442C012D887}.wem"
+     },
      {
       "Id": "671991412",
       "Language": "SFX",
@@ -87,6 +95,19 @@
       }
      },
      {
+      "Id": "731352139",
+      "Name": "Cry",
+      "ObjectPath": "\\Events\\Default Work Unit\\Cry",
+      "GUID": "{EF7B267E-A4C7-473D-9C02-FB146A95BBC0}",
+      "MaxAttenuation": "25",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "243970549"
+       }
+      ]
+     },
+     {
       "Id": "20988954",
       "Name": "WindChurch",
       "ObjectPath": "\\Events\\Default Work Unit\\WindChurch",
@@ -102,6 +123,6 @@
     ]
    }
   ],
-  "FileHash": "{8BA2EDEE-9365-3DB0-E4FE-8FAEBC187E89}"
+  "FileHash": "{343B277C-0812-DA17-34FF-45073BE7A133}"
  }
 }

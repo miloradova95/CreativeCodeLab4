@@ -31,6 +31,7 @@
 				<SoundBank Name="Environment" ID="{CA4D0DCF-2704-4D69-A1B9-72FBB0D41D04}">
 					<ObjectInclusionList>
 						<ObjectRef Name="BeachWaves" ID="{3E76CEF5-4EA9-43E8-A94D-EB692B12E679}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Cry" ID="{EF7B267E-A4C7-473D-9C02-FB146A95BBC0}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="WindChurch" ID="{DC8D27D4-16B4-4B16-8C80-A3F3E98128B1}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="ChurchBells" ID="{6AD11C19-B48A-4C22-8ADD-BB1924E58316}" WorkUnitID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>

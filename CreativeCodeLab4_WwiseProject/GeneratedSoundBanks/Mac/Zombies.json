@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{FFF3F459-1E79-4462-9D3E-8B52CE71088F}",
     "Language": "SFX",
-    "Hash": "{DE267D09-D0DA-2365-909A-4AF7635AE793}",
+    "Hash": "{D1B6EA8C-2829-50D3-E2B9-6FB4F9194C61}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Zombies",
     "ShortName": "Zombies",
     "Path": "Zombies.bnk",
@@ -214,6 +214,6 @@
     ]
    }
   ],
-  "FileHash": "{C280F427-8AD5-E4D6-96D4-D3A79E608ABF}"
+  "FileHash": "{9CF2EAA2-95DF-7FAC-A5C4-8BBB072160D4}"
  }
 }
