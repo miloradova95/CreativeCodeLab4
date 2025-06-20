@@ -167,8 +167,8 @@ MonoBehaviour:
         guid: d400df6b0ffc8b428ae35b8a399f17c5
       Path: Events\Default Work Unit\Ambient
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: BeachWaves
       guid: f5ce763ea94ee843a94deb692b12e679
       id: 2425448196
@@ -183,9 +183,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: f5ce763ea94ee843a94deb692b12e679
       Path: Events\Default Work Unit\BeachWaves
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxAttenuation: 100
+      maxDuration: 0
+      minDuration: 0
     - name: CantUnlockDoor
       guid: 4770c8dc19169348b82e26bf12ec7f4f
       id: 1002233763
@@ -201,8 +201,8 @@ MonoBehaviour:
         guid: 4770c8dc19169348b82e26bf12ec7f4f
       Path: Events\Default Work Unit\CantUnlockDoor
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 1.0517242
+      minDuration: 1.0517242
     - name: ChurchBells
       guid: 191cd16a8ab4224c8addbb1924e58316
       id: 3818553682
@@ -217,9 +217,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: 191cd16a8ab4224c8addbb1924e58316
       Path: Events\Default Work Unit\ChurchBells
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxAttenuation: 200
+      maxDuration: 0
+      minDuration: 0
     - name: DamageSound
       guid: 2657e28b86e153478611eaf265e95836
       id: 3254952287
@@ -235,8 +235,8 @@ MonoBehaviour:
         guid: 2657e28b86e153478611eaf265e95836
       Path: Events\Default Work Unit\DamageSound
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0.8838654
+      minDuration: 0.8838654
     - name: Death
       guid: 9952b98f19addb4c9ce6e27e0aab43b4
       id: 779278001
@@ -252,8 +252,8 @@ MonoBehaviour:
         guid: 9952b98f19addb4c9ce6e27e0aab43b4
       Path: Events\Default Work Unit\Death
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 1.5220096
+      minDuration: 1.5220096
     - name: Dig
       guid: ea33cb758673d542bc815a85592dc39a
       id: 445985471
@@ -269,8 +269,8 @@ MonoBehaviour:
         guid: ea33cb758673d542bc815a85592dc39a
       Path: Events\Default Work Unit\Dig
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 1.5623599
+      minDuration: 1.5623599
     - name: Footsteps
       guid: 59dad1701c804b49afdaf80a7e7f50ba
       id: 2385628198
@@ -286,8 +286,8 @@ MonoBehaviour:
         guid: 59dad1701c804b49afdaf80a7e7f50ba
       Path: Events\Default Work Unit\Footsteps
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 1.4791408
+      minDuration: 0.6066607
     - name: GameStart
       guid: a0e837fa37503044b77496efb4a62c3d
       id: 4058101365
@@ -303,8 +303,8 @@ MonoBehaviour:
         guid: a0e837fa37503044b77496efb4a62c3d
       Path: Events\Default Work Unit\GameStart
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 3.661918
+      minDuration: 3.661918
     - name: Jump
       guid: e350a3ef2482ca42bb23416435541c53
       id: 3833651337
@@ -320,8 +320,8 @@ MonoBehaviour:
         guid: e350a3ef2482ca42bb23416435541c53
       Path: Events\Default Work Unit\Jump
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0.3458128
+      minDuration: 0.3458128
     - name: KeyCollect
       guid: 50b19bbd6af94e40b023eb96b5f8fc61
       id: 1664127144
@@ -337,8 +337,8 @@ MonoBehaviour:
         guid: 50b19bbd6af94e40b023eb96b5f8fc61
       Path: Events\Default Work Unit\KeyCollect
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0.51893544
+      minDuration: 0.51893544
     - name: OutOfStamina
       guid: b67b2d40da67e7439c1126e3c31a3a13
       id: 785636115
@@ -354,8 +354,8 @@ MonoBehaviour:
         guid: b67b2d40da67e7439c1126e3c31a3a13
       Path: Events\Default Work Unit\OutOfStamina
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 12.088208
+      minDuration: 12.088208
     - name: Play_Breathing
       guid: 7cd0a7253299dd4ead214fdf44522c88
       id: 4093367312
@@ -371,8 +371,8 @@ MonoBehaviour:
         guid: 7cd0a7253299dd4ead214fdf44522c88
       Path: Events\Default Work Unit\Play_Breathing
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Stop_Breathing
       guid: 835d9618ca78804995ccc1957efda538
       id: 6482866
@@ -388,8 +388,8 @@ MonoBehaviour:
         guid: 835d9618ca78804995ccc1957efda538
       Path: Events\Default Work Unit\Stop_Breathing
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Stop_TitleMusic_Fadeout
       guid: 472cb6e76960544eb76489bbf3fbaca0
       id: 252319044
@@ -405,8 +405,8 @@ MonoBehaviour:
         guid: 472cb6e76960544eb76489bbf3fbaca0
       Path: Events\Default Work Unit\Stop_TitleMusic_Fadeout
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: TitelMusic
       guid: 5f85200d324bb547a935e99b1838a095
       id: 4203696116
@@ -422,8 +422,8 @@ MonoBehaviour:
         guid: 5f85200d324bb547a935e99b1838a095
       Path: Events\Default Work Unit\TitelMusic
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 175.61908
+      minDuration: 175.61908
     - name: UnlockDoor
       guid: 49aa1cde49ecbf4aa5a873155f454cd9
       id: 1184125749
@@ -439,8 +439,8 @@ MonoBehaviour:
         guid: 49aa1cde49ecbf4aa5a873155f454cd9
       Path: Events\Default Work Unit\UnlockDoor
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 2.5843763
+      minDuration: 2.5843763
     - name: WindChurch
       guid: d4278ddcb416164b8c80a3f3e98128b1
       id: 20988954
@@ -455,9 +455,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: d4278ddcb416164b8c80a3f3e98128b1
       Path: Events\Default Work Unit\WindChurch
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxAttenuation: 75
+      maxDuration: 0
+      minDuration: 0
     - name: ZombieSound
       guid: 02a7d9238b1f8c4b9dce75cefa7cd75a
       id: 2064502588
@@ -472,9 +472,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: 02a7d9238b1f8c4b9dce75cefa7cd75a
       Path: Events\Default Work Unit\ZombieSound
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxAttenuation: 50
+      maxDuration: 0
+      minDuration: 0
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
