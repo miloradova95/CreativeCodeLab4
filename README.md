@@ -26,4 +26,9 @@ The latest playable build is available here:
 
 👉 [Download on GitHub Releases](https://github.com/miloradova95/CreativeCodeLab4/releases/tag/v0.1)
 
+- Download the .zip folder
+- unzip it
+- open it and open the WhenTheBellTolls.exe
+- have fun
+
 ![Game Title Preview](Assets/Documentation/PrayinBannerGIF.gif)
