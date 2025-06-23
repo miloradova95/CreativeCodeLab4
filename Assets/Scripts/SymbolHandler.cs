@@ -36,16 +36,37 @@ public class SymbolHandler : MonoBehaviour
     {
         if (symbolDisplayTarget == null) return;
 
+        currentSymbol = symbol;
+
+        // Apply 3D symbol
         if (symbolObject != null)
             Destroy(symbolObject);
 
         symbolObject = new GameObject("Symbol");
-        symbolObject.transform.SetParent(symbolDisplayTarget, false); // Keep it local to target
+        symbolObject.transform.SetParent(symbolDisplayTarget, false);
 
         MeshFilter meshFilter = symbolObject.AddComponent<MeshFilter>();
         meshFilter.mesh = symbol.symbolMesh;
 
         MeshRenderer meshRenderer = symbolObject.AddComponent<MeshRenderer>();
         meshRenderer.material = symbol.symbolMaterial;
+
+        // Apply inventory data to CollectibleItem if present
+        CollectibleItem collectible = GetComponent<CollectibleItem>();
+        if (collectible != null)
+        {
+            Debug.Log($"Applying symbol {symbol.name} to CollectibleItem. Sprite: {(symbol.inventoryIcon != null ? symbol.inventoryIcon.name : "NULL")}");
+            collectible.SetInventoryDisplay(symbol.inventoryIcon, symbol.inventoryColor, symbol.name);
+        }
+        
+        // Also apply to base Item component for other uses
+        Item item = GetComponent<Item>();
+        if (item != null)
+        {
+            Debug.Log($"Applying symbol {symbol.name} to Item. Sprite: {(symbol.inventoryIcon != null ? symbol.inventoryIcon.name : "NULL")}");
+            item.itemIcon = symbol.inventoryIcon;
+            item.itemColor = symbol.inventoryColor;
+            item.itemName = symbol.name;
+        }
     }
 }

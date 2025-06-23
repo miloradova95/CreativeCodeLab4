@@ -1,288 +1,334 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class InventoryItem
-{
-    public string itemName;
-    public string itemDescription;
-    public Sprite itemIcon;
-    public GameObject itemObject; // Reference to the actual collected object
-    public Vector3 originalScale;
-    public Vector3 originalPosition;
-    public Quaternion originalRotation;
-    public Transform originalParent;
-}
-
 public class InventorySystem : MonoBehaviour
 {
-    [Header("Inventory Settings")]
-    public int maxInventorySize = 20;
-    
-    [Header("Item Display")]
-    public Transform itemHoldPosition; // Position in front of camera where items are held
-    public float itemDisplayDistance = 1.5f;
-    public float itemDisplayScale = 0.5f;
-    public Vector3 holdOffset = new Vector3(0.3f, -0.3f, 0f);
-    
     [Header("References")]
     public Camera playerCamera;
     
-    // Private variables
-    public List<InventoryItem> inventory = new List<InventoryItem>();
-    private int currentItemIndex = -1;
+    [Header("UI References")]
+    public GameObject inventoryPanel;
+    public InventorySlot[] inventorySlots = new InventorySlot[5]; // Array for 5 slots
+
+    [Header("Item Holding")]
+    public Transform itemHoldPosition; // Where the held item appears (assign in inspector)
+    public float itemHoldDistance = 3f; // Distance from camera
+    public Vector3 itemHoldOffset = new Vector3(0.5f, -0.3f, 0f); // Offset for positioning
+
+    [Header("Key Prefab")]
+
+    // Store both the item and its symbol data
+    private List<CollectibleItem> items = new List<CollectibleItem>();
+    private List<SymbolData> itemSymbols = new List<SymbolData>(); // Store symbol data separately
     
+    private int maxSlots = 5;
+    private int currentSelectedIndex = -1; // -1 means no selection
+    private GameObject heldItemDisplay; // The 3D representation of the held item
+    private bool isInitialized = false;
+
     void Start()
     {
-        if (playerCamera == null)
-            playerCamera = Camera.main;
-        
-        if (itemHoldPosition == null)
-        {
-            // Create a default hold position
-            GameObject holdPos = new GameObject("ItemHoldPosition");
-            holdPos.transform.SetParent(playerCamera.transform);
-            holdPos.transform.localPosition = holdOffset + Vector3.forward * itemDisplayDistance;
-            itemHoldPosition = holdPos.transform;
-        }
+        // Initialize all slots as empty
+        UpdateInventoryUI();
     }
-    
+
     void Update()
     {
-        HandleInventoryScrolling();
+        // Ensure hold position is created before handling input
+        if (!isInitialized)
+        {
+            InitializeHoldPosition();
+        }
+        
+        HandleScrollInput();
     }
-    
-    void HandleInventoryScrolling()
+
+    void InitializeHoldPosition()
     {
-        if (inventory.Count == 0) return;
+        // Create item hold position if not assigned and camera is available
+        if (itemHoldPosition == null && playerCamera != null)
+        {
+            GameObject holdPos = new GameObject("ItemHoldPosition");
+            holdPos.transform.SetParent(playerCamera.transform);
+            
+            // Use itemHoldDistance to position the hold point
+            Vector3 forwardOffset = playerCamera.transform.forward * (itemHoldDistance * 0.01f); // Convert to reasonable scale
+            holdPos.transform.localPosition = itemHoldOffset + forwardOffset;
+            
+            itemHoldPosition = holdPos.transform;
+            Debug.Log("Created ItemHoldPosition at: " + itemHoldPosition.position);
+        }
+        
+        isInitialized = (itemHoldPosition != null);
+    }
+
+    void HandleScrollInput()
+    {
+        if (!isInitialized) return; // Don't handle input until initialized
         
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         
-        if (Mathf.Abs(scroll) > 0.1f) // Add deadzone to prevent accidental scrolling
+        if (scroll > 0f) // Scroll up
         {
-            if (scroll > 0f) // Scroll up
-            {
-                ScrollToNextItem();
-            }
-            else if (scroll < 0f) // Scroll down
-            {
-                ScrollToPreviousItem();
-            }
+            SelectNextItem();
+        }
+        else if (scroll < 0f) // Scroll down
+        {
+            SelectPreviousItem();
         }
     }
-    
-    public bool AddItem(CollectibleItem collectibleComponent)
+
+    void SelectNextItem()
     {
-        if (inventory.Count >= maxInventorySize)
+        if (items.Count == 0) return;
+
+        currentSelectedIndex++;
+        if (currentSelectedIndex >= items.Count)
         {
-            Debug.Log("Inventory is full!");
-            return false;
+            currentSelectedIndex = -1; // Go back to no selection
         }
         
-        GameObject itemObject = collectibleComponent.gameObject;
-        
-        // Store original transform data
-        InventoryItem item = new InventoryItem
-        {
-            itemName = collectibleComponent.itemName,
-            itemDescription = collectibleComponent.itemDescription,
-            itemIcon = collectibleComponent.itemIcon,
-            itemObject = itemObject,
-            originalScale = itemObject.transform.localScale,
-            originalPosition = itemObject.transform.position,
-            originalRotation = itemObject.transform.rotation,
-            originalParent = itemObject.transform.parent
-        };
-        
-        inventory.Add(item);
-        
-        // Prepare the item for inventory (disable physics, etc.)
-        PrepareItemForInventory(itemObject);
-        
-        // Hide the item initially
-        itemObject.SetActive(false);
-        
-        // If this is the first item, display it
-        if (inventory.Count == 1)
-        {
-            currentItemIndex = 0;
-            DisplayCurrentItem();
-        }
-        
-        Debug.Log($"Added {item.itemName} to inventory. Total items: {inventory.Count}");
-        return true;
+        UpdateSelection();
     }
-    
-    void PrepareItemForInventory(GameObject itemObject)
+
+    void SelectPreviousItem()
     {
-        // Disable physics
-        Rigidbody rb = itemObject.GetComponent<Rigidbody>();
-        if (rb != null)
+        if (items.Count == 0) return;
+
+        currentSelectedIndex--;
+        if (currentSelectedIndex < -1)
         {
-            rb.isKinematic = true;
-            rb.useGravity = false;
+            currentSelectedIndex = items.Count - 1; // Go to last item
         }
         
-        // Disable colliders (except trigger colliders for interaction)
-        Collider[] colliders = itemObject.GetComponents<Collider>();
+        UpdateSelection();
+    }
+
+    void UpdateSelection()
+    {
+        // Update UI highlighting
+        UpdateInventoryUI();
+        
+        // Update held item display
+        UpdateHeldItemDisplay();
+    }
+
+    void UpdateHeldItemDisplay()
+    {
+        Debug.Log($"UpdateHeldItemDisplay called. CurrentSelectedIndex: {currentSelectedIndex}, Items count: {items.Count}");
+        
+        // Destroy current held item display
+        if (heldItemDisplay != null)
+        {
+            Destroy(heldItemDisplay);
+            heldItemDisplay = null;
+            Debug.Log("Destroyed previous held item display");
+        }
+
+        // Create new held item display if something is selected
+        if (currentSelectedIndex >= 0 && currentSelectedIndex < items.Count && itemHoldPosition != null)
+        {
+            SymbolData symbolData = itemSymbols[currentSelectedIndex];
+            CollectibleItem selectedItem = items[currentSelectedIndex];
+            Debug.Log($"Creating held item display for: {selectedItem.itemName} with symbol: {(symbolData != null ? symbolData.name : "None")}");
+            CreateHeldItemDisplay(selectedItem, symbolData);
+        }
+        else
+        {
+            Debug.Log("No item selected or invalid index - not creating held display");
+        }
+    }
+
+    void CreateHeldItemDisplay(CollectibleItem item, SymbolData symbolData)
+    {
+        if (itemHoldPosition == null)
+        {
+            Debug.LogWarning("Cannot create held item display - missing itemHoldPosition or keyPrefab");
+            return;
+        }
+
+        // Instantiate the held item display
+        heldItemDisplay = Instantiate(item.gameObject, itemHoldPosition.position, itemHoldPosition.rotation, itemHoldPosition);
+        heldItemDisplay.SetActive(true);
+
+        // Scale it down for held display
+        heldItemDisplay.transform.localScale = Vector3.one * 0.3f;
+        
+        // Remove any colliders since this is just for display
+        Collider[] colliders = heldItemDisplay.GetComponentsInChildren<Collider>();
         foreach (Collider col in colliders)
         {
-            if (!col.isTrigger)
-                col.enabled = false;
+            Destroy(col);
         }
         
-        // Remove the CollectibleItem component since it's now collected
-        CollectibleItem collectible = itemObject.GetComponent<CollectibleItem>();
+        // Remove the CollectibleItem script since this is just for display
+        CollectibleItem collectible = heldItemDisplay.GetComponent<CollectibleItem>();
         if (collectible != null)
+        {
             Destroy(collectible);
-    }
-    
-    public void ScrollToNextItem()
-    {
-        if (inventory.Count <= 1) return; // No point scrolling with 0 or 1 items
-        
-        // Hide current item
-        HideCurrentItem();
-        
-        currentItemIndex = (currentItemIndex + 1) % inventory.Count;
-        DisplayCurrentItem();
-        
-        Debug.Log($"Scrolled to: {inventory[currentItemIndex].itemName} ({currentItemIndex + 1}/{inventory.Count})");
-    }
-    
-    public void ScrollToPreviousItem()
-    {
-        if (inventory.Count <= 1) return; // No point scrolling with 0 or 1 items
-        
-        // Hide current item
-        HideCurrentItem();
-        
-        currentItemIndex--;
-        if (currentItemIndex < 0)
-            currentItemIndex = inventory.Count - 1;
-        
-        DisplayCurrentItem();
-        
-        Debug.Log($"Scrolled to: {inventory[currentItemIndex].itemName} ({currentItemIndex + 1}/{inventory.Count})");
-    }
-    
-    void HideCurrentItem()
-    {
-        if (currentItemIndex >= 0 && currentItemIndex < inventory.Count)
-        {
-            InventoryItem currentItem = inventory[currentItemIndex];
-            if (currentItem.itemObject != null)
-            {
-                currentItem.itemObject.SetActive(false);
-            }
         }
-    }
-    
-    void DisplayCurrentItem()
-    {
-        if (currentItemIndex >= 0 && currentItemIndex < inventory.Count)
+
+        // Get the SymbolHandler and apply the symbol
+        SymbolHandler symbolHandler = heldItemDisplay.GetComponent<SymbolHandler>();
+        if (symbolHandler != null && symbolData != null)
         {
-            InventoryItem currentItem = inventory[currentItemIndex];
-            
-            if (currentItem.itemObject != null)
-            {
-                // Activate the item
-                currentItem.itemObject.SetActive(true);
-                
-                // Position it at the hold position
-                currentItem.itemObject.transform.SetParent(itemHoldPosition);
-                currentItem.itemObject.transform.localPosition = Vector3.zero;
-                currentItem.itemObject.transform.localRotation = Quaternion.identity;
-                currentItem.itemObject.transform.localScale = currentItem.originalScale * itemDisplayScale;
-                
-                // Add rotation component if it doesn't exist
-                ItemDisplayRotator rotator = currentItem.itemObject.GetComponent<ItemDisplayRotator>();
-                if (rotator == null)
-                {
-                    rotator = currentItem.itemObject.AddComponent<ItemDisplayRotator>();
-                }
-                
-                Debug.Log($"Now displaying: {currentItem.itemName}");
-            }
+            symbolHandler.ApplySymbol(symbolData);
+            Debug.Log($"Applied symbol {symbolData.name} to held item display");
         }
-    }
-    
-    public void DropCurrentItem()
-    {
-        if (currentItemIndex >= 0 && currentItemIndex < inventory.Count)
+        else
         {
-            InventoryItem itemToDrop = inventory[currentItemIndex];
-            
-            // Restore original state
-            RestoreItemToWorld(itemToDrop);
-            
-            // Remove from inventory
-            inventory.RemoveAt(currentItemIndex);
-            
-            // Adjust current index
-            if (currentItemIndex >= inventory.Count)
+            Debug.LogWarning("SymbolHandler not found or symbolData is null");
+        }
+
+        // Add animation to make it look nice
+        HeldItemAnimator animator = heldItemDisplay.GetComponent<HeldItemAnimator>();
+        if (animator == null)
+        {
+            animator = heldItemDisplay.AddComponent<HeldItemAnimator>();
+        }
+        
+        Debug.Log($"Created held item display for: {item.itemName}");
+    }
+
+    public void AddItem(CollectibleItem item)
+    {
+        if (item != null && items.Count < maxSlots)
+        {
+            // Get the symbol data BEFORE deactivating the item
+            SymbolData symbolData = null;
+            SymbolHandler symbolHandler = item.GetComponent<SymbolHandler>();
+            if (symbolHandler != null)
             {
-                currentItemIndex = inventory.Count - 1;
-            }
-            
-            // Display new current item or hide if no items left
-            if (inventory.Count == 0)
-            {
-                currentItemIndex = -1;
+                symbolData = symbolHandler.currentSymbol;
+                Debug.Log($"Found SymbolHandler with symbol: {(symbolData != null ? symbolData.name : "NULL")}");
             }
             else
             {
-                DisplayCurrentItem();
+                Debug.LogWarning($"No SymbolHandler found on item: {item.itemName}");
             }
+
+            // Check if this will be the first item BEFORE adding it
+            bool isFirstItem = (items.Count == 0 && currentSelectedIndex == -1);
+
+            // Add item and its symbol data to our lists
+            items.Add(item);
+            itemSymbols.Add(symbolData);
+            
+            item.gameObject.SetActive(false); // Hide the item in the scene
+            
+            // If this is the first item and nothing is selected, auto-select it
+            if (isFirstItem && isInitialized) // Only auto-select if initialized
+            {
+                Debug.Log("Auto-selecting first item");
+                currentSelectedIndex = 0;
+                UpdateSelection();
+            }
+            else
+            {
+                UpdateInventoryUI();
+            }
+            
+            Debug.Log($"Added item: {item.itemName} with symbol: {(symbolData != null ? symbolData.name : "None")}");
         }
     }
-    
-    void RestoreItemToWorld(InventoryItem item)
+
+    public void DropCurrentItem()
     {
-        if (item.itemObject != null)
+        if (items.Count > 0)
         {
-            // Restore transform
-            item.itemObject.transform.SetParent(item.originalParent);
-            item.itemObject.transform.position = item.originalPosition + Vector3.up * 0.5f; // Drop slightly above original position
-            item.itemObject.transform.rotation = item.originalRotation;
-            item.itemObject.transform.localScale = item.originalScale;
-            
-            // Re-enable physics
-            Rigidbody rb = item.itemObject.GetComponent<Rigidbody>();
-            if (rb != null)
+            // If we're dropping the currently selected item, adjust selection
+            int dropIndex = items.Count - 1; // Last item is dropped
+            if (currentSelectedIndex == dropIndex)
             {
-                rb.isKinematic = false;
-                rb.useGravity = true;
+                currentSelectedIndex = -1; // Deselect
+            }
+            else if (currentSelectedIndex > dropIndex)
+            {
+                currentSelectedIndex--; // Adjust index
+            }
+
+            Item currentItem = items[dropIndex];
+            items.RemoveAt(dropIndex);
+            itemSymbols.RemoveAt(dropIndex); // Also remove the symbol data
+            
+            // Position the dropped item in front of player
+            if (playerCamera != null)
+            {
+                Vector3 dropPosition = playerCamera.transform.position + playerCamera.transform.forward * 2f;
+                dropPosition.y = playerCamera.transform.position.y - 0.5f;
+                currentItem.transform.position = dropPosition;
             }
             
-            // Re-enable colliders
-            Collider[] colliders = item.itemObject.GetComponents<Collider>();
-            foreach (Collider col in colliders)
-            {
-                col.enabled = true;
-            }
-            
-            // Remove display rotator
-            ItemDisplayRotator rotator = item.itemObject.GetComponent<ItemDisplayRotator>();
-            if (rotator != null)
-                Destroy(rotator);
+            currentItem.gameObject.SetActive(true);
+            UpdateSelection(); // This will update both UI and held item display
         }
     }
-    
-    public InventoryItem GetCurrentItem()
+
+    private void UpdateInventoryUI()
     {
-        if (currentItemIndex >= 0 && currentItemIndex < inventory.Count)
-            return inventory[currentItemIndex];
+        for (int i = 0; i < inventorySlots.Length; i++)
+        {
+            if (inventorySlots[i] != null)
+            {
+                if (i < items.Count)
+                {
+                    inventorySlots[i].SetItem(items[i]);
+                    // Highlight if this is the selected item
+                    inventorySlots[i].SetHighlighted(i == currentSelectedIndex);
+                }
+                else
+                {
+                    inventorySlots[i].SetEmpty();
+                    inventorySlots[i].SetHighlighted(false);
+                }
+            }
+        }
+    }
+
+    public List<CollectibleItem> GetAllItems()
+    {
+        return items;
+    }
+    
+    public bool IsFull()
+    {
+        return items.Count >= maxSlots;
+    }
+
+    public CollectibleItem GetCurrentlyHeldItem()
+    {
+        if (currentSelectedIndex >= 0 && currentSelectedIndex < items.Count)
+        {
+            return items[currentSelectedIndex];
+        }
         return null;
     }
-    
-    public List<InventoryItem> GetAllItems()
+
+    public SymbolData GetCurrentlyHeldSymbol()
     {
-        return new List<InventoryItem>(inventory);
+        if (currentSelectedIndex >= 0 && currentSelectedIndex < itemSymbols.Count)
+        {
+            return itemSymbols[currentSelectedIndex];
+        }
+        return null;
     }
-    
-    public int GetInventoryCount()
+
+    public int GetCurrentSelectedIndex()
     {
-        return inventory.Count;
+        return currentSelectedIndex;
+    }
+
+    public void SelectItemByIndex(int index)
+    {
+        if (index >= 0 && index < items.Count)
+        {
+            currentSelectedIndex = index;
+        }
+        else if (index >= items.Count || index < 0)
+        {
+            currentSelectedIndex = -1; // Deselect if invalid index
+        }
+        
+        UpdateSelection();
     }
 }

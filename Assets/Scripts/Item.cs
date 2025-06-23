@@ -5,7 +5,8 @@ public abstract class Item : MonoBehaviour
     [Header("Item Settings")]
     public string itemName = "Item";
     public string itemDescription = "A generic item";
-    public Sprite itemIcon;
+    public Sprite itemIcon; // This will hold the inventory icon
+    public Color itemColor = Color.white; // Fallback color if no icon
 
     [Header("Interaction Settings")]
     public float interactionRange = 3f;

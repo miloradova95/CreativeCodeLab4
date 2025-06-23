@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" SchemaVersion="123">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{348A8F34-E7C4-4624-99A3-9657BC40C4F9}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Footsteps" ID="{70D1DA59-801C-494B-AFDA-F80A7E7F50BA}">
+					<ChildrenList>
+						<Action Name="" ID="{CC4C76BF-E1FE-457B-A717-1B127FC46F2A}" ShortID="642998944">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Footsteps" ID="{38A42BA9-71F5-4FB9-82D5-93F0DF8F10B8}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="KeyCollect" ID="{BD9BB150-F96A-404E-B023-EB96B5F8FC61}">
+					<ChildrenList>
+						<Action Name="" ID="{85339332-7DAC-4F3F-B596-698717324994}" ShortID="210427977">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="CollectKeySound" ID="{F2B29E16-3EE8-43D5-8C46-281E58AA6AD3}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="UnlockDoor" ID="{DE1CAA49-EC49-4ABF-A5A8-73155F454CD9}">
+					<ChildrenList>
+						<Action Name="" ID="{4E854C05-1680-42EA-BF37-5118901FCA59}" ShortID="757551708">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UnlockAndOpen" ID="{F8E26C36-704F-4911-8834-F8F09BA1782B}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="CantUnlockDoor" ID="{DCC87047-1619-4893-B82E-26BF12EC7F4F}">
+					<ChildrenList>
+						<Action Name="" ID="{2A335ED8-285C-4C94-8690-3CFB557A5082}" ShortID="864679652">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UnlockandClosed" ID="{22269E1C-5F51-4236-B884-DAE20A3CCBBF}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="OutOfStamina" ID="{402D7BB6-67DA-43E7-9C11-26E3C31A3A13}">
+					<ChildrenList>
+						<Action Name="" ID="{88160E64-EA0D-4B37-9406-0F2F9D669A96}" ShortID="546708230">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="OutOfStamina" ID="{C8F21665-EE51-4318-9D5F-56907032FFDA}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Jump" ID="{EFA350E3-8224-42CA-BB23-416435541C53}">
+					<ChildrenList>
+						<Action Name="" ID="{8F18CD05-782A-4099-AC1A-77C8A75D5F67}" ShortID="12890803">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="JumpSound" ID="{DB38FFE6-8EAC-47EA-BEA8-D6F102128DC7}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Ambient" ID="{6BDF00D4-FC0F-428B-8AE3-5B8A399F17C5}">
+					<ChildrenList>
+						<Action Name="" ID="{B26DD5FD-82D7-4E62-8601-46E39652D290}" ShortID="161791953">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Ambient" ID="{0A82D619-99F8-42A0-B1D4-E919EE8E75F9}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="GameStart" ID="{FA37E8A0-5037-4430-B774-96EFB4A62C3D}">
+					<ChildrenList>
+						<Action Name="" ID="{FE787697-E5CC-4C2F-ACAC-FB7ED143488A}" ShortID="1016590086">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="GameStartMan" ID="{0C58D0DD-4290-45A4-ACAE-59C9BAC97F35}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Breathing" ID="{25A7D07C-9932-4EDD-AD21-4FDF44522C88}">
+					<ChildrenList>
+						<Action Name="" ID="{7D51EFBB-C20D-4446-BE87-3A6AD86B6AF3}" ShortID="983581048">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BreathingContainer" ID="{150198E8-CB3D-476C-8BBB-D9BB3A0F5FCA}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_Breathing" ID="{18965D83-78CA-4980-95CC-C1957EFDA538}">
+					<ChildrenList>
+						<Action Name="" ID="{EC4CE47F-F1FB-4CE8-95D7-95E4F1D6F7E3}" ShortID="734614461">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BreathingContainer" ID="{150198E8-CB3D-476C-8BBB-D9BB3A0F5FCA}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="WindChurch" ID="{DC8D27D4-16B4-4B16-8C80-A3F3E98128B1}">
+					<ChildrenList>
+						<Action Name="" ID="{C6029FDC-89D8-4EAE-BD34-F50003036B45}" ShortID="758251835">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="WindSound" ID="{0768CA41-0332-4D91-8A9B-ED6EFF0E1B7A}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="BeachWaves" ID="{3E76CEF5-4EA9-43E8-A94D-EB692B12E679}">
+					<ChildrenList>
+						<Action Name="" ID="{6882216D-077D-471C-9E42-97AFC38C888B}" ShortID="559506602">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="WavesSound" ID="{9857E1B0-A60E-491C-B646-32F0C33DC34D}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="ZombieSound" ID="{23D9A702-1F8B-4B8C-9DCE-75CEFA7CD75A}">
+					<ChildrenList>
+						<Action Name="" ID="{886D91FC-26F5-4098-81A7-9093A451FE31}" ShortID="640222616">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ZombieSounds" ID="{6EE9C3F8-9842-430B-8AD4-CC2EE3D4CD2F}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Dig" ID="{75CB33EA-7386-42D5-BC81-5A85592DC39A}">
+					<ChildrenList>
+						<Action Name="" ID="{AE93AC37-3ADA-4D0F-BC6D-4DE6EE6061E7}" ShortID="752967439">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="DIG" ID="{5F77F0F5-593F-408C-99AE-9EE472E04D0D}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Death" ID="{8FB95299-AD19-4CDB-9CE6-E27E0AAB43B4}">
+					<ChildrenList>
+						<Action Name="" ID="{8F371AED-9422-4894-9F34-1E3F8E324C9F}" ShortID="255952721">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="DeathReverb" ID="{92CBFDBA-9F49-46BF-81EE-D1423BBC1935}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="DamageSound" ID="{8BE25726-E186-4753-8611-EAF265E95836}">
+					<ChildrenList>
+						<Action Name="" ID="{A17D6C7D-4525-4946-9DB7-8A06343C5709}" ShortID="178835670">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="grunt" ID="{630AA27E-AC01-4553-AB91-3D1FE9D45E05}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="ChurchBells" ID="{6AD11C19-B48A-4C22-8ADD-BB1924E58316}">
+					<ChildrenList>
+						<Action Name="" ID="{B5887D86-74CD-465C-B7B5-54F737A5E998}" ShortID="913772000">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ChurchBells" ID="{3C976E71-F7DE-4520-A320-BA16BCDEE7AA}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="TitelMusic" ID="{0D20855F-4B32-47B5-A935-E99B1838A095}">
+					<ChildrenList>
+						<Action Name="" ID="{BDF5BB34-4C80-490D-B710-A0123879D222}" ShortID="691711577">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Feigur - Désolation" ID="{641AE56B-F628-4E80-8882-104B78FFFA45}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_TitleMusic_Fadeout" ID="{E7B62C47-6069-4E54-B764-89BBF3FBACA0}">
+					<ChildrenList>
+						<Action Name="" ID="{3C59355D-A830-4B59-8C90-A71B9645034A}" ShortID="1023924827">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="3"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Feigur - Désolation" ID="{641AE56B-F628-4E80-8882-104B78FFFA45}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Cry" ID="{EF7B267E-A4C7-473D-9C02-FB146A95BBC0}">
+					<ChildrenList>
+						<Action Name="" ID="{24B433B1-CE0C-4436-B92B-ED50C3A05A6B}" ShortID="677353617">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="WomanCry" ID="{3E93B313-36F6-441C-895C-20E8D57DE4C9}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

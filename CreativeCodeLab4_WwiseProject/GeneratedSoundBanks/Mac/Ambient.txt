@@ -1,0 +1,13 @@
+Event	ID	Name			Wwise Object Path	Notes
+	77978275	Ambient			\Default Work Unit\Ambient	
+	4058101365	GameStart			\Default Work Unit\GameStart	
+
+Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
+	184152294	Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\Ambient\AmbientBeach\Silence\Silence	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	131875592	SeagullSoundReverb	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\98\{98F14526-D5AB-866D-79C6-3FEA798C34C8}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambient\AmbientBeach\AmbientBeachSounds\SeagullSoundReverb		1499496
+	167594540	GameStartMan	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\B2\{B2BE9B2F-C0AF-F831-1FCF-12BDF0A7B90B}.wem		\Actor-Mixer Hierarchy\Default Work Unit\GameStartMan		559248
+	510794557	CrowSoundReverb	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\6D\{6DE59A6E-B739-2599-221C-46AEE191E8B1}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambient\AmbientBeach\AmbientBeachSounds\CrowSoundReverb		1125952
+	562520294	AmbientSoundscapeFull	C:\Users\amilo\Documents\FH St. Pölten\4. Semester\ProjectWwiseNewIntegration\CreativeCodeLab4\CreativeCodeLab4_WwiseProject\.cache\6D\{6DBBC50F-84AD-FDB7-7D09-05928AB954BD}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambient\AmbientSoundscapeFull		73887216
+

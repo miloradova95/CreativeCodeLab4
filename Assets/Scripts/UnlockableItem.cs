@@ -1,10 +1,29 @@
+using System.Collections;
 using UnityEngine;
 
 public class UnlockableItem : Item
 {
     [Header("Unlock Settings")]
-    public string requiredItemName = "Key";
+    public string requiredItemName;
     public bool isUnlocked = false;
+    public bool isDoor = true; // Mark this as a door for win condition tracking
+
+    private CallEvent callEvent;
+
+    private void Start()
+    {
+        base.Start();
+        callEvent = GetComponent<CallEvent>();
+        if (callEvent == null)
+        {
+            callEvent = FindObjectOfType<CallEvent>();
+        }
+
+        if (callEvent == null)
+        {
+            Debug.LogWarning("CallEvent component not found!");
+        }
+    }
 
     public override void Interact()
     {
@@ -17,23 +36,48 @@ public class UnlockableItem : Item
         InventorySystem inventory = FindObjectOfType<InventorySystem>();
         if (inventory != null)
         {
-            foreach (var item in inventory.GetAllItems())
+            if (inventory.GetCurrentlyHeldSymbol().name == requiredItemName)
             {
-                if (item.itemName == requiredItemName)
-                {
-                    Unlock();
-                    return;
-                }
+                // Delay unlock and sound
+                if (callEvent != null)
+                    StartCoroutine(DelayedUnlock());
+                return;
+            }
+            else
+            {
+                Debug.Log($"name: {inventory.GetCurrentlyHeldSymbol().name}");
+                Debug.Log($"Currently held item does not match required item: {requiredItemName}");
+
+                if (callEvent != null)
+                    callEvent.Callevent("CantUnlockDoor");
             }
         }
+        else
+        {
+            Debug.Log($"Missing required item: {requiredItemName}");
+            if (callEvent != null)
+                callEvent.Callevent("CantUnlockDoor");
+        }
+    }
 
-        Debug.Log($"Missing required item: {requiredItemName}");
+    private IEnumerator DelayedUnlock()
+    {
+        callEvent.Callevent("UnlockDoor"); // Play unlock sound
+        yield return new WaitForSeconds(0.5f);
+        Unlock();
     }
 
     private void Unlock()
     {
         isUnlocked = true;
         Debug.Log("Item unlocked!");
+
+        // Notify win screen manager if this is a door
+        if (isDoor && WinScreenManager.Instance != null)
+        {
+            WinScreenManager.Instance.RegisterDoorUnlock();
+        }
+
         gameObject.SetActive(false);
     }
 }

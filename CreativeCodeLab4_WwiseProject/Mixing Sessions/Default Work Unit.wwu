@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{C8ECC80D-E9D6-4BFF-A19B-89A701391981}" SchemaVersion="123">
+	<MixingSessions>
+		<WorkUnit Name="Default Work Unit" ID="{C8ECC80D-E9D6-4BFF-A19B-89A701391981}" PersistMode="Standalone">
+			<ChildrenList>
+				<MixingSession Name="MusicMixingDesk" ID="{2C769EEE-ABD7-42AA-A5EC-17D6FAEA9B14}"/>
+				<MixingSession Name="AmbientMixingDesk" ID="{7BAC8254-1A1D-41A6-B925-E8D4038A05A7}">
+					<ObjectList>
+						<ObjectRef Name="AmbientBeach" ID="{BE9E616F-53C1-47C3-951E-97EB5F0AF6EA}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+						<ObjectRef Name="CrowSoundReverb" ID="{EE229415-C161-4148-AD0B-7DF6A56EE37F}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+						<ObjectRef Name="SeagullSoundReverb" ID="{7820D985-BDB8-4BFE-BAC5-37A678DFFD2A}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+						<ObjectRef Name="AmbientSoundscapeFull" ID="{A1E14673-834D-4B12-B4D1-B485C4926F0A}" WorkUnitID="{DDC3C706-84F7-4572-835A-96C9F9DB370E}"/>
+						<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F97C2A95-B1AA-4265-B202-3828113802BF}"/>
+					</ObjectList>
+				</MixingSession>
+			</ChildrenList>
+		</WorkUnit>
+	</MixingSessions>
+</WwiseDocument>

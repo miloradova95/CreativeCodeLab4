@@ -14,14 +14,50 @@ PluginImporter:
   - first:
       Any: 
     second:
+<<<<<<< HEAD
       enabled: 1
+=======
+      enabled: 0
+>>>>>>> superFinal
       settings: {}
   - first:
       Editor: Editor
     second:
+<<<<<<< HEAD
       enabled: 0
       settings:
         DefaultValueInitialized: true
+=======
+      enabled: 1
+      settings:
+        CPU: x86_64
+        DefaultValueInitialized: true
+        OS: Windows
+  - first:
+      Standalone: Linux64
+    second:
+      enabled: 0
+      settings:
+        CPU: None
+  - first:
+      Standalone: OSXUniversal
+    second:
+      enabled: 0
+      settings:
+        CPU: None
+  - first:
+      Standalone: Win
+    second:
+      enabled: 0
+      settings:
+        CPU: None
+  - first:
+      Standalone: Win64
+    second:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+>>>>>>> superFinal
   userData: 
   assetBundleName: 
   assetBundleVariant: 
