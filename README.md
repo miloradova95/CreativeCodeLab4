@@ -16,8 +16,12 @@ Our motivation was to capture the atmosphere and emotional intensity of that era
 - 🔦 Minimal UI and diegetic design choices for immersion
 
 
+![Game Title Preview](Assets/Documentation/ChurchDemoGIF.gif)
+
 ## 🔗 Download
 
 The latest playable build is available here:
 
 👉 [Download on GitHub Releases](https://github.com/miloradova95/CreativeCodeLab4/releases/tag/v0.1)
+
+![Game Title Preview](Assets/Documentation/PrayinBannerGIF.gif)
