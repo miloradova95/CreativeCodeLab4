@@ -14,3 +14,10 @@ Our motivation was to capture the atmosphere and emotional intensity of that era
 - 🌀 Retro PS1 visual style with custom dithering shader
 - 🌫️ Dense atmosphere, ambient soundscapes, and analog horror tone
 - 🔦 Minimal UI and diegetic design choices for immersion
+
+
+## 🔗 Download
+
+The latest playable build is available here:
+
+👉 [Download on GitHub Releases](https://github.com/miloradova95/CreativeCodeLab4/releases/tag/v0.1)
