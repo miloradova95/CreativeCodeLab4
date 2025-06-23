@@ -7,6 +7,8 @@ When the Bell Tolls is an open-world horror puzzle game developed in Unity, insp
 Our motivation was to capture the atmosphere and emotional intensity of that era, while experimenting with modern tools to recreate a retro visual identity. Using a custom dither shader and low-poly models, we’ve crafted a world that feels authentically eerie and nostalgic. The focus is on immersive environmental storytelling, exploration, and psychological tension—rather than action-heavy gameplay.
 
 
+![Game Title Preview](Assets/Documentation/MapBanner.gif)
+
 ## ✨ Features
 
 - 🕯️ Open-world exploration with psychological horror elements
@@ -15,8 +17,8 @@ Our motivation was to capture the atmosphere and emotional intensity of that era
 - 🌫️ Dense atmosphere, ambient soundscapes, and analog horror tone
 - 🔦 Minimal UI and diegetic design choices for immersion
 
-
 ![Game Title Preview](Assets/Documentation/ChurchDemoGIF.gif)
+
 
 ## 🔗 Download
 
